@@ -74,11 +74,8 @@ GERENCIAMENTO:
 - Opção para visualizar e, se necessário, cancelar reservas.
 - visualização dos ingressos eletrônicos anteriores.
  
-
-
-
- 
-
-
-
-
+![Tela 1](Imagens/Tela-Inicial-Alto-nivel.png)
+![Tela 2](Imagens/Tela-Descricao-Filme-Alto-nivel.png)
+![Tela 1](Imagens/Tela-Cinema-Alto-nivel.png)
+![Tela 1](Imagens/Tela-de-Reserva-Alto-nivel.png)
+![Tela 1](Imagens/Tela-de-Confirmacao-Reserva-Alto-nivel.png)
