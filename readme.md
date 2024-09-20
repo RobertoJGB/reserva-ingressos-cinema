@@ -73,9 +73,22 @@ GERENCIAMENTO:
 
 - Opção para visualizar e, se necessário, cancelar reservas.
 - visualização dos ingressos eletrônicos anteriores.
- 
+
+
+ ## Baixo Nivel
+![Tela 1](Imagens/Tela-Inicial-Baixo-nivel.png)
+![Tela 2](Imagens/Tela-Descricao-Filme-Baixo-nivel.png)
+![Tela 3](Imagens/Tela-Cinema-baixo-nivel.png)
+![Tela 4](Imagens/Tela-de-Reserva-baixo-nivel.png)
+![Tela 5](Imagens/Tela-de-Confirmacao-Reserva-baixo-nivel.png)
+
+ ## Alto Nivel
 ![Tela 1](Imagens/Tela-Inicial-Alto-nivel.png)
 ![Tela 2](Imagens/Tela-Descricao-Filme-Alto-nivel.png)
-![Tela 1](Imagens/Tela-Cinema-Alto-nivel.png)
-![Tela 1](Imagens/Tela-de-Reserva-Alto-nivel.png)
-![Tela 1](Imagens/Tela-de-Confirmacao-Reserva-Alto-nivel.png)
+![Tela 3](Imagens/Tela-Cinema-Alto-nivel.png)
+![Tela 4](Imagens/Tela-de-Reserva-Alto-nivel.png)
+![Tela 5](Imagens/Tela-de-Confirmacao-Reserva-Alto-nivel.png)
+
+ ## MER
+
+ ![MER](Imagens/MER-Cinema.jpg)
