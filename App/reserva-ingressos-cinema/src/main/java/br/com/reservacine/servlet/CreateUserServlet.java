@@ -1,7 +1,6 @@
 package br.com.reservacine.servlet;
 
-import br.com.reservacine.dao.TicketDao;
-import br.com.reservacine.model.Ticket;
+import br.com.reservacine.dao.UsersDao;
 import br.com.reservacine.model.Users;
 
 import javax.servlet.ServletException;
@@ -11,23 +10,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/create-ticket")
-public class CreateTicketServlet extends HttpServlet {
-
+@WebServlet("/create-user")
+public class CreateUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String ticketName = req.getParameter("ticket-name");
+        String UserName = req.getParameter("user-name");
+        String dtNasc = req.getParameter("data-nascimento");
 
-        System.out.println(ticketName);
+        System.out.println(UserName);
+        System.out.println(dtNasc);
 
-        Ticket ticket = new Ticket();
-        ticket.setTicket(ticketName);
+        Users users = new Users();
+        users.setNomeUsuario(UserName);
+        users.setDtNasc(dtNasc);
 
-        TicketDao ticketDao = new TicketDao();
-        ticketDao.createTicket(ticket);
+        UsersDao usersDao = new UsersDao();
+        usersDao.createUsers(users);
 
         req.getRequestDispatcher("index.html").forward(req,resp);
-
     }
 }
