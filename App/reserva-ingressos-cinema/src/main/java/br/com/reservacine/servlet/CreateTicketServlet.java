@@ -1,5 +1,8 @@
 package br.com.reservacine.servlet;
 
+import br.com.reservacine.dao.TicketDao;
+import br.com.reservacine.model.Ticket;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +19,13 @@ public class CreateTicketServlet extends HttpServlet {
         String ticketName = req.getParameter("ticket-name");
 
         System.out.println(ticketName);
+
+        Ticket ticket = new Ticket();
+        ticket.setTicket(ticketName);
+
+        TicketDao ticketDao = new TicketDao();
+        ticketDao.createTicket(ticket);
+
 
         req.getRequestDispatcher("index.html").forward(req,resp);
 
