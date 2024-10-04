@@ -2,7 +2,6 @@ package br.com.reservacine.servlet;
 
 import br.com.reservacine.dao.TicketDao;
 import br.com.reservacine.model.Ticket;
-import br.com.reservacine.model.Users;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,11 +17,13 @@ public class CreateTicketServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String ticketName = req.getParameter("ticket-name");
+        String lugarEsc = req.getParameter("");
 
         System.out.println(ticketName);
 
         Ticket ticket = new Ticket();
         ticket.setTicket(ticketName);
+        ticket.setLugarEsc(lugarEsc);
 
         TicketDao ticketDao = new TicketDao();
         ticketDao.createTicket(ticket);
