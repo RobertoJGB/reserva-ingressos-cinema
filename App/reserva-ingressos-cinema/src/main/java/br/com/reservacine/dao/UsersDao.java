@@ -20,7 +20,7 @@ public class UsersDao {
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
-            preparedStatement.setString(1, users.getNomeUsuario());
+            preparedStatement.setString(1, users.getNome());
             preparedStatement.setString(2, users.getDtNasc());
             preparedStatement.execute();
 

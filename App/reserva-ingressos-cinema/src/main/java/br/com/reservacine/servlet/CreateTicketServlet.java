@@ -16,19 +16,18 @@ public class CreateTicketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String ticketName = req.getParameter("ticket-name");
-        String lugarEsc = req.getParameter("");
+        String lugarEsc = req.getParameter("ticket-name");
 
-        System.out.println(ticketName);
 
-        Ticket ticket = new Ticket();
-        ticket.setTicket(ticketName);
-        ticket.setLugarEsc(lugarEsc);
+        System.out.println(lugarEsc);
+
+        Ticket ticket = new Ticket(lugarEsc);
+
 
         TicketDao ticketDao = new TicketDao();
         ticketDao.createTicket(ticket);
 
-        req.getRequestDispatcher("index.html").forward(req,resp);
+        resp.sendRedirect("/find-all-ticket");
 
     }
 }
