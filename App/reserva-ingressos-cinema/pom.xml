@@ -7,6 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <name>reserva-ingressos-cinema Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
   <dependencies>
 
     <dependency>
@@ -15,6 +16,7 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -36,8 +38,11 @@
 
   </dependencies>
   <build>
+
     <finalName>reserva-ingressos-cinema</finalName>
+
     <plugins>
+
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
@@ -58,6 +63,7 @@
           </execution>
         </executions>
       </plugin>
+
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.2.2</version>
@@ -66,6 +72,7 @@
           <warSourceDirectory>src/main/webapp</warSourceDirectory>
         </configuration>
       </plugin>
+
     </plugins>
   </build>
 </project>

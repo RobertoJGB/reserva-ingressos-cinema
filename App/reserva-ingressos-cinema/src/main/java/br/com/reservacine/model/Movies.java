@@ -2,41 +2,43 @@ package br.com.reservacine.model;
 
 public class Movies {
 
-    private String nomeFilme;
-    private String sinopse;
+    private final String nomeFilme;
+    private final String genero;
+    private final String sinopse;
     //Classificação indicativa
-    private String classInd;
-    private String duracao;
+    private final String classInd;
+    private final String duracao;
+
+    public Movies(String nomeFilme, String genero, String sinopse, String classInd, String duracao) {
+        this.nomeFilme = nomeFilme;
+        this.genero = genero;
+        this.sinopse = sinopse;
+        this.classInd = classInd;
+        this.duracao = duracao;
+    }
 
     public String getNomeFilme() {
         return nomeFilme;
     }
 
-    public void setNomeFilme(String nomeFilme) {
-        this.nomeFilme = nomeFilme;
+
+    public String getGenero() {
+        return genero;
     }
+
 
     public String getSinopse() {
         return sinopse;
     }
 
-    public void setSinopse(String sinopse) {
-        this.sinopse = sinopse;
-    }
 
     public String getClassInd() {
         return classInd;
     }
 
-    public void setClassInd(String classInd) {
-        this.classInd = classInd;
-    }
 
     public String getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(String duracao) {
-        this.duracao = duracao;
-    }
 }
