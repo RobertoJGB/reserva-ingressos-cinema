@@ -10,7 +10,7 @@ public class UsersDao {
 
     public void createUsers(Users users){
 
-        String SQL = "INSERT INTO USERS (NAME, dtNasc) VALUES (?, ?)";
+        String SQL = "INSERT INTO USERS (NAME, dtNasc, cpf, usuario, senha) VALUES (?, ?, ?, ?, ?)";
 
         try {
 
@@ -22,6 +22,9 @@ public class UsersDao {
 
             preparedStatement.setString(1, users.getNome());
             preparedStatement.setString(2, users.getDtNasc());
+            preparedStatement.setString(3, users.getCpf());
+            preparedStatement.setString(4, users.getUsuario());
+            preparedStatement.setString(5, users.getSenha());
             preparedStatement.execute();
 
             System.out.println("success in insert ticket");
