@@ -16,24 +16,18 @@ public class CreateUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String name = req.getParameter("name");
-        String dtNasc = req.getParameter("data-nascimento");
-        String cpf = req.getParameter("");
-        String usuario = req.getParameter("");
-        String senha = req.getParameter("");
+        String dtNasc = req.getParameter("dtNasc");
+        String cpf = req.getParameter("cpf");
+        String usuario = req.getParameter("usuario");
+        String senha = req.getParameter("senha");
 
-        System.out.println(name);
-        System.out.println(dtNasc);
 
-        Users users = new Users();
-        users.setNome(name);
-        users.setDtNasc(dtNasc);
-        users.setCpf(cpf);
-        users.setCpf(usuario);
-        users.setCpf(senha);
+        Users users = new Users(name,dtNasc,cpf,usuario,senha);
+
 
         UsersDao usersDao = new UsersDao();
         usersDao.createUsers(users);
 
-        req.getRequestDispatcher("index.html").forward(req,resp);
+        resp.sendRedirect("/index.html");
     }
 }

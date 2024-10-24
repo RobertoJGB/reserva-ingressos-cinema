@@ -2,25 +2,27 @@ package br.com.reservacine.model;
 
 public class Ticket {
 
-    private String ticket;
-    private String lugarEsc;
 
-    public Ticket(String lugarEsc) {
-        this.lugarEsc = lugarEsc;
-    }
+    private String fkIdUser;
+    private String fkIdFilme;
+    private String fkIdsession;
 
-    public Ticket(String id, String lugarEsc){
-        this.ticket = id;
-        this.lugarEsc = lugarEsc;
-    }
-
-    public String getLugarEsc() {
-        return lugarEsc;
-    }
-
-    public String getTicket() {
-        return ticket;
+    public Ticket(String fkIdUser, String fkIdFilme, String fkIdsession) {
+        this.fkIdUser = fkIdUser;
+        this.fkIdFilme = fkIdFilme;
+        this.fkIdsession = fkIdsession;
     }
 
 
+    public String getFkIdUser() {
+        return fkIdUser;
+    }
+
+    public String getFkIdFilme() {
+        return fkIdFilme;
+    }
+
+    public String getFkIdsession() {
+        return fkIdsession;
+    }
 }

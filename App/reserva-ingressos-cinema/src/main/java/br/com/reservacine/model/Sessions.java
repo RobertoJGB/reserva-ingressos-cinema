@@ -9,35 +9,32 @@ public class Sessions {
     private String fkIdFilme;
 
 
-    public String getHorario() {
-        return horario;
+    public Sessions(String horario, String sala, String lugarDisp, String lugarOcup, String fkIdFilme) {
+        this.horario = horario;
+        this.sala = sala;
+        this.lugarDisp = lugarDisp;
+        this.lugarOcup = lugarOcup;
+        this.fkIdFilme = fkIdFilme;
     }
 
-    public void setHorario(String horario) {
-        this.horario = horario;
+    public String getHorario() {
+        return horario;
     }
 
     public String getSala() {
         return sala;
     }
 
-    public void setSala(String sala) {
-        this.sala = sala;
-    }
-
     public String getLugarDisp() {
         return lugarDisp;
-    }
-
-    public void setLugarDisp(String lugarDisp) {
-        this.lugarDisp = lugarDisp;
     }
 
     public String getLugarOcup() {
         return lugarOcup;
     }
 
-    public void setLugarOcup(String lugarOcup) {
-        this.lugarOcup = lugarOcup;
+    public String getFkIdFilme() {
+        return fkIdFilme;
     }
+
 }

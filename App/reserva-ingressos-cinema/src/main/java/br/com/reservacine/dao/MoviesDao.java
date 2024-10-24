@@ -2,6 +2,7 @@ package br.com.reservacine.dao;
 
 import br.com.reservacine.model.Movies;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,7 +13,35 @@ import java.util.List;
 
 public class MoviesDao {
 
+
+    public void createTableMovies(){
+        String SQL ="CREATE TABLE IF NOT EXISTS MOVIES("
+                    +"IDMOVIE INT NOT NULL AUTO_INCREMENT, "
+                    +"NAME VARCHAR(55) NOT NULL, "
+                    +"GENERO VARCHAR(55) NOT NULL, "
+                    +"SINOPSE TEXT NOT NULL, "
+                    +"CLASSIND VARCHAR(3) NOT NULL, "
+                    +"DURACAO INT NOT NULL, "
+                    +"PRIMARY KEY(IDMOVIE) );";
+
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+
+            System.out.println("success in database connection");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.execute();
+
+            System.out.println("sucess in create table movies");
+
+        }catch (Exception e) {
+            System.out.println("fail in create table movies "+ e.getMessage());
+        }
+    }
+
     public void createMovie(Movies movie) {
+        createTableMovies();
 
         String SQL = "INSERT INTO MOVIES (NAME, GENERO, SINOPSE, CLASSIND, DURACAO) VALUES (?,?,?,?,?)";
 

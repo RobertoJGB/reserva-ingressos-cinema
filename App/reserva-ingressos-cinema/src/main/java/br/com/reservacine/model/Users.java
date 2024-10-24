@@ -8,44 +8,42 @@ public class Users {
     private String usuario;
     private String senha;
 
+    public Users(String nome, String dtNasc, String cpf, String usuario, String senha) {
+        this.nome = nome;
+        this.dtNasc = dtNasc;
+        this.cpf = cpf;
+        this.usuario = usuario;
+        this.senha = senha;
+    }
+
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+
 
     public String getDtNasc() {
         return dtNasc;
     }
 
-    public void setDtNasc(String dtNasc) {
-        this.dtNasc = dtNasc;
-    }
+
 
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+
 
     public String getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
+
 
     public String getSenha() {
         return senha;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+
 
 }

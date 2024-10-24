@@ -12,9 +12,37 @@ import java.util.List;
 
 public class TicketDao {
 
-    public void createTicket(Ticket ticket){
+    public void createTableTicket(){
+        String SQL ="CREATE TABLE IF NOT EXISTS TICKETS("
+                +"IDTICKET INT NOT NULL AUTO_INCREMENT, "
+                +"FKIDUSER INT NOT NULL, "
+                +"FKNOMEFILME INT NOT NULL, "
+                +"FKSESSAO INT NOT NULL, "
+                +"PRIMARY KEY(IDTICKET), "
+                +"FOREIGN KEY (FKIDUSER) REFERENCES USERS(IDUSER), "
+                +"FOREIGN KEY (FKNOMEFILME) REFERENCES MOVIES(IDMOVIE), "
+                +"FOREIGN KEY (FKSESSAO) REFERENCES SESSIONS(IDSESSION) );";
 
-        String SQL = "INSERT INTO TICKET (null, LUGARESC) VALUES (?)";
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+
+            System.out.println("success in database connection");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.execute();
+
+            System.out.println("sucess in create table ticket");
+
+        }catch (Exception e) {
+            System.out.println("fail in create table ticket "+ e.getMessage());
+        }
+    }
+
+    public void createTicket(Ticket ticket){
+        createTableTicket();
+
+        String SQL = "INSERT INTO TICKETS (FKIDUSER, FKNOMEFILME, FKSESSAO) VALUES (?,?,?)";
 
         try {
 
@@ -24,7 +52,9 @@ public class TicketDao {
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
-            preparedStatement.setString(1, ticket.getLugarEsc());
+            preparedStatement.setString(1, ticket.getFkIdUser());
+            preparedStatement.setString(2, ticket.getFkIdFilme());
+            preparedStatement.setString(3, ticket.getFkIdsession());
             preparedStatement.execute();
 
             System.out.println("success in insert ticket");
@@ -33,12 +63,12 @@ public class TicketDao {
 
         } catch (Exception e) {
 
-            System.out.println("fail in database connection");
+            System.out.println("fail in database connection "+e.getMessage());
 
         }
     }
 
-    public List<Ticket> findAllTickets() {
+  /*  public List<Ticket> findAllTickets() {
 
         String SQL = "SELECT * FROM TICKET";
 
@@ -58,7 +88,7 @@ public class TicketDao {
                 String idticket = resultSet.getString("idticket");
                 String lugarEsc = resultSet.getString("lugaresc");
 
-                Ticket ticket = new Ticket(idticket,lugarEsc);
+               /Ticket ticket = new Ticket(idticket,lugarEsc);
 
                 tickets.add(ticket);
 
@@ -78,6 +108,6 @@ public class TicketDao {
 
         }
 
-    }
+    }*/
 
 }
