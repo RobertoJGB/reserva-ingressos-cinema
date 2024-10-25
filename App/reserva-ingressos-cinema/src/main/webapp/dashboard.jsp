@@ -39,8 +39,13 @@
               <img src="..." class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">${movies.nomeFilme}</h5>
+                <p class="card-text">${movies.idMovie}</p>
                 <p class="card-text">${movies.genero}</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
+                <form action="/delete-movie" method="post">
+                  <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
+                     <button type="submit">Delete</button>
+                 </form>
               </div>
             </div>
         </c:forEach>

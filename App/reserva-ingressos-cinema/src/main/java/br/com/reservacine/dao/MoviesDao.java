@@ -38,6 +38,7 @@ public class MoviesDao {
         }catch (Exception e) {
             System.out.println("fail in create table movies "+ e.getMessage());
         }
+
     }
 
     public void createMovie(Movies movie) {
@@ -89,14 +90,14 @@ public class MoviesDao {
             List<Movies> allMovies = new ArrayList<>();
 
             while (resultSet.next()){
-
+                String idmovie = resultSet.getString("IDMOVIE");
                 String name = resultSet.getString("NAME");
                 String genero = resultSet.getString("GENERO");
                 String sinopse = resultSet.getString("SINOPSE");
                 String classind = resultSet.getString("CLASSIND");
                 String duracao = resultSet.getString("DURACAO");
 
-                Movies movies = new Movies(name, genero, sinopse, classind, duracao);
+                Movies movies = new Movies(idmovie,name, genero, sinopse, classind, duracao);
 
                 allMovies.add(movies);
 
@@ -115,6 +116,32 @@ public class MoviesDao {
         }
 
         return Collections.emptyList();
+    }
+
+    public void deleteMovieById(String movieId) {
+
+        String SQL = "DELETE FROM MOVIES WHERE IDMOVIE = ?";
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+
+            System.out.println("success in database connection");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, movieId);
+            preparedStatement.execute();
+
+            System.out.println("success on delete movie with id: " + movieId);
+
+            connection.close();
+
+        } catch (Exception e) {
+
+            System.out.println("fail in database connection "+ e);
+            
+        }
+
     }
 
 }
