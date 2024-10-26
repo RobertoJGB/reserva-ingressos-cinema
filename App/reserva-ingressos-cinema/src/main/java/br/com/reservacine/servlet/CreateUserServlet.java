@@ -28,6 +28,6 @@ public class CreateUserServlet extends HttpServlet {
         UsersDao usersDao = new UsersDao();
         usersDao.createUsers(users);
 
-        resp.sendRedirect("/index.html");
+        resp.sendRedirect("/index.jsp");
     }
 }

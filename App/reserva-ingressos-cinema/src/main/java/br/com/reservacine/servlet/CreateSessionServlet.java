@@ -33,7 +33,7 @@ public class CreateSessionServlet extends HttpServlet {
         sd.createSession(s);
 
 
-        resp.sendRedirect("/index.html");
+        resp.sendRedirect("/index.jsp");
 
     }
 }

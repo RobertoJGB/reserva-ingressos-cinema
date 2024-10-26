@@ -20,29 +20,31 @@
 
             <form action="/create-movie" method="post">
 
+                <input type="hidden" id="id" name="id" value="${param.id}">
+
                 <div class="mb-3">
-                    <label for="create-movie" class="form-label">Nome:</label>
-                    <input type="text" name="create-movie" id="create-movie" class="form-control">
+                    <label for="nomeFilme" class="form-label">Nome:</label>
+                    <input type="text" name="nomeFilme" id="nomeFilme" value="${param.nomeFilme}" class="form-control">
                 </div>
 
                 <div class="mb-3">
                     <label for="genero" class="form-label">Genero:</label>
-                    <input type="text" name="genero" id="genero" class="form-control">
+                    <input type="text" name="genero" id="genero" value="${param.genero}" class="form-control">
                 </div>
 
                 <div class="mb-3">
                     <label for="sinopse" class="form-label">Sinopse:</label>
-                    <input type="text" name="sinopse" id="sinopse" class="form-control">
+                    <input type="text" name="sinopse" id="sinopse" value="${param.sinopse}" class="form-control">
                 </div>
 
                 <div class="mb-3">
                     <label for="classind" class="form-label">Classificacao:</label>
-                    <input type="text" name="classind" id="classind" class="form-control">
+                    <input type="text" name="classind" id="classind" value="${param.classInd}" class="form-control">
                 </div>
 
                 <div class="mb-3">
                     <label for="duracao" class="form-label">Duracao:</label>
-                    <input type="text" name="duracao" id="duracao" class="form-control">
+                    <input type="text" name="duracao" id="duracao" value="${param.duracao}" class="form-control">
                 </div>
 
                 <button class="btn btn-primary" type="submit">Registrar</button>

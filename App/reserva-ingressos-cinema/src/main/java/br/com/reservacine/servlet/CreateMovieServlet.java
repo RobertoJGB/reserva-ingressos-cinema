@@ -17,7 +17,9 @@ public class CreateMovieServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String NOMEFILME = req.getParameter("create-movie");
+        String idMovie = req.getParameter("id");
+
+        String NOMEFILME = req.getParameter("nomeFilme");
 
         String GENERO = req.getParameter("genero");
 
@@ -27,11 +29,18 @@ public class CreateMovieServlet extends HttpServlet {
 
         String DURACAO = req.getParameter("duracao");
 
-        Movies movies = new Movies(NOMEFILME, GENERO, SINOPSE, CLASSIND, DURACAO);
-
 
         MoviesDao moviesDao = new MoviesDao();
-        moviesDao.createMovie(movies);
+        if(idMovie.equals("")){
+            Movies movies = new Movies(NOMEFILME, GENERO, SINOPSE, CLASSIND, DURACAO);
+            moviesDao.createMovie(movies);
+        }else{
+            Movies movies = new Movies(idMovie,NOMEFILME, GENERO, SINOPSE, CLASSIND, DURACAO);
+            moviesDao.updateMovie(movies);
+        }
+
+
+
 
 
         resp.sendRedirect("/find-all-movies");

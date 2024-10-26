@@ -144,4 +144,37 @@ public class MoviesDao {
 
     }
 
+    public void updateMovie(Movies movie) {
+
+        String SQL = "UPDATE MOVIES SET NAME = ?, GENERO = ?, SINOPSE = ?, CLASSIND = ?, DURACAO = ? WHERE IDMOVIE = ?";
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
+
+            System.out.println("success in database connection");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.setString(1, movie.getNomeFilme());
+            preparedStatement.setString(2, movie.getGenero());
+            preparedStatement.setString(3, movie.getSinopse());
+            preparedStatement.setString(4, movie.getClassInd());
+            preparedStatement.setString(5, movie.getDuracao());
+            preparedStatement.setString(6, movie.getIdMovie());
+            preparedStatement.execute();
+
+            System.out.println("success in update Movie");
+
+            connection.close();
+
+        } catch (Exception e) {
+
+            System.out.println("fail in update Movie");
+            System.out.println("Error: " + e.getMessage());
+
+        }
+
+    }
+
 }

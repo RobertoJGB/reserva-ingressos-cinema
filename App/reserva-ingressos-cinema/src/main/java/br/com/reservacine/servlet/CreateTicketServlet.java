@@ -27,7 +27,7 @@ public class CreateTicketServlet extends HttpServlet {
         TicketDao td = new TicketDao();
         td.createTicket(tic);
 
-        resp.sendRedirect("/index.html");
+        resp.sendRedirect("/index.jsp");
 
     }
 }
