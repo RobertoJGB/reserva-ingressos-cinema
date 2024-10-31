@@ -4,8 +4,18 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel = "stylesheet" href="css/body.css">
 </head>
 <body>
+    <div class="navbar">
+            <div class="menu-icon">Menu</div>
+            <div class="logo">PrimeTicket</div>
+            <div class="icons">
+                <img src="../../../Imagens/Login.png" alt="Login Icon">
+                <img src="../../../Imagens/Pesquisar.png" alt="Pesquisar Icon">
+            </div>
+    </div>
+
     <div class="container">
         <h1>Movies</h1>
 
