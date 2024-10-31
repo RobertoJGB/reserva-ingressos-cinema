@@ -1,40 +1,54 @@
 package br.com.reservacine.model;
 
 public class Sessions {
-
+    private String idSession;
     private String horario;
-    private String sala;
-    private String lugarDisp;
-    private String lugarOcup;
+    private String fkSala;
     private String fkIdFilme;
+    private String nomeFilme;
+    private String lugar;
+    private String dispo;
 
 
-    public Sessions(String horario, String sala, String lugarDisp, String lugarOcup, String fkIdFilme) {
+
+    public Sessions(String horario, String fkSala, String fkIdFilme) {
         this.horario = horario;
-        this.sala = sala;
-        this.lugarDisp = lugarDisp;
-        this.lugarOcup = lugarOcup;
+        this.fkSala = fkSala;
         this.fkIdFilme = fkIdFilme;
+    }
+
+    public Sessions(String idSession, String horario, String nomeFilme, String lugar, String dispo) {
+        this.idSession = idSession;
+        this.horario = horario;
+        this.nomeFilme = nomeFilme;
+        this.lugar = lugar;
+        this.dispo = dispo;
+    }
+
+    public String getNomeFilme() {
+        return nomeFilme;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public String getDispo() {
+        return dispo;
+    }
+    public String getIdSession() {
+        return idSession;
     }
 
     public String getHorario() {
         return horario;
     }
 
-    public String getSala() {
-        return sala;
-    }
-
-    public String getLugarDisp() {
-        return lugarDisp;
-    }
-
-    public String getLugarOcup() {
-        return lugarOcup;
+    public String getFkSala() {
+        return fkSala;
     }
 
     public String getFkIdFilme() {
         return fkIdFilme;
     }
-
 }

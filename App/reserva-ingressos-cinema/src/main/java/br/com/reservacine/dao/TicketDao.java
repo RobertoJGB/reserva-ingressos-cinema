@@ -1,5 +1,6 @@
 package br.com.reservacine.dao;
 
+import br.com.reservacine.config.ConnectionPoolConfig;
 import br.com.reservacine.model.Ticket;
 
 import java.sql.Connection;
@@ -24,9 +25,7 @@ public class TicketDao {
                 +"FOREIGN KEY (FKSESSAO) REFERENCES SESSIONS(IDSESSION) );";
 
         try{
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
@@ -46,9 +45,7 @@ public class TicketDao {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
@@ -68,15 +65,13 @@ public class TicketDao {
         }
     }
 
-  /*  public List<Ticket> findAllTickets() {
+    public List<Ticket> findAllTickets() {
 
         String SQL = "SELECT * FROM TICKET";
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
@@ -88,9 +83,9 @@ public class TicketDao {
                 String idticket = resultSet.getString("idticket");
                 String lugarEsc = resultSet.getString("lugaresc");
 
-               /Ticket ticket = new Ticket(idticket,lugarEsc);
+               //Ticket ticket = new Ticket(idticket,lugarEsc);
 
-                tickets.add(ticket);
+                //tickets.add(ticket);
 
             }
 
@@ -108,6 +103,6 @@ public class TicketDao {
 
         }
 
-    }*/
+    }
 
 }
