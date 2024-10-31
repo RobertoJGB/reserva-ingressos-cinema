@@ -1,10 +1,15 @@
 package br.com.reservacine.dao;
 
+import br.com.reservacine.config.ConnectionPoolConfig;
 import br.com.reservacine.model.Users;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class UsersDao {
 
@@ -20,9 +25,7 @@ public class UsersDao {
 
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
@@ -42,9 +45,7 @@ public class UsersDao {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
@@ -64,6 +65,104 @@ public class UsersDao {
             System.out.println("fail in database connection "+ e.getMessage());
 
         }
+    }
+
+    public List<Users> findAllUsers(){
+
+        String SQL = "SELECT * FROM USERS";
+
+        try {
+
+            Connection connection = ConnectionPoolConfig.getConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<Users> allUsers = new ArrayList<>();
+
+            while (resultSet.next()){
+                String iduser = resultSet.getString("IDUSER");
+                String name = resultSet.getString("NAME");
+                String dtNasc = resultSet.getString("dTNasc");
+                String cpf = resultSet.getString("cpf");
+                String usuario = resultSet.getString("usuario");
+                String senha = resultSet.getString("senha");
+
+                Users users = new Users(iduser,name,dtNasc,cpf,usuario,senha);
+
+                allUsers.add(users);
+
+            }
+
+            System.out.println("Sucesso ao consultar os dados na tabela");
+
+            connection.close();
+
+            return allUsers;
+
+        } catch (Exception e){
+
+            System.out.println("Falha ao consultar os Usuarios " + e.getMessage());
+
+        }
+
+        return Collections.emptyList();
+    }
+
+    public void deleteUserById(String userId) {
+
+        String SQL = "DELETE FROM USERS WHERE IDUSER = ?";
+
+        try {
+
+            Connection connection = ConnectionPoolConfig.getConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, userId);
+            preparedStatement.execute();
+
+            System.out.println("success on delete user with id: " + userId);
+
+            connection.close();
+
+        } catch (Exception e) {
+
+            System.out.println("fail in database connection "+ e);
+
+        }
+
+    }
+
+    public void updateUser(Users user) {
+
+        String SQL = "UPDATE USERS SET NAME = ?, dtNasc = ?, cpf = ?, usuario = ?, senha = ? WHERE IDUSER = ?";
+
+        try {
+
+            Connection connection = ConnectionPoolConfig.getConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.setString(1, user.getNome());
+            preparedStatement.setString(2, user.getDtNasc());
+            preparedStatement.setString(3, user.getCpf());
+            preparedStatement.setString(4, user.getUsuario());
+            preparedStatement.setString(5, user.getSenha());
+            preparedStatement.setString(6, user.getIdUser());
+            preparedStatement.execute();
+
+            System.out.println("success in update User");
+
+            connection.close();
+
+        } catch (Exception e) {
+
+            System.out.println("fail in update User");
+            System.out.println("Error: " + e.getMessage());
+
+        }
+
     }
 
 }

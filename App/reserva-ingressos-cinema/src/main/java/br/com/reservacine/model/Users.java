@@ -1,7 +1,7 @@
 package br.com.reservacine.model;
 
 public class Users {
-
+    private String idUser;
     private String nome;
     private String dtNasc;
     private String cpf;
@@ -14,6 +14,19 @@ public class Users {
         this.cpf = cpf;
         this.usuario = usuario;
         this.senha = senha;
+    }
+
+    public Users(String idUser, String nome, String dtNasc, String cpf, String usuario, String senha) {
+        this.idUser = idUser;
+        this.nome = nome;
+        this.dtNasc = dtNasc;
+        this.cpf = cpf;
+        this.usuario = usuario;
+        this.senha = senha;
+    }
+
+    public String getIdUser() {
+        return idUser;
     }
 
     public String getNome() {

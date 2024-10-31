@@ -14,8 +14,6 @@ public class SessionsDao {
                 +"IDSESSION INT NOT NULL AUTO_INCREMENT, "
                 +"HORARIO VARCHAR(55) NOT NULL, "
                 +"SALA INT NOT NULL, "
-                +"LUGARDISP VARCHAR(50) NOT NULL, "
-                +"LUGAROCU VARCHAR(50) NOT NULL, "
                 +"FKMOVIE INT NOT NULL, "
                 +"PRIMARY KEY(IDSESSION), "
                 +"FOREIGN KEY(FKMOVIE) REFERENCES MOVIES(IDMOVIE) );";

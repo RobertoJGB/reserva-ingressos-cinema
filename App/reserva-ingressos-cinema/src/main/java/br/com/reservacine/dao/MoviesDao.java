@@ -1,7 +1,7 @@
 package br.com.reservacine.dao;
 
 import br.com.reservacine.model.Movies;
-
+import br.com.reservacine.config.ConnectionPoolConfig;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,9 +25,7 @@ public class MoviesDao {
                     +"PRIMARY KEY(IDMOVIE) );";
 
         try{
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
@@ -48,9 +46,7 @@ public class MoviesDao {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
@@ -79,9 +75,7 @@ public class MoviesDao {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
@@ -124,9 +118,7 @@ public class MoviesDao {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setString(1, movieId);
@@ -150,9 +142,7 @@ public class MoviesDao {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
@@ -176,5 +166,7 @@ public class MoviesDao {
         }
 
     }
+
+
 
 }
