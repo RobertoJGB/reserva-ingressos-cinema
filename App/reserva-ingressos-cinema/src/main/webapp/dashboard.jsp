@@ -8,22 +8,56 @@
     <link rel="stylesheet" href="css/body.css">
 </head>
 <body>
-    <!-- Navbar -->
+
     <div class="navbar">
-        <div class="menu-icon">Menu</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <img src="img/list.png" alt="Menu Icon">
+        </div>
+
         <div class="logo">PrimeTicket</div>
         <div class="icons">
-            <img src="../../../Imagens/Login.png" alt="Login Icon">
-            <img src="../../../Imagens/Pesquisar.png" alt="Pesquisar Icon">
+            <span>Pesquisar</span>
+            <img src="img/pesq.png" alt="Pesquisar Icon">
+            <span>Entre ou Cadastre-se</span>
+            <img src="img/user.png" alt="Login Icon">
         </div>
     </div>
+
+    <div class="side-menu" id="sideMenu">
+                <br><br>
+            <div class="menu-header">
+                <h2>Perfil</h2>
+            </div>
+            <div class="menu-content">
+                <p>Ola, Astrogildo!</p>
+                <button class="menu-button">Minha Conta</button>
+                <button class="menu-button">Meus Ingressos</button>
+                <button class="menu-button">Saiba mais sobre PrimeTicket</button>
+                <button class="menu-button">Sair</button>
+            </div>
+        </div>
+
+    <br>
     <div class="container">
-        <h1>Movies</h1>
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/sonic.png" class="d-block w-05 rounded-image" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/StarWars.jpg" class="d-block w-05 rounded-image" alt="Teste">
+                </div>
+
+            </div>
+        </div>
+
+        </div>
         <br>
         <div class="container mt-5">
-            <h1>Em Cartaz</h1>
+            <h1>Em Cartaz</h1> <br>
             <div class="row">
                 <c:forEach var="movies" items="${movies}">
+                <c:if test="${movies.emcart == 'emCartaz'}">
                     <div class="col-md-3">
                         <div class="card mb-4">
                             <div class="card-body">
@@ -39,31 +73,44 @@
                             </div>
                         </div>
                     </div>
+                    </c:if>
                 </c:forEach>
             </div>
 
             <!-- Seção "Em Breve" -->
-            <h1 class="mt-5">Em Breve</h1>
+            <h1 class="mt-5">Em Breve</h1><br>
             <div class="row">
-                <c:forEach var="upcomingMovies" items="${upcomingMovies}">
-                    <div class="col-md-3">
+                <c:forEach var="movies" items="${movies}">
+                <c:if test="${movies.emcart == 'emBreve'}">
+                     <div class="col-md-3">
                         <div class="card mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">${upcomingMovies.nomeFilme}</h5>
-                                <p class="card-text">${upcomingMovies.genero}</p>
-                                <a href="#" class="btn btn-primary">Saiba Mais</a>
+                               <div class="card-body">
+                                <h5 class="card-title">${movies.nomeFilme}</h5>
+                                <p class="card-text">${movies.genero}</p>
+                                <a href="#" class="btn btn-primary">Comprar Ingresso</a>
                                 <form action="/delete-movie" method="post" class="mt-2">
-                                    <input type="hidden" id="idMovie" name="idMovie" value="${upcomingMovies.idMovie}">
+                                    <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                     <span> | </span>
-                                    <a href="index.jsp?id=${upcomingMovies.idMovie}&nomeFilme=${upcomingMovies.nomeFilme}&genero=${upcomingMovies.genero}&sinopse=${upcomingMovies.sinopse}&classInd=${upcomingMovies.classInd}&duracao=${upcomingMovies.duracao}" class="text-primary">Update</a>
+                                    <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}&classInd=${movies.classInd}&duracao=${movies.duracao}" class="text-primary">Update</a>
                                 </form>
+                               </div>
                             </div>
-                        </div>
-                    </div>
+                     </div>
+                     </c:if>
                 </c:forEach>
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <script>
+            function toggleMenu() {
+                var menu = document.getElementById("sideMenu");
+                menu.classList.toggle("active");
+            }
+    </script>
 </body>
 </html>

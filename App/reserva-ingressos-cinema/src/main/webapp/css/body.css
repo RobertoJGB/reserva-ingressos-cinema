@@ -8,26 +8,121 @@ h1{
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     background: linear-gradient(to right, #5f5f5f, #bdbdbd);
     padding: 10px 20px;
     color: white;
-}
-.navbar .menu-icon {
-    font-size: 24px;
-    cursor: pointer;
-}
-.navbar .logo {
-    font-weight: bold;
-    font-size: 24px;
+    text-align: center;
+    justify-content: center;
 }
 
-.navbar .search-icon, .navbar .user-icon {
-    font-size: 18px;
+.navbar .menu-icon img {
+    width: 24px;
     cursor: pointer;
+}
+
+.navbar .logo {
+    display: flex;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 .navbar .icons {
+    right: 10px;
+    position: absolute;
+    align-items: center;
+    gap: 10px;
+}
+.navbar .menu-icon {
+    left: 10px;
+    position: absolute;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar .icons span {
+    font-size: 14px;
+}
+
+.navbar .icons img {
+    width: 20px;
+    cursor: pointer;
+}
+
+.rounded-image {
+    width: 1280px;
+    height: 500px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+
+.menu-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #f0f0f0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 9;
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.side-menu.active {
+    transform: translateX(0);
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-header h2 {
+    margin: 0;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.menu-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.menu-button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.menu-button:hover {
+    background-color: #bbb;
+}
+
+.menu-button{
+    border-radius: 15px;
 }

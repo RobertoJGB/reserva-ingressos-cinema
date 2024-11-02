@@ -47,6 +47,15 @@
                     <input type="text" name="duracao" id="duracao" value="${param.duracao}" class="form-control">
                 </div>
 
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Categoria:</label>
+                    <select name="categoria" id="categoria" class="form-control">
+                        <option value="emCartaz">Em Cartaz</option>
+                        <option value="emBreve">Em Breve</option>
+                        <option value="emDestaq">Em Destaque</option>
+                    </select>
+                </div>
+
                 <button class="btn btn-primary" type="submit">Registrar</button>
 
             </form>

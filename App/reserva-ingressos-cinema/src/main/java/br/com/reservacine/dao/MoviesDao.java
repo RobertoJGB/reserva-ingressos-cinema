@@ -15,6 +15,7 @@ public class MoviesDao {
 
 
     public void createTableMovies(){
+
         String SQL ="CREATE TABLE IF NOT EXISTS MOVIES("
                     +"IDMOVIE INT NOT NULL AUTO_INCREMENT, "
                     +"NAME VARCHAR(55) NOT NULL, "
@@ -22,6 +23,7 @@ public class MoviesDao {
                     +"SINOPSE TEXT NOT NULL, "
                     +"CLASSIND VARCHAR(3) NOT NULL, "
                     +"DURACAO INT NOT NULL, "
+                    +"EMCARTAZ VARCHAR(10) NOT NULL, "
                     +"PRIMARY KEY(IDMOVIE) );";
 
         try{
@@ -42,7 +44,7 @@ public class MoviesDao {
     public void createMovie(Movies movie) {
         createTableMovies();
 
-        String SQL = "INSERT INTO MOVIES (NAME, GENERO, SINOPSE, CLASSIND, DURACAO) VALUES (?,?,?,?,?)";
+        String SQL = "INSERT INTO MOVIES (NAME, GENERO, SINOPSE, CLASSIND, DURACAO,EMCARTAZ) VALUES (?,?,?,?,?,?)";
 
         try {
 
@@ -55,6 +57,8 @@ public class MoviesDao {
             preparedStatement.setString(3, movie.getSinopse());
             preparedStatement.setString(4, movie.getClassInd());
             preparedStatement.setString(5, movie.getDuracao());
+            preparedStatement.setString(6, movie.getEmcart());
+
 
             preparedStatement.execute();
 
@@ -90,9 +94,10 @@ public class MoviesDao {
                 String sinopse = resultSet.getString("SINOPSE");
                 String classind = resultSet.getString("CLASSIND");
                 String duracao = resultSet.getString("DURACAO");
+                String emcartaz = resultSet.getString("EMCARTAZ");
 
-                Movies movies = new Movies(idmovie,name, genero, sinopse, classind, duracao);
-
+                Movies movies = new Movies(idmovie,name, genero, sinopse, classind, duracao,emcartaz);
+                System.out.print(allMovies);
                 allMovies.add(movies);
 
             }
@@ -138,7 +143,7 @@ public class MoviesDao {
 
     public void updateMovie(Movies movie) {
 
-        String SQL = "UPDATE MOVIES SET NAME = ?, GENERO = ?, SINOPSE = ?, CLASSIND = ?, DURACAO = ? WHERE IDMOVIE = ?";
+        String SQL = "UPDATE MOVIES SET NAME = ?, GENERO = ?, SINOPSE = ?, CLASSIND = ?, DURACAO = ?, EMCARTAZ = ? WHERE IDMOVIE = ?";
 
         try {
 
@@ -152,6 +157,7 @@ public class MoviesDao {
             preparedStatement.setString(4, movie.getClassInd());
             preparedStatement.setString(5, movie.getDuracao());
             preparedStatement.setString(6, movie.getIdMovie());
+            preparedStatement.setString(7, movie.getEmcart());
             preparedStatement.execute();
 
             System.out.println("success in update Movie");

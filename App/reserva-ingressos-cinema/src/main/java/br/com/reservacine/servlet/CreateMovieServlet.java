@@ -29,13 +29,15 @@ public class CreateMovieServlet extends HttpServlet {
 
         String DURACAO = req.getParameter("duracao");
 
+        String emcart = req.getParameter("categoria");
+
 
         MoviesDao moviesDao = new MoviesDao();
         if(idMovie.equals("")){
-            Movies movies = new Movies(NOMEFILME, GENERO, SINOPSE, CLASSIND, DURACAO);
+            Movies movies = new Movies(NOMEFILME, GENERO, SINOPSE, CLASSIND, DURACAO,emcart);
             moviesDao.createMovie(movies);
         }else{
-            Movies movies = new Movies(idMovie,NOMEFILME, GENERO, SINOPSE, CLASSIND, DURACAO);
+            Movies movies = new Movies(idMovie,NOMEFILME, GENERO, SINOPSE, CLASSIND, DURACAO,emcart);
             moviesDao.updateMovie(movies);
         }
 
