@@ -2,6 +2,7 @@ package br.com.reservacine.dao;
 
 import br.com.reservacine.config.ConnectionPoolConfig;
 import br.com.reservacine.model.Users;
+import org.h2.engine.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,7 +20,7 @@ public class UsersDao {
                 + "NAME VARCHAR(50) NOT NULL, "
                 + "dtNasc VARCHAR(11) NOT NULL, "
                 + "cpf VARCHAR(15) NOT NULL, "
-                + "usuario VARCHAR(50) NOT NULL, "
+                + "email VARCHAR(50) NOT NULL, "
                 + "senha VARCHAR(20) NOT NULL, "
                 + "PRIMARY KEY(IDUSER) ); ";
 
@@ -41,7 +42,7 @@ public class UsersDao {
     public void createUsers(Users users){
         createTableUsers();
 
-        String SQL = "INSERT INTO USERS (NAME, dtNasc, cpf, usuario, senha) VALUES (?, ?, ?, ?, ?)";
+        String SQL = "INSERT INTO USERS (NAME, dtNasc, cpf, email, senha) VALUES (?, ?, ?, ?, ?)";
 
         try {
 
@@ -52,7 +53,7 @@ public class UsersDao {
             preparedStatement.setString(1, users.getNome());
             preparedStatement.setString(2, users.getDtNasc());
             preparedStatement.setString(3, users.getCpf());
-            preparedStatement.setString(4, users.getUsuario());
+            preparedStatement.setString(4, users.getEmail());
             preparedStatement.setString(5, users.getSenha());
             preparedStatement.execute();
 
@@ -86,10 +87,10 @@ public class UsersDao {
                 String name = resultSet.getString("NAME");
                 String dtNasc = resultSet.getString("dTNasc");
                 String cpf = resultSet.getString("cpf");
-                String usuario = resultSet.getString("usuario");
+                String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");
 
-                Users users = new Users(iduser,name,dtNasc,cpf,usuario,senha);
+                Users users = new Users(iduser,name,dtNasc,cpf,email,senha);
 
                 allUsers.add(users);
 
@@ -108,6 +109,33 @@ public class UsersDao {
         }
 
         return Collections.emptyList();
+    }
+
+    public ResultSet searchUsers(String email) {
+        createTableUsers();
+        String SQL = "SELECT * FROM USERS WHERE email = ?";
+
+        try {
+
+            Connection connection = ConnectionPoolConfig.getConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                System.out.println("Sucesso ao consultar os dados na tabela");
+                return resultSet;
+            } else {
+
+                connection.close();
+                return null;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Falha ao consultar os Usuarios: " + e.getMessage());
+            return null;
+        }
     }
 
     public void deleteUserById(String userId) {
@@ -147,7 +175,7 @@ public class UsersDao {
             preparedStatement.setString(1, user.getNome());
             preparedStatement.setString(2, user.getDtNasc());
             preparedStatement.setString(3, user.getCpf());
-            preparedStatement.setString(4, user.getUsuario());
+            preparedStatement.setString(4, user.getEmail());
             preparedStatement.setString(5, user.getSenha());
             preparedStatement.setString(6, user.getIdUser());
             preparedStatement.execute();

@@ -5,23 +5,23 @@ public class Users {
     private String nome;
     private String dtNasc;
     private String cpf;
-    private String usuario;
+    private String email;
     private String senha;
 
-    public Users(String nome, String dtNasc, String cpf, String usuario, String senha) {
+    public Users(String nome, String dtNasc, String cpf, String email, String senha) {
         this.nome = nome;
         this.dtNasc = dtNasc;
         this.cpf = cpf;
-        this.usuario = usuario;
+        this.email = email;
         this.senha = senha;
     }
 
-    public Users(String idUser, String nome, String dtNasc, String cpf, String usuario, String senha) {
+    public Users(String idUser, String nome, String dtNasc, String cpf, String email, String senha) {
         this.idUser = idUser;
         this.nome = nome;
         this.dtNasc = dtNasc;
         this.cpf = cpf;
-        this.usuario = usuario;
+        this.email = email;
         this.senha = senha;
     }
 
@@ -47,8 +47,8 @@ public class Users {
 
 
 
-    public String getUsuario() {
-        return usuario;
+    public String getEmail() {
+        return email;
     }
 
 
