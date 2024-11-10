@@ -30,7 +30,7 @@ public class CreateUserServlet extends HttpServlet {
         ResultSet rs = null;
         try {
             // Verifica se o usuário já existe
-            rs = usersDao.searchUsers(user.getEmail());
+            rs = usersDao.searchUser(user.getEmail());
 
             if (rs != null) {
                 String achadoEmail = rs.getString("email");

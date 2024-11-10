@@ -10,11 +10,11 @@
 </head>
 <body>
 
+<!-- Navbar -->
 <div class="navbar">
     <div class="menu-icon" onclick="toggleMenu()">
         <img src="img/list.png" alt="Menu Icon">
     </div>
-
     <div class="logo">PrimeTicket</div>
     <div class="icons">
         <span>Pesquisar</span>
@@ -23,10 +23,10 @@
             <span>Entre ou Cadastre-se</span>
             <img src="img/user.png" alt="Login Icon">
         </a>
-
     </div>
 </div>
 
+<!-- Side Menu -->
 <div class="side-menu" id="sideMenu">
     <br><br>
     <div class="menu-header">
@@ -41,54 +41,57 @@
     </div>
 </div>
 
-<br>
-<div class="container">
+<!-- Carousel -->
+<div class="container mt-5">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="img/sonic.png" class="d-block w-05 rounded-image" alt="...">
+                <img src="img/sonic.png" class="d-block w-100 rounded-image" alt="Imagem Sonic">
             </div>
             <div class="carousel-item">
-                <img src="img/StarWars.jpg" class="d-block w-05 rounded-image" alt="Teste">
+                <img src="img/StarWars.jpg" class="d-block w-100 rounded-image" alt="Imagem Star Wars">
             </div>
-
         </div>
     </div>
-
 </div>
-<br>
+<!-- Em Cartaz -->
 <div class="container mt-5">
-    <h1>Em Cartaz</h1> <br>
+    <h1>Em Cartaz</h1>
     <div class="row">
         <c:forEach var="movies" items="${movies}">
             <c:if test="${movies.emcart == 'emCartaz'}">
-                <div class="col-md-3">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">${movies.nomeFilme}</h5>
-                            <p class="card-text">${movies.genero}</p>
-                            <a href="#" class="btn btn-primary">Comprar Ingresso</a>
-                            <form action="/delete-movie" method="post" class="mt-2">
-                                <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                                <span> | </span>
-                                <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}&classInd=${movies.classInd}&duracao=${movies.duracao}"
-                                   class="text-primary">Update</a>
-                            </form>
-                        </div>
+            <div class="col-md-3 mb-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="img/mufasa.jpg" alt="Leao cap">
+                    <div class="card-body">
+                        <p class="card-text">Filme do leao.</p>
                     </div>
                 </div>
-            </c:if>
-        </c:forEach>
+                <a href="#" class="btn btn-primary">Comprar Ingresso</a>
+                <form action="/delete-movie" method="post" class="mt-2">
+                    <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <span> | </span>
+                    <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}&classInd=${movies.classInd}&duracao=${movies.duracao}"
+                       class="text-primary">Update</a>
+                </form>
+            </div>
     </div>
+</div>
+</c:if>
+</c:forEach>
+</div>
+</div>
 
-    <!-- Seção "Em Breve" -->
-    <h1 class="mt-5">Em Breve</h1><br>
+<!-- Em Breve -->
+<div class="container mt-5">
+    <h1>Em Breve</h1>
     <div class="row">
         <c:forEach var="movies" items="${movies}">
             <c:if test="${movies.emcart == 'emBreve'}">
-                <div class="col-md-3">
-                    <div class="card mb-4">
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="img/${movies.nomeFilme}.jpg" alt="${movies.nomeFilme}">
                         <div class="card-body">
                             <h5 class="card-title">${movies.nomeFilme}</h5>
                             <p class="card-text">${movies.genero}</p>
@@ -107,16 +110,18 @@
         </c:forEach>
     </div>
 </div>
-</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
 <script>
     function toggleMenu() {
         var menu = document.getElementById("sideMenu");
         menu.classList.toggle("active");
     }
 </script>
+
 </body>
 </html>

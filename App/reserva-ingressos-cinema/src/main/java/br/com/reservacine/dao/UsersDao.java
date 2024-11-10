@@ -2,10 +2,8 @@ package br.com.reservacine.dao;
 
 import br.com.reservacine.config.ConnectionPoolConfig;
 import br.com.reservacine.model.Users;
-import org.h2.engine.User;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -111,7 +109,7 @@ public class UsersDao {
         return Collections.emptyList();
     }
 
-    public ResultSet searchUsers(String email) {
+    public ResultSet searchUser(String email) {
         createTableUsers();
         String SQL = "SELECT * FROM USERS WHERE email = ?";
 
@@ -137,6 +135,31 @@ public class UsersDao {
             return null;
         }
     }
+
+    public ResultSet searchUsers(String email, String senha) {
+        createTableUsers();
+        String SQL = "SELECT * FROM USERS WHERE email = ? AND senha = ?";
+
+        try {
+            Connection connection = ConnectionPoolConfig.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, senha);  // Agora verifica a senha também
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                System.out.println("Sucesso ao consultar os dados na tabela");
+                return resultSet;
+            } else {
+                connection.close();
+                return null;
+            }
+        } catch (Exception e) {
+            System.out.println("Falha ao consultar os Usuarios: " + e.getMessage());
+            return null;
+        }
+    }
+
 
     public void deleteUserById(String userId) {
 

@@ -1,6 +1,7 @@
 package br.com.reservacine.model;
 
 public class Users {
+
     private String idUser;
     private String nome;
     private String dtNasc;
