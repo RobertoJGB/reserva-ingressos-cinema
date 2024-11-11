@@ -14,8 +14,7 @@ import java.util.List;
 public class TicketDao {
 
 
-
-    public void createTicket(Ticket ticket){
+    public void createTicket(Ticket ticket) {
 
 
         String SQL = "INSERT INTO TICKETS (FKIDUSER, FKNOMEFILME, FKSESSAO) VALUES (?,?,?)";
@@ -37,7 +36,7 @@ public class TicketDao {
 
         } catch (Exception e) {
 
-            System.out.println("fail in database connection "+e.getMessage());
+            System.out.println("fail in database connection " + e.getMessage());
 
         }
     }
@@ -60,7 +59,7 @@ public class TicketDao {
                 String idticket = resultSet.getString("idticket");
                 String lugarEsc = resultSet.getString("lugaresc");
 
-               //Ticket ticket = new Ticket(idticket,lugarEsc);
+                //Ticket ticket = new Ticket(idticket,lugarEsc);
 
                 //tickets.add(ticket);
 

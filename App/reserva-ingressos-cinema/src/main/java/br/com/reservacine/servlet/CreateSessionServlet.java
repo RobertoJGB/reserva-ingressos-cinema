@@ -24,7 +24,7 @@ public class CreateSessionServlet extends HttpServlet {
 
         String fkfilme = req.getParameter("fkfilme");
 
-        Sessions s = new Sessions(horario,sala,fkfilme);
+        Sessions s = new Sessions(horario, sala, fkfilme);
 
         SessionsDao sd = new SessionsDao();
         sd.createSession(s);

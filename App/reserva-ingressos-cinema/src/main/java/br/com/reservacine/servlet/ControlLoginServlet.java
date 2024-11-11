@@ -1,6 +1,7 @@
 package br.com.reservacine.servlet;
 
 import br.com.reservacine.dao.UsersDao;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

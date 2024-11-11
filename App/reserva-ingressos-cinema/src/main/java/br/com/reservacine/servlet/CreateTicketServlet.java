@@ -23,7 +23,7 @@ public class CreateTicketServlet extends HttpServlet {
 
         String fksession = req.getParameter("fksession");
 
-        Ticket tic = new Ticket(fkiduser,fknomefilme,fksession);
+        Ticket tic = new Ticket(fkiduser, fknomefilme, fksession);
         TicketDao td = new TicketDao();
         td.createTicket(tic);
 

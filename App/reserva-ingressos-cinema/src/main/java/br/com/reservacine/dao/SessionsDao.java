@@ -2,12 +2,9 @@ package br.com.reservacine.dao;
 
 
 import br.com.reservacine.config.ConnectionPoolConfig;
-
-
 import br.com.reservacine.model.Sessions;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -15,7 +12,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class SessionsDao {
-
 
 
     public void createSession(Sessions session) {
@@ -74,7 +70,7 @@ public class SessionsDao {
         }
     }
 
-    public List<Sessions> findAllSessions(){
+    public List<Sessions> findAllSessions() {
 
         String SQL = "SELECT s.IDSESSION, s.HORARIO, m.NAME AS nomeFilme, sa.LUGAR AS lugar, sa.DISPONIVEL AS disponibilidade " +
                 "FROM SESSIONS s " +
@@ -91,14 +87,14 @@ public class SessionsDao {
 
             List<Sessions> allSessions = new ArrayList<>();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String idSession = resultSet.getString("IDSESSION");
                 String hora = resultSet.getString("HORARIO");
                 String nomeFilme = resultSet.getString("nomeFilme");
                 String sala = resultSet.getString("sala");
 
 
-                Sessions session = new Sessions(idSession,hora,nomeFilme,sala);
+                Sessions session = new Sessions(idSession, hora, nomeFilme, sala);
 
                 allSessions.add(session);
 
@@ -110,7 +106,7 @@ public class SessionsDao {
 
             return allSessions;
 
-        } catch (Exception e){
+        } catch (Exception e) {
 
             System.out.println("Falha ao consultar os Sessões " + e.getMessage());
 
@@ -137,7 +133,7 @@ public class SessionsDao {
 
         } catch (Exception e) {
 
-            System.out.println("fail in database connection "+ e);
+            System.out.println("fail in database connection " + e);
 
         }
 

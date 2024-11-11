@@ -35,11 +35,9 @@ public class Users {
     }
 
 
-
     public String getDtNasc() {
         return dtNasc;
     }
-
 
 
     public String getCpf() {
@@ -47,17 +45,14 @@ public class Users {
     }
 
 
-
     public String getEmail() {
         return email;
     }
 
 
-
     public String getSenha() {
         return senha;
     }
-
 
 
 }

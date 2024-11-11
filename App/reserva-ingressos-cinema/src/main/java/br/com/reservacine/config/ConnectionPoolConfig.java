@@ -10,39 +10,39 @@ public class ConnectionPoolConfig {
     private static int cont = 0;
 
 
-        private static BasicDataSource dataSource;
+    private static BasicDataSource dataSource;
 
-        private ConnectionPoolConfig() {
-            getDataSource();
-        }
+    private ConnectionPoolConfig() {
+        getDataSource();
+    }
 
-        private static BasicDataSource getDataSource() {
+    private static BasicDataSource getDataSource() {
 
-            if (dataSource == null) {
-                dataSource = new BasicDataSource();
-                dataSource.setUrl("jdbc:h2:~/test");
-                dataSource.setUsername("sa");
-                dataSource.setPassword("sa");
-                dataSource.setMinIdle(5);
-                dataSource.setMaxIdle(10);
-                dataSource.setMaxTotal(50);
+        if (dataSource == null) {
+            dataSource = new BasicDataSource();
+            dataSource.setUrl("jdbc:h2:~/test");
+            dataSource.setUsername("sa");
+            dataSource.setPassword("sa");
+            dataSource.setMinIdle(5);
+            dataSource.setMaxIdle(10);
+            dataSource.setMaxTotal(50);
 
-                System.out.println("New connection pool created with successful");
-
-            }
-
-            return dataSource;
+            System.out.println("New connection pool created with successful");
 
         }
 
-        public static Connection getConnection() throws SQLException {
-            if(cont == 0){
-                creates();
-                cont++;
-            }
-            return getDataSource().getConnection();
+        return dataSource;
 
+    }
+
+    public static Connection getConnection() throws SQLException {
+        if (cont == 0) {
+            creates();
+            cont++;
         }
+        return getDataSource().getConnection();
+
+    }
 
     private static void creates() {
         try (Connection connection = getDataSource().getConnection()) {
@@ -82,19 +82,19 @@ public class ConnectionPoolConfig {
         }
     }
 
-    private static void createTableMovies(Connection connection){
+    private static void createTableMovies(Connection connection) {
 
-        String SQL ="CREATE TABLE IF NOT EXISTS MOVIES("
-                +"IDMOVIE INT NOT NULL AUTO_INCREMENT, "
-                +"NAME VARCHAR(55) NOT NULL, "
-                +"GENERO VARCHAR(55) NOT NULL, "
-                +"SINOPSE TEXT NOT NULL, "
-                +"CLASSIND VARCHAR(3) NOT NULL, "
-                +"DURACAO INT NOT NULL, "
-                +"EMCARTAZ VARCHAR(10) NOT NULL, "
-                +"PRIMARY KEY(IDMOVIE) );";
+        String SQL = "CREATE TABLE IF NOT EXISTS MOVIES("
+                + "IDMOVIE INT NOT NULL AUTO_INCREMENT, "
+                + "NAME VARCHAR(55) NOT NULL, "
+                + "GENERO VARCHAR(55) NOT NULL, "
+                + "SINOPSE TEXT NOT NULL, "
+                + "CLASSIND VARCHAR(3) NOT NULL, "
+                + "DURACAO INT NOT NULL, "
+                + "EMCARTAZ VARCHAR(10) NOT NULL, "
+                + "PRIMARY KEY(IDMOVIE) );";
 
-        try{
+        try {
 
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
@@ -103,22 +103,22 @@ public class ConnectionPoolConfig {
 
             System.out.println("sucess in create table movies");
 
-        }catch (Exception e) {
-            System.out.println("fail in create table movies "+ e.getMessage());
+        } catch (Exception e) {
+            System.out.println("fail in create table movies " + e.getMessage());
         }
 
     }
 
-    public static void createTableSessions(Connection connection){
-        String SQL ="CREATE TABLE IF NOT EXISTS SESSIONS("
-                +"IDSESSION INT NOT NULL AUTO_INCREMENT, "
-                +"HORARIO VARCHAR(55) NOT NULL, "
-                +"SALA INT NOT NULL, "
-                +"FKMOVIE INT NOT NULL, "
-                +"PRIMARY KEY(IDSESSION), "
-                +"FOREIGN KEY(FKMOVIE) REFERENCES MOVIES(IDMOVIE) );";
+    public static void createTableSessions(Connection connection) {
+        String SQL = "CREATE TABLE IF NOT EXISTS SESSIONS("
+                + "IDSESSION INT NOT NULL AUTO_INCREMENT, "
+                + "HORARIO VARCHAR(55) NOT NULL, "
+                + "SALA INT NOT NULL, "
+                + "FKMOVIE INT NOT NULL, "
+                + "PRIMARY KEY(IDSESSION), "
+                + "FOREIGN KEY(FKMOVIE) REFERENCES MOVIES(IDMOVIE) );";
 
-        try{
+        try {
 
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
@@ -127,13 +127,13 @@ public class ConnectionPoolConfig {
 
             System.out.println("sucess in create table sessions");
 
-        }catch (Exception e) {
-            System.out.println("fail in create table sessions "+ e.getMessage());
+        } catch (Exception e) {
+            System.out.println("fail in create table sessions " + e.getMessage());
         }
 
     }
 
-    public static void createTableTicket(Connection connection){
+    public static void createTableTicket(Connection connection) {
         String SQL = "CREATE TABLE IF NOT EXISTS TICKETS ("
                 + "IDTICKET INT NOT NULL AUTO_INCREMENT, "
                 + "FKIDUSER INT NOT NULL, "
@@ -147,7 +147,7 @@ public class ConnectionPoolConfig {
                 + "FOREIGN KEY (FKIDLUOGAR) REFERENCES lugar_sessao(id_lugar_sessao) "  // Relacionando ao lugar na sessão
                 + ");";
 
-        try{
+        try {
 
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
@@ -156,8 +156,8 @@ public class ConnectionPoolConfig {
 
             System.out.println("sucess in create table ticket");
 
-        }catch (Exception e) {
-            System.out.println("fail in create table ticket "+ e.getMessage());
+        } catch (Exception e) {
+            System.out.println("fail in create table ticket " + e.getMessage());
         }
     }
 
@@ -180,8 +180,6 @@ public class ConnectionPoolConfig {
             System.out.println("Erro ao criar a tabela lugar_sessao: " + e.getMessage());
         }
     }
-
-
 
 
 }

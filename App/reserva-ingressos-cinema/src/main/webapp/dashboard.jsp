@@ -59,23 +59,23 @@
     <h1>Em Cartaz</h1>
     <div class="row">
         <c:forEach var="movies" items="${movies}">
-            <c:if test="${movies.emcart == 'emCartaz'}">
-            <div class="col-md-3 mb-4">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="img/mufasa.jpg" alt="Leao cap">
-                    <div class="card-body">
-                        <p class="card-text">Filme do leao.</p>
-                    </div>
+        <c:if test="${movies.emcart == 'emCartaz'}">
+        <div class="col-md-3 mb-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="img/mufasa.jpg" alt="Leao cap">
+                <div class="card-body">
+                    <p class="card-text">Filme do leao.</p>
                 </div>
-                <a href="#" class="btn btn-primary">Comprar Ingresso</a>
-                <form action="/delete-movie" method="post" class="mt-2">
-                    <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                    <span> | </span>
-                    <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}&classInd=${movies.classInd}&duracao=${movies.duracao}"
-                       class="text-primary">Update</a>
-                </form>
             </div>
+            <a href="#" class="btn btn-primary">Comprar Ingresso</a>
+            <form action="/delete-movie" method="post" class="mt-2">
+                <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <span> | </span>
+                <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}&classInd=${movies.classInd}&duracao=${movies.duracao}"
+                   class="text-primary">Update</a>
+            </form>
+        </div>
     </div>
 </div>
 </c:if>

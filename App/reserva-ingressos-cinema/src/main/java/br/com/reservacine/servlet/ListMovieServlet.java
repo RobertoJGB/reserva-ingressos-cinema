@@ -23,7 +23,6 @@ public class ListMovieServlet extends HttpServlet {
         List<Movies> allMovies = moviesDao.findAllMovies();
 
 
-
         req.setAttribute("movies", allMovies);
 
         req.getRequestDispatcher("/dashboard.jsp").forward(req, resp);

@@ -11,7 +11,6 @@ public class Movies {
     private final String emcart;
 
 
-
     public Movies(String nomeFilme, String genero, String sinopse, String classInd, String duracao, String emcart) {
         this.nomeFilme = nomeFilme;
         this.genero = genero;
@@ -22,7 +21,7 @@ public class Movies {
         this.idMovie = null;
     }
 
-    public Movies(String idmovie, String nomeFilme, String genero, String sinopse, String classInd, String duracao,String emcart) {
+    public Movies(String idmovie, String nomeFilme, String genero, String sinopse, String classInd, String duracao, String emcart) {
         this.nomeFilme = nomeFilme;
         this.genero = genero;
         this.sinopse = sinopse;

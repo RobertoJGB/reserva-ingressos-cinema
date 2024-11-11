@@ -14,8 +14,6 @@ import java.util.List;
 public class MoviesDao {
 
 
-
-
     public void createMovie(Movies movie) {
 
 
@@ -48,7 +46,7 @@ public class MoviesDao {
         }
     }
 
-    public List<Movies> findAllMovies(){
+    public List<Movies> findAllMovies() {
 
         String SQL = "SELECT * FROM MOVIES";
 
@@ -62,7 +60,7 @@ public class MoviesDao {
 
             List<Movies> allMovies = new ArrayList<>();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String idmovie = resultSet.getString("IDMOVIE");
                 String name = resultSet.getString("NAME");
                 String genero = resultSet.getString("GENERO");
@@ -71,7 +69,7 @@ public class MoviesDao {
                 String duracao = resultSet.getString("DURACAO");
                 String emcartaz = resultSet.getString("EMCARTAZ");
 
-                Movies movies = new Movies(idmovie,name, genero, sinopse, classind, duracao,emcartaz);
+                Movies movies = new Movies(idmovie, name, genero, sinopse, classind, duracao, emcartaz);
                 System.out.print(allMovies);
                 allMovies.add(movies);
 
@@ -83,7 +81,7 @@ public class MoviesDao {
 
             return allMovies;
 
-        } catch (Exception e){
+        } catch (Exception e) {
 
             System.out.println("Falha ao consultar os filmes " + e.getMessage());
 
@@ -110,8 +108,8 @@ public class MoviesDao {
 
         } catch (Exception e) {
 
-            System.out.println("fail in database connection "+ e);
-            
+            System.out.println("fail in database connection " + e);
+
         }
 
     }
@@ -147,7 +145,6 @@ public class MoviesDao {
         }
 
     }
-
 
 
 }

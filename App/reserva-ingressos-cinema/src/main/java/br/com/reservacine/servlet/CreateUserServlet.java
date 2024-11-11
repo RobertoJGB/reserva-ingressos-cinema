@@ -23,7 +23,6 @@ public class CreateUserServlet extends HttpServlet {
         String senha = req.getParameter("senha");
 
 
-
         Users user = new Users(name, dtNasc, cpf, email, senha);
         UsersDao usersDao = new UsersDao();
 

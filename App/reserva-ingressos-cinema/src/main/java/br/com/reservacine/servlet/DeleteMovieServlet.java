@@ -11,7 +11,7 @@ import java.io.IOException;
 
 
 @WebServlet("/delete-movie")
-public class DeleteMovieServlet extends HttpServlet{
+public class DeleteMovieServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 

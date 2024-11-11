@@ -13,7 +13,7 @@ public class Ticket {
         this.fkIdsession = fkIdsession;
     }
 
-    public Ticket(String idTicket,String fkIdUser, String fkIdFilme, String fkIdsession) {
+    public Ticket(String idTicket, String fkIdUser, String fkIdFilme, String fkIdsession) {
         this.idTicket = idTicket;
         this.fkIdUser = fkIdUser;
         this.fkIdFilme = fkIdFilme;

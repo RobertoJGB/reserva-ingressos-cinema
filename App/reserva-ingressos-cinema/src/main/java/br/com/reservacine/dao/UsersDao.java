@@ -13,8 +13,7 @@ import java.util.List;
 public class UsersDao {
 
 
-
-    public void createUsers(Users users){
+    public void createUsers(Users users) {
 
 
         String SQL = "INSERT INTO USERS (NAME, dtNasc, cpf, email, senha) VALUES (?, ?, ?, ?, ?)";
@@ -38,12 +37,12 @@ public class UsersDao {
 
         } catch (Exception e) {
 
-            System.out.println("fail in database connection "+ e.getMessage());
+            System.out.println("fail in database connection " + e.getMessage());
 
         }
     }
 
-    public List<Users> findAllUsers(){
+    public List<Users> findAllUsers() {
 
         String SQL = "SELECT * FROM USERS";
 
@@ -57,7 +56,7 @@ public class UsersDao {
 
             List<Users> allUsers = new ArrayList<>();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String iduser = resultSet.getString("IDUSER");
                 String name = resultSet.getString("NAME");
                 String dtNasc = resultSet.getString("dTNasc");
@@ -65,7 +64,7 @@ public class UsersDao {
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");
 
-                Users users = new Users(iduser,name,dtNasc,cpf,email,senha);
+                Users users = new Users(iduser, name, dtNasc, cpf, email, senha);
 
                 allUsers.add(users);
 
@@ -77,7 +76,7 @@ public class UsersDao {
 
             return allUsers;
 
-        } catch (Exception e){
+        } catch (Exception e) {
 
             System.out.println("Falha ao consultar os Usuarios " + e.getMessage());
 
@@ -156,7 +155,7 @@ public class UsersDao {
 
         } catch (Exception e) {
 
-            System.out.println("fail in database connection "+ e);
+            System.out.println("fail in database connection " + e);
 
         }
 
