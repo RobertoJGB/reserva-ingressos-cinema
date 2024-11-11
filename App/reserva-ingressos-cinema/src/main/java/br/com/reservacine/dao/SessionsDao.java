@@ -3,7 +3,7 @@ package br.com.reservacine.dao;
 
 import br.com.reservacine.config.ConnectionPoolConfig;
 
-import br.com.reservacine.model.Movies;
+
 import br.com.reservacine.model.Sessions;
 
 import java.sql.Connection;
@@ -16,56 +16,61 @@ import java.util.List;
 
 public class SessionsDao {
 
-    public void createTableSessions(){
-        String SQL ="CREATE TABLE IF NOT EXISTS SESSIONS("
-                +"IDSESSION INT NOT NULL AUTO_INCREMENT, "
-                +"HORARIO VARCHAR(55) NOT NULL, "
-                +"FKSALA INT NOT NULL, "
-                +"FKMOVIE INT NOT NULL, "
-                +"PRIMARY KEY(IDSESSION), "
-                +"FOREIGN KEY(FKSALA) REFERENCES MOVIES(IDSALA)"
-                +"FOREIGN KEY(FKMOVIE) REFERENCES MOVIES(IDMOVIE) );";
 
-        try{
-            Connection connection = ConnectionPoolConfig.getConnection();
-
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-            preparedStatement.execute();
-
-            System.out.println("sucess in create table sessions");
-
-        }catch (Exception e) {
-            System.out.println("fail in create table sessions "+ e.getMessage());
-        }
-
-
-    }
 
     public void createSession(Sessions session) {
-        createTableSessions();
 
-        String SQL = "INSERT INTO SESSIONS (HORARIO, FKSALA, FKMOVIE) VALUES (?,?,?)";
+        String SQL = "INSERT INTO SESSIONS (HORARIO, SALA, FKMOVIE) VALUES (?,?,?)";
 
         try {
-
+            // Obtendo a conexão do pool de conexões
             Connection connection = ConnectionPoolConfig.getConnection();
 
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            // Criando o PreparedStatement com a opção de recuperar a chave gerada (ID da sessão)
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL, PreparedStatement.RETURN_GENERATED_KEYS);
 
+            // Configurando os parâmetros do PreparedStatement
             preparedStatement.setString(1, session.getHorario());
             preparedStatement.setString(2, session.getFkSala());
-            preparedStatement.setString(5, session.getFkIdFilme());
-            preparedStatement.execute();
+            preparedStatement.setString(3, session.getFkIdFilme());  // Corrigido: índice 3, não 5
+            preparedStatement.executeUpdate();  // Usar executeUpdate para a inserção
 
-            System.out.println("success in insert session");
+            // Recuperando o ID gerado (sessionId) após o insert
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if (resultSet.next()) {
+                int sessionId = resultSet.getInt(1);  // Obtendo o ID da sessão recém-inserida
+                System.out.println("Session created successfully with ID: " + sessionId);
+
+                // Chama o procedimento para inserir os lugares para a nova sessão
+                createSeatsDirectly(connection, sessionId);
+            }
 
             connection.close();
 
         } catch (Exception e) {
+            System.out.println("Error while inserting session: " + e.getMessage());
+        }
+    }
 
-            System.out.println("fail in database connection "+e.getMessage());
+    private void createSeatsDirectly(Connection connection, int sessionId) {
+        String[] fileiras = {"A", "B", "C", "D", "E"};
+        String sql = "INSERT INTO lugar_sessao (fk_sessao, lugar, disponivel) VALUES (?, ?, ?)";
 
+        try {
+            for (String fileira : fileiras) {
+                for (int assento = 1; assento <= 10; assento++) {
+                    String lugar = fileira + assento;
+                    try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+                        stmt.setInt(1, sessionId);  // Usando o ID da sessão recém-inserida
+                        stmt.setString(2, lugar);
+                        stmt.setBoolean(3, true);
+                        stmt.executeUpdate();
+                    }
+                }
+            }
+            System.out.println("Lugares inseridos com sucesso para a sessão: " + sessionId);
+        } catch (Exception e) {
+            System.out.println("Erro ao inserir lugares: " + e.getMessage());
         }
     }
 
@@ -90,11 +95,10 @@ public class SessionsDao {
                 String idSession = resultSet.getString("IDSESSION");
                 String hora = resultSet.getString("HORARIO");
                 String nomeFilme = resultSet.getString("nomeFilme");
-                String lugares = resultSet.getString("lugar");
-                String disponivel = resultSet.getString("disponibilidade");
+                String sala = resultSet.getString("sala");
 
 
-                Sessions session = new Sessions(idSession,hora,nomeFilme,lugares,disponivel);
+                Sessions session = new Sessions(idSession,hora,nomeFilme,sala);
 
                 allSessions.add(session);
 
@@ -141,7 +145,7 @@ public class SessionsDao {
 
     public void updateSession(Sessions session) {
 
-        String SQL = "UPDATE SESSIONS SET HORARIO = ?, FKSALA = ?, FKMOVIE = ? WHERE IDSESSION = ?";
+        String SQL = "UPDATE SESSIONS SET HORARIO = ?, SALA = ?, FKMOVIE = ? WHERE IDSESSION = ?";
 
         try {
 

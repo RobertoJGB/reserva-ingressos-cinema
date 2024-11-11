@@ -13,33 +13,10 @@ import java.util.List;
 
 public class TicketDao {
 
-    public void createTableTicket(){
-        String SQL ="CREATE TABLE IF NOT EXISTS TICKETS("
-                +"IDTICKET INT NOT NULL AUTO_INCREMENT, "
-                +"FKIDUSER INT NOT NULL, "
-                +"FKNOMEFILME INT NOT NULL, "
-                +"FKSESSAO INT NOT NULL, "
-                +"PRIMARY KEY(IDTICKET), "
-                +"FOREIGN KEY (FKIDUSER) REFERENCES USERS(IDUSER), "
-                +"FOREIGN KEY (FKNOMEFILME) REFERENCES MOVIES(IDMOVIE), "
-                +"FOREIGN KEY (FKSESSAO) REFERENCES SESSIONS(IDSESSION) );";
 
-        try{
-            Connection connection = ConnectionPoolConfig.getConnection();
-
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-            preparedStatement.execute();
-
-            System.out.println("sucess in create table ticket");
-
-        }catch (Exception e) {
-            System.out.println("fail in create table ticket "+ e.getMessage());
-        }
-    }
 
     public void createTicket(Ticket ticket){
-        createTableTicket();
+
 
         String SQL = "INSERT INTO TICKETS (FKIDUSER, FKNOMEFILME, FKSESSAO) VALUES (?,?,?)";
 

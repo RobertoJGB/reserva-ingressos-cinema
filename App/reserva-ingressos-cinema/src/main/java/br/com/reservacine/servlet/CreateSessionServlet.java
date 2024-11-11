@@ -21,13 +21,10 @@ public class CreateSessionServlet extends HttpServlet {
 
         String sala = req.getParameter("sala");
 
-        String lugardisp = req.getParameter("lugardisp");
-
-        String lugarocup = req.getParameter("lugarocup");
 
         String fkfilme = req.getParameter("fkfilme");
 
-        Sessions s = new Sessions(horario,sala,lugardisp,lugarocup,fkfilme);
+        Sessions s = new Sessions(horario,sala,fkfilme);
 
         SessionsDao sd = new SessionsDao();
         sd.createSession(s);

@@ -12,33 +12,10 @@ import java.util.List;
 
 public class UsersDao {
 
-    public void createTableUsers() {
-        String SQL = "CREATE TABLE IF NOT EXISTS USERS("
-                + "IDUSER INT NOT NULL AUTO_INCREMENT, "
-                + "NAME VARCHAR(50) NOT NULL, "
-                + "dtNasc VARCHAR(11) NOT NULL, "
-                + "cpf VARCHAR(15) NOT NULL, "
-                + "email VARCHAR(50) NOT NULL, "
-                + "senha VARCHAR(20) NOT NULL, "
-                + "PRIMARY KEY(IDUSER) ); ";
 
-
-        try {
-            Connection connection = ConnectionPoolConfig.getConnection();
-
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-            preparedStatement.execute();
-
-            System.out.println("sucess in create table users");
-
-        } catch (Exception e) {
-            System.out.println("fail in create table users " + e.getMessage());
-        }
-    }
 
     public void createUsers(Users users){
-        createTableUsers();
+
 
         String SQL = "INSERT INTO USERS (NAME, dtNasc, cpf, email, senha) VALUES (?, ?, ?, ?, ?)";
 
@@ -110,7 +87,7 @@ public class UsersDao {
     }
 
     public ResultSet searchUser(String email) {
-        createTableUsers();
+
         String SQL = "SELECT * FROM USERS WHERE email = ?";
 
         try {
@@ -137,14 +114,14 @@ public class UsersDao {
     }
 
     public ResultSet searchUsers(String email, String senha) {
-        createTableUsers();
+
         String SQL = "SELECT * FROM USERS WHERE email = ? AND senha = ?";
 
         try {
             Connection connection = ConnectionPoolConfig.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setString(1, email);
-            preparedStatement.setString(2, senha);  // Agora verifica a senha também
+            preparedStatement.setString(2, senha);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {

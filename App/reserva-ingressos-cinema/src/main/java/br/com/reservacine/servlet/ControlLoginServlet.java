@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 
 @WebServlet("/login")
-public class ControlLogin extends HttpServlet {
+public class ControlLoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

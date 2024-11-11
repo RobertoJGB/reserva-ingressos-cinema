@@ -14,35 +14,10 @@ import java.util.List;
 public class MoviesDao {
 
 
-    public void createTableMovies(){
 
-        String SQL ="CREATE TABLE IF NOT EXISTS MOVIES("
-                    +"IDMOVIE INT NOT NULL AUTO_INCREMENT, "
-                    +"NAME VARCHAR(55) NOT NULL, "
-                    +"GENERO VARCHAR(55) NOT NULL, "
-                    +"SINOPSE TEXT NOT NULL, "
-                    +"CLASSIND VARCHAR(3) NOT NULL, "
-                    +"DURACAO INT NOT NULL, "
-                    +"EMCARTAZ VARCHAR(10) NOT NULL, "
-                    +"PRIMARY KEY(IDMOVIE) );";
-
-        try{
-            Connection connection = ConnectionPoolConfig.getConnection();
-
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-            preparedStatement.execute();
-
-            System.out.println("sucess in create table movies");
-
-        }catch (Exception e) {
-            System.out.println("fail in create table movies "+ e.getMessage());
-        }
-
-    }
 
     public void createMovie(Movies movie) {
-        createTableMovies();
+
 
         String SQL = "INSERT INTO MOVIES (NAME, GENERO, SINOPSE, CLASSIND, DURACAO,EMCARTAZ) VALUES (?,?,?,?,?,?)";
 
