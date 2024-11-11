@@ -71,17 +71,13 @@
             <form action="/delete-movie" method="post" class="mt-2">
                 <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
                 <button type="submit" class="btn btn-danger">Delete</button>
-                <span> | </span>
-                <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}&classInd=${movies.classInd}&duracao=${movies.duracao}"
-                   class="text-primary">Update</a>
+                <a href="index.jsp?id=$" class="btn btn-secondary"> Update</a>
             </form>
         </div>
     </div>
 </div>
 </c:if>
 </c:forEach>
-</div>
-</div>
 
 <!-- Em Breve -->
 <div class="container mt-5">
@@ -99,9 +95,7 @@
                             <form action="/delete-movie" method="post" class="mt-2">
                                 <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
                                 <button type="submit" class="btn btn-danger">Delete</button>
-                                <span> | </span>
-                                <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}&classInd=${movies.classInd}&duracao=${movies.duracao}"
-                                   class="text-primary">Update</a>
+                                <a href="index.jsp?id=$" class="btn btn-secondary"> Update</a>
                             </form>
                         </div>
                     </div>

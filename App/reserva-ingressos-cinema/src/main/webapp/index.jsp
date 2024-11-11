@@ -118,14 +118,6 @@
                         <input type="text" name="sala" id="sala" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label for="lugardisp" class="form-label">Lugares Disponiveis:</label>
-                        <input type="number" name="lugardisp" id="lugardisp" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label for="lugarocup" class="form-label">Lugares Ocupados:</label>
-                        <input type="number" name="lugarocup" id="lugarocup" class="form-control">
-                    </div>
-                    <div class="mb-3">
                         <label for="fkfilme" class="form-label">ID do Filme:</label>
                         <input type="text" name="fkfilme" id="fkfilme" class="form-control">
                     </div>
