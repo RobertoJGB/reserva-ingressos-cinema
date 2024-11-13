@@ -51,7 +51,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="categoria" class="form-label">Categoria:</label>
-                        <select name="categoria" id="categoria" class="form-select">
+                        <select name="categoria" id="categoria" value="${param.categoria} class="form-select">
                             <option value="emCartaz">Em Cartaz</option>
                             <option value="emBreve">Em Breve</option>
                             <option value="emDestaq">Em Destaque</option>
@@ -86,8 +86,8 @@
                         <input type="text" name="cpf" id="cpf" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label for="usuario" class="form-label">Usuario:</label>
-                        <input type="text" name="usuario" id="usuario" class="form-control">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="text" name="email" id="email" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="senha" class="form-label">Senha:</label>

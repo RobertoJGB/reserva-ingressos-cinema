@@ -16,7 +16,7 @@ import java.sql.ResultSet;
 public class CreateUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("nome");
+        String name = req.getParameter("name");
         String dtNasc = req.getParameter("dtNasc");
         String cpf = req.getParameter("cpf");
         String email = req.getParameter("email");

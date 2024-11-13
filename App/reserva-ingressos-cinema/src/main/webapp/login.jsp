@@ -22,7 +22,7 @@
     <div class="form-container cadastrar">
         <form action="/create-user" method="post">
             <h1>Criar conta</h1>
-            <input type="text" name="nome" id="nome" placeholder="Nome" value="${param.nome}" class="form-control">
+            <input type="text" name="name" id="name" placeholder="Nome" value="${param.nome}" class="form-control">
             <input type="text" name="email" id="email" placeholder="Email" value="${param.email}" class="form-control">
             <input type="text" name="dtNasc" id="dtNasc" placeholder="Data de nascimento" value="${param.dtNasc}"
                    class="form-control">

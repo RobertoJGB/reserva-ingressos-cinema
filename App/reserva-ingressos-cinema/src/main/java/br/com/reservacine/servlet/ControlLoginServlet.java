@@ -23,6 +23,8 @@ public class ControlLoginServlet extends HttpServlet {
 
         try {
             if (resultSet != null) {
+                String nome = resultSet.getString("name");
+                req.getSession().setAttribute("loggeduser", nome);
                 resp.sendRedirect("dashboard.jsp");
             } else {
                 req.setAttribute("errorMessage", "E-mail ou senha incorretos.");

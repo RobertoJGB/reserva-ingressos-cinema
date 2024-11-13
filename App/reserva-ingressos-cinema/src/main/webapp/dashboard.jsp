@@ -33,11 +33,21 @@
         <h2>Perfil</h2>
     </div>
     <div class="menu-content">
-        <p>Ola, Astrogildo!</p>
-        <button class="menu-button">Minha Conta</button>
-        <button class="menu-button">Meus Ingressos</button>
-        <button class="menu-button">Saiba mais sobre PrimeTicket</button>
-        <button class="menu-button">Sair</button>
+        <!-- Controle de diferenciação de logado ou não -->
+        <c:choose>
+            <c:when test="${not empty sessionScope.loggeduser}">
+                Olá, ${sessionScope.loggeduser}
+                <button class="menu-button">Minha Conta</button>
+                <button class="menu-button">Meus Ingressos</button>
+                <button class="menu-button">Saiba mais sobre PrimeTicket</button>
+                <form action="/logout" method="get">
+                    <button type="submit" class="menu-button">Sair</button>
+                </form>
+            </c:when>
+            <c:otherwise>
+                Que tal <a href="login.jsp" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma conta?</a>
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 
@@ -71,7 +81,10 @@
             <form action="/delete-movie" method="post" class="mt-2">
                 <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
                 <button type="submit" class="btn btn-danger">Delete</button>
-                <a href="index.jsp?id=$" class="btn btn-secondary"> Update</a>
+                <!-- Envia para index os parametros do filme escolhido para update -->
+                <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
+                &classInd=${movies.classInd}&duracao=${movies.duracao}"
+                   class="text-primary">Update</a>
             </form>
         </div>
     </div>
@@ -95,7 +108,10 @@
                             <form action="/delete-movie" method="post" class="mt-2">
                                 <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
                                 <button type="submit" class="btn btn-danger">Delete</button>
-                                <a href="index.jsp?id=$" class="btn btn-secondary"> Update</a>
+                                <!-- Envia para index os parametros do filme escolhido para update -->
+                                <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
+                                &classInd=${movies.classInd}&duracao=${movies.duracao}"
+                                   class="text-primary">Update</a>
                             </form>
                         </div>
                     </div>
