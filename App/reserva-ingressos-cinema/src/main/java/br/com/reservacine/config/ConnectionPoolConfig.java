@@ -92,6 +92,7 @@ public class ConnectionPoolConfig {
                 + "CLASSIND VARCHAR(3) NOT NULL, "
                 + "DURACAO INT NOT NULL, "
                 + "EMCARTAZ VARCHAR(10) NOT NULL, "
+                + "IMAGE VARCHAR(255), "
                 + "PRIMARY KEY(IDMOVIE) );";
 
         try {

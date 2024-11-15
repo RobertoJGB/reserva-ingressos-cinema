@@ -17,7 +17,7 @@ public class MoviesDao {
     public void createMovie(Movies movie) {
 
 
-        String SQL = "INSERT INTO MOVIES (NAME, GENERO, SINOPSE, CLASSIND, DURACAO,EMCARTAZ) VALUES (?,?,?,?,?,?)";
+        String SQL = "INSERT INTO MOVIES (NAME, GENERO, SINOPSE, CLASSIND, DURACAO, EMCARTAZ, IMAGE) VALUES (?,?,?,?,?,?,?)";
 
         try {
 
@@ -31,6 +31,7 @@ public class MoviesDao {
             preparedStatement.setString(4, movie.getClassInd());
             preparedStatement.setString(5, movie.getDuracao());
             preparedStatement.setString(6, movie.getEmcart());
+            preparedStatement.setString(7, movie.getImage());
 
 
             preparedStatement.execute();
@@ -42,6 +43,7 @@ public class MoviesDao {
         } catch (Exception e) {
 
             System.out.println("fail in database connection: " + e.getMessage());
+            System.out.println("ERRO "+ movie.getNomeFilme()+" "+movie.getGenero()+" "+movie.getSinopse());
 
         }
     }
@@ -68,8 +70,9 @@ public class MoviesDao {
                 String classind = resultSet.getString("CLASSIND");
                 String duracao = resultSet.getString("DURACAO");
                 String emcartaz = resultSet.getString("EMCARTAZ");
+                String image = resultSet.getString("IMAGE");
 
-                Movies movies = new Movies(idmovie, name, genero, sinopse, classind, duracao, emcartaz);
+                Movies movies = new Movies(idmovie, name, genero, sinopse, classind, duracao, emcartaz,image);
                 System.out.print(allMovies);
                 allMovies.add(movies);
 
@@ -116,7 +119,7 @@ public class MoviesDao {
 
     public void updateMovie(Movies movie) {
 
-        String SQL = "UPDATE MOVIES SET NAME = ?, GENERO = ?, SINOPSE = ?, CLASSIND = ?, DURACAO = ?, EMCARTAZ = ? WHERE IDMOVIE = ?";
+        String SQL = "UPDATE MOVIES SET NAME = ?, GENERO = ?, SINOPSE = ?, CLASSIND = ?, DURACAO = ?, EMCARTAZ = ?, IMAGE = ? WHERE IDMOVIE = ?";
 
         try {
 
@@ -129,8 +132,9 @@ public class MoviesDao {
             preparedStatement.setString(3, movie.getSinopse());
             preparedStatement.setString(4, movie.getClassInd());
             preparedStatement.setString(5, movie.getDuracao());
-            preparedStatement.setString(6, movie.getIdMovie());
-            preparedStatement.setString(7, movie.getEmcart());
+            preparedStatement.setString(6, movie.getEmcart());
+            preparedStatement.setString(7, movie.getImage());
+            preparedStatement.setString(8, movie.getIdMovie());
             preparedStatement.execute();
 
             System.out.println("success in update Movie");

@@ -9,26 +9,29 @@ public class Movies {
     private final String classInd;
     private final String duracao;
     private final String emcart;
+    private String image;
 
 
-    public Movies(String nomeFilme, String genero, String sinopse, String classInd, String duracao, String emcart) {
+    public Movies(String nomeFilme, String genero, String sinopse, String classInd, String duracao, String emcart, String image) {
         this.nomeFilme = nomeFilme;
         this.genero = genero;
         this.sinopse = sinopse;
         this.classInd = classInd;
         this.duracao = duracao;
-        this.emcart = emcart;
         this.idMovie = null;
+        this.emcart = emcart;
+        this.image = image;
     }
 
-    public Movies(String idmovie, String nomeFilme, String genero, String sinopse, String classInd, String duracao, String emcart) {
+    public Movies(String idMovie, String nomeFilme, String genero, String sinopse, String classInd, String duracao, String emcart, String image) {
+        this.idMovie = idMovie;
         this.nomeFilme = nomeFilme;
         this.genero = genero;
         this.sinopse = sinopse;
         this.classInd = classInd;
         this.duracao = duracao;
-        this.idMovie = idmovie;
         this.emcart = emcart;
+        this.image = image;
     }
 
     public String getNomeFilme() {
@@ -61,5 +64,9 @@ public class Movies {
 
     public String getEmcart() {
         return emcart;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

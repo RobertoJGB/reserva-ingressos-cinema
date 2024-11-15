@@ -26,37 +26,50 @@
         </div>
         <div class="collapse" id="movie">
             <div class="card-body">
-                <form action="/create-movie" method="post">
+
+                <form action="/create-movie" method="post" enctype="multipart/form-data">
+
                     <input type="hidden" id="id" name="id" value="${param.id}">
+
                     <div class="mb-3">
                         <label for="nomeFilme" class="form-label">Nome:</label>
-                        <input type="text" name="nomeFilme" id="nomeFilme" value="${param.nomeFilme}"
-                               class="form-control">
+                        <input type="text" name="nomeFilme" id="nomeFilme" value="${param.nomeFilme}" class="form-control">
                     </div>
+
                     <div class="mb-3">
                         <label for="genero" class="form-label">Genero:</label>
                         <input type="text" name="genero" id="genero" value="${param.genero}" class="form-control">
                     </div>
+
                     <div class="mb-3">
                         <label for="sinopse" class="form-label">Sinopse:</label>
                         <textarea name="sinopse" id="sinopse" class="form-control">${param.sinopse}</textarea>
                     </div>
+
                     <div class="mb-3">
                         <label for="classind" class="form-label">Classificacao:</label>
                         <input type="text" name="classind" id="classind" value="${param.classInd}" class="form-control">
                     </div>
+
                     <div class="mb-3">
                         <label for="duracao" class="form-label">Duracao:</label>
                         <input type="text" name="duracao" id="duracao" value="${param.duracao}" class="form-control">
                     </div>
+
                     <div class="mb-3">
                         <label for="categoria" class="form-label">Categoria:</label>
-                        <select name="categoria" id="categoria" value="${param.categoria} class="form-select">
+                        <select name="categoria" id="categoria" value="${param.categoria}" class="form-select">
                             <option value="emCartaz">Em Cartaz</option>
                             <option value="emBreve">Em Breve</option>
                             <option value="emDestaq">Em Destaque</option>
                         </select>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Imagem</label>
+                        <input type="file" name="image" id="image" value="${param.image}" class="form-control">
+                    </div>
+
                     <button class="btn btn-primary w-100" type="submit">Registrar</button>
                 </form>
             </div>
