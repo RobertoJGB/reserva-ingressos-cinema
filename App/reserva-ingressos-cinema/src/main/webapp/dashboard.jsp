@@ -56,69 +56,80 @@
 <div class="container mt-5">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="img/coringa.png" class="d-block w-100 rounded-image custom-carousel-image" alt="Imagem Star Wars">
+            </div>
             <div class="carousel-item active">
-                <img src="img/sonic.png" class="d-block w-100 rounded-image" alt="Imagem Sonic">
+                <img src="img/sonic.png" class="d-block w-100 rounded-image custom-carousel-image" alt="Imagem Sonic">
             </div>
             <div class="carousel-item">
-                <img src="img/StarWars.jpg" class="d-block w-100 rounded-image" alt="Imagem Star Wars">
+                <img src="img/StarWars.jpg" class="d-block w-100 rounded-image custom-carousel-image" alt="Imagem Star Wars">
             </div>
         </div>
     </div>
+    <div class="button-container">
+        <span class="carousel-button">Saiba mais</span>
+        <span class="carousel-button">Comprar ingresso</span>
+    </div>
 </div>
+
+
 <!-- Em Cartaz -->
 <div class="container mt-5">
     <h1>Em Cartaz</h1>
     <div class="row">
         <c:forEach var="movies" items="${movies}">
-        <c:if test="${movies.emcart == 'emCartaz'}">
-        <div class="col-md-3 mb-4">
-            <img src="${movies.image}" alt="poster">
-            <div class="card" style="width: 18rem;">
-                <h5 class="card-title">${movies.nomeFilme}</h5>
-                <p class="card-text">${movies.sinopse}</p>
-            </div>
-            <a href="#" class="btn btn-primary">Comprar Ingresso</a>
-            <form action="/delete-movie" method="post" class="mt-2">
-                <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
-                <button type="submit" class="btn btn-danger">Delete</button>
-                <!-- Envia para index os parametros do filme escolhido para update -->
-                <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
-                &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
-                   class="text-primary">Update</a>
-            </form>
-        </div>
+            <c:if test="${movies.emcart == 'emCartaz'}">
+                <div class="col-md-3 mb-4">
+                    <!-- Card do Filme -->
+                    <div class="card">
+                        <img src="${movies.image}" alt="poster" class="card-img-top" style="height: 300px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">${movies.nomeFilme}</h5>
+                            <a href="#" class="btn btn-primary">Comprar Ingresso</a>
+                            <!-- Formulário de Delete -->
+                            <form action="/delete-movie" method="post" class="mt-2">
+                                <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            <!-- Link para Update -->
+                            <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
+                            &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}" class="text-primary mt-2">Update</a>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
+        </c:forEach>
     </div>
 </div>
-</c:if>
-</c:forEach>
 
 <!-- Em Breve -->
 <div class="container mt-5">
     <h1>Em Breve</h1>
     <div class="row">
         <c:forEach var="movies" items="${movies}">
-        <c:if test="${movies.emcart == 'emBreve'}">
-        <div class="col-md-3 mb-4">
-            <img src="${movies.image}" alt="poster">
-            <div class="card" style="width: 18rem;">
-                <h5 class="card-title">${movies.nomeFilme}</h5>
-                <p class="card-text">${movies.sinopse}</p>
-            </div>
-            <a href="#" class="btn btn-primary">Comprar Ingresso</a>
-            <form action="/delete-movie" method="post" class="mt-2">
-                <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
-                <button type="submit" class="btn btn-danger">Delete</button>
-                <!-- Envia para index os parametros do filme escolhido para update -->
-                <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
-                &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
-                   class="text-primary">Update</a>
-            </form>
-        </div>
+            <c:if test="${movies.emcart == 'emBreve'}">
+                <div class="col-md-3 mb-4">
+                    <!-- Card do Filme -->
+                    <div class="card">
+                        <img src="${movies.image}" alt="poster" class="card-img-top" style="height: 300px; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">${movies.nomeFilme}</h5>
+                            <a href="#" class="btn btn-primary">Comprar Ingresso</a>
+                            <!-- Formulário de Delete -->
+                            <form action="/delete-movie" method="post" class="mt-2">
+                                <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            <!-- Link para Update -->
+                            <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
+                            &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}" class="text-primary mt-2">Update</a>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
+        </c:forEach>
     </div>
-</div>
-</c:if>
-</c:forEach>
-</div>
 </div>
 
 

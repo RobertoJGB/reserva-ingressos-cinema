@@ -128,3 +128,43 @@ h1 {
 .menu-button {
     border-radius: 15px;
 }
+
+.custom-carousel-image {
+    height: 400px; /* Ajuste a altura conforme necessário */
+    object-fit: cover;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; /* Espaçamento entre a imagem e os botões */
+    padding: 0 20px; /* Espaçamento das bordas da área do carrossel */
+}
+
+.carousel-button {
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.carousel-button:hover {
+    color: #cccccc; /* Cor de destaque cinza ao passar o mouse */
+}
+
+.carousel-button::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #cccccc; /* Linha de destaque cinza */
+    transition: width 0.3s;
+    margin: 0 auto;
+}
+
+.carousel-button:hover::after {
+    width: 100%; /* Linha aparece ao passar o mouse */
+}
