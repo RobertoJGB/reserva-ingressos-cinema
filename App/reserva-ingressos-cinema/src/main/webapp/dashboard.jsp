@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
@@ -87,6 +88,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title">${movies.nomeFilme}</h5>
                             <a href="#" class="btn btn-primary">Comprar Ingresso</a>
+            <c:if test="${sessionScope.loggeduser != null}">
                             <!-- Formulário de Delete -->
                             <form action="/delete-movie" method="post" class="mt-2">
                                 <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
@@ -96,6 +98,7 @@
                             <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
                             &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}" class="text-primary mt-2">Update</a>
                         </div>
+                        </c:if>
                     </div>
                 </div>
             </c:if>
@@ -116,6 +119,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title">${movies.nomeFilme}</h5>
                             <a href="#" class="btn btn-primary">Comprar Ingresso</a>
+            <c:if test="${sessionScope.loggeduser != null}">
                             <!-- Formulário de Delete -->
                             <form action="/delete-movie" method="post" class="mt-2">
                                 <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
@@ -125,6 +129,7 @@
                             <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
                             &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}" class="text-primary mt-2">Update</a>
                         </div>
+                        </c:if>
                     </div>
                 </div>
             </c:if>
