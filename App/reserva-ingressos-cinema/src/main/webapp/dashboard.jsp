@@ -20,10 +20,21 @@
     <div class="icons">
         <span>Pesquisar</span>
         <img src="img/pesq.png" alt="Pesquisar Icon">
-        <a href="login.jsp" style="text-decoration: none; color: inherit;">
-            <span>Entre ou Cadastre-se</span>
-            <img src="img/user.png" alt="Login Icon">
-        </a>
+
+        <c:choose>
+            <c:when test="${not empty sessionScope.loggeduser}">
+
+                <img src="img/user.png" alt="Login Icon">
+            </c:when>
+            <c:otherwise>
+                <a href="login.jsp" style="text-decoration: none; color: inherit;">
+                    <img src="img/user.png" alt="Login Icon">
+                    <span>Entre ou Cadastre-se</span>
+                </a>
+
+            </c:otherwise>
+        </c:choose>
+
     </div>
 </div>
 
@@ -37,7 +48,7 @@
         <!-- Controle de diferenciação de logado ou não -->
         <c:choose>
             <c:when test="${not empty sessionScope.loggeduser}">
-                Olá, ${sessionScope.loggeduser}
+                Ola, ${sessionScope.loggeduser}
                 <button class="menu-button">Minha Conta</button>
                 <button class="menu-button">Meus Ingressos</button>
                 <button class="menu-button">Saiba mais sobre PrimeTicket</button>
@@ -58,13 +69,15 @@
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item">
-                <img src="img/coringa.png" class="d-block w-100 rounded-image custom-carousel-image" alt="Imagem Star Wars">
+                <img src="img/coringa.png" class="d-block w-100 rounded-image custom-carousel-image"
+                     alt="Imagem Star Wars">
             </div>
             <div class="carousel-item active">
                 <img src="img/sonic.png" class="d-block w-100 rounded-image custom-carousel-image" alt="Imagem Sonic">
             </div>
             <div class="carousel-item">
-                <img src="img/StarWars.jpg" class="d-block w-100 rounded-image custom-carousel-image" alt="Imagem Star Wars">
+                <img src="img/StarWars.jpg" class="d-block w-100 rounded-image custom-carousel-image"
+                     alt="Imagem Star Wars">
             </div>
         </div>
     </div>
@@ -84,11 +97,12 @@
                 <div class="col-md-3 mb-4">
                     <!-- Card do Filme -->
                     <div class="card">
-                        <img src="${movies.image}" alt="poster" class="card-img-top" style="height: 300px; object-fit: cover;">
+                        <img src="${movies.image}" alt="poster" class="card-img-top"
+                             style="height: 300px; object-fit: cover;">
                         <div class="card-body text-center">
                             <h5 class="card-title">${movies.nomeFilme}</h5>
                             <a href="#" class="btn btn-primary">Comprar Ingresso</a>
-            <c:if test="${sessionScope.loggeduser != null}">
+                            <c:if test="${sessionScope.loggeduser != null}">
                             <!-- Formulário de Delete -->
                             <form action="/delete-movie" method="post" class="mt-2">
                                 <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
@@ -96,7 +110,8 @@
                             </form>
                             <!-- Link para Update -->
                             <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
-                            &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}" class="text-primary mt-2">Update</a>
+                            &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
+                               class="text-primary mt-2">Update</a>
                         </div>
                         </c:if>
                     </div>
@@ -115,11 +130,12 @@
                 <div class="col-md-3 mb-4">
                     <!-- Card do Filme -->
                     <div class="card">
-                        <img src="${movies.image}" alt="poster" class="card-img-top" style="height: 300px; object-fit: cover;">
+                        <img src="${movies.image}" alt="poster" class="card-img-top"
+                             style="height: 300px; object-fit: cover;">
                         <div class="card-body text-center">
                             <h5 class="card-title">${movies.nomeFilme}</h5>
                             <a href="#" class="btn btn-primary">Comprar Ingresso</a>
-            <c:if test="${sessionScope.loggeduser != null}">
+                            <c:if test="${sessionScope.loggeduser != null}">
                             <!-- Formulário de Delete -->
                             <form action="/delete-movie" method="post" class="mt-2">
                                 <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
@@ -127,7 +143,8 @@
                             </form>
                             <!-- Link para Update -->
                             <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
-                            &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}" class="text-primary mt-2">Update</a>
+                            &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
+                               class="text-primary mt-2">Update</a>
                         </div>
                         </c:if>
                     </div>

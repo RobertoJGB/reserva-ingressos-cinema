@@ -33,7 +33,8 @@
 
                     <div class="mb-3">
                         <label for="nomeFilme" class="form-label">Nome:</label>
-                        <input type="text" name="nomeFilme" id="nomeFilme" value="${param.nomeFilme}" class="form-control">
+                        <input type="text" name="nomeFilme" id="nomeFilme" value="${param.nomeFilme}"
+                               class="form-control">
                     </div>
 
                     <div class="mb-3">
