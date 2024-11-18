@@ -1,0 +1,634 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    list-style-type: none;
+    border: 0;
+    color: #fff;
+}
+
+body{
+    background-color: #000f18;
+    height: 100vh;
+}
+
+.img-topo {
+    display: flex;
+    justify-content: center; /* Centraliza as imagens horizontalmente */
+    gap: 10px; /* Espaço entre as imagens */
+    margin-top: 20px; /* Espaço acima das imagens */
+}
+
+.img-topo img {
+    width: 200px;   /* Tamanho fixo das imagens */
+    height: 200px;  /* Tamanho fixo das imagens */
+    border-radius: 50%; /* Torna as imagens circulares */
+    object-fit: cover;  /* Ajusta as imagens para não distorcerem */
+}
+
+.interface img{
+    width: 80px;
+}
+
+.interface{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.flex{
+    display: flex;
+}
+
+.btn-contato button{
+    color: #fff;
+    padding: 10px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #1d2f3d;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+button:hover, form .btn-enviar input:hover{
+    box-shadow: 0px 0px 8px #1d2f3da9;
+    transform: scale(1.05);
+    transition: .2s;
+}
+
+h2.titulo{
+    font-size: 38px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+h2.titulo span{
+    color: #5c6f7d;;
+}
+
+.btn-abrir-menu{
+    display: none;
+}
+
+/* .menu-mobile{
+    display: none;
+} */
+
+/* cabeçalho */
+
+header{
+    padding: 20px 4%;
+}
+
+header > .interface{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a {
+    display: inline-block;
+    color: #7d7d7d;
+    transition: .2s;
+}
+
+header a:hover{
+    color: #fff;
+    transform: scale(1.05);
+}
+
+header nav.menu-desktop ul li{
+    display: inline-block;
+    padding: 0 40px;
+}
+
+/* mobile*/
+
+.overlay-menu{
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 8888;
+    opacity: .8;
+    display: none;
+}
+
+
+.btn-abrir-menu i{
+    font-size: 45px;
+}
+
+.menu-mobile{
+    background-color: #000;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99999;
+    width: 0%;
+    overflow: hidden;
+    transition: .5s;
+
+}
+
+.menu-mobile.abrir-menu{
+    width: 70%;
+}
+
+.menu-mobile.abrir-menu ~ .overlay-menu{
+    display: block;
+}
+
+.menu-mobile nav ul{
+    text-align: right;
+}
+
+.menu-mobile nav ul li a{
+    font-size: 20px;
+    font-weight: 300;
+    padding: 20px 8%;
+    display: block;
+}
+
+.menu-mobile nav ul a:hover{
+    background-color: #5c6f7d;
+}
+
+.menu-mobile .btn-fechar{
+    padding: 20px 4%;
+}
+
+.menu-mobile .btn-fechar i{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+
+/* topo site */
+section.topo-do-site{
+    padding: 30px 4%;
+}
+
+
+section.topo-do-site .flex{
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+.topo-do-site .txt-topo h1{
+    font-size: 38px;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+
+.topo-do-site .txt-topo h1 span{
+    color: #5c6f7d;
+    font-size: 60px;
+}
+
+.topo-do-site .txt-topo p{
+   margin: 40px 0;
+}
+
+@keyframes flutuar{
+    0% {
+        top: 0;
+    }
+    100%{
+        top: 30px;
+    }
+}
+
+/* Especialidades */
+
+section.especialidades{
+    padding: 70px 4%;
+}
+
+section.especialidades .flex{
+    gap: 60px;
+}
+
+.especialidades .esp-box{
+    padding: 30px;
+    margin-top: 45px;
+    border-radius: 20px;
+    transition: .2s;
+}
+
+.especialidades .esp-box:hover{
+    scale: (1.05);
+    box-shadow: 0 0 15px #ffffff56;
+}
+
+.especialidades .esp-box i{
+    font-size: 70px;
+    color: #5c6f7d;
+}
+
+.especialidades .esp-box h3{
+    font-size: 28px;
+    margin: 15px 0;
+}
+
+/* tecnologias */
+
+section.tecnologias{
+    padding: 70px 4%;
+}
+
+section.tecnologias .flex{
+    gap: 50px;
+}
+
+.tecnologias .flex .tec-box{
+    padding: 30px;
+    margin-top: 45px;
+    border-radius: 20px;
+    transition: .2s;
+}
+
+.test{
+    display: flex;
+    padding: 30px;
+    margin-top: 45px;
+    border-radius: 20px;
+    transition: .2s;
+
+}
+
+.tecnologias .tec-box:hover{
+    scale: (1.05);
+    box-shadow: 0 0 15px #ffffff56;
+}
+
+.tecnologias .tec-box h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 15px 0;
+}
+
+/* Sobre */
+
+.img-sobre img{
+    width: 350px;
+    border-radius: 20px;
+}
+
+section.sobre{
+    padding: 40px 4%;
+}
+
+section.sobre .flex{
+    align-items: center;
+    gap: 60px;
+}
+
+.sobre .txt-sobre h2{
+    font-size: 40px;
+    text-transform: uppercase;
+    line-height: 40px;
+    margin-bottom: 30px;
+}
+
+.sobre .txt-sobre span{
+    color: #5c6f7d;
+    display: block;
+}
+
+.sobre .txt-sobre p{
+    margin: 20px 0;
+    text-align: justify;
+}
+
+.btn-social button{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: #1d2f3d;
+    font-size: 22px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+/* Projetos */
+
+section.portifolio{
+    padding: 80px 4%;
+    box-shadow: 0 0 30px 10px #ffffff3a;
+}
+
+section.portifolio .flex{
+    justify-content: space-around;
+    margin-top: 60px;
+}
+
+.img-port{
+    width: 360px;
+    height: 460px;
+    padding-bottom: 50px;
+    background-color: #1d2f3d;
+    background-size: cover;
+    background-position: 100% 0;
+    transition: 5s;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+}
+
+.img-port:hover{
+    background-position: 100% 100%;
+}
+
+.overlay{
+    background-color: #000000b8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 600;
+    transition: .5s;
+}
+
+.overlay:hover{
+    opacity: 0;
+}
+
+.portifolio .prod-box{
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 20px;
+    transition: .2s;
+}
+
+.portifolio .prod-box:hover{
+    scale: (1.05);
+    box-shadow: 0 0 15px #ffffff56;
+}
+
+.portifolio .prod-box i{
+    font-size: 70px;
+    color: #5c6f7d;
+}
+
+.portifolio .prod-box h3{
+    font-size: 28px;
+    margin: 15px 0;
+}
+
+.portifolio #titulo-desc{
+    margin-top: 70px;
+}
+
+.portifolio p{
+  text-align: justify;
+}
+
+/* formulario */
+
+section.formulario{
+    padding: 80px 4%;
+}
+
+form{
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+form input, form textarea{
+    width: 100%;
+    background-color: #53515132;
+    outline: 0;
+    padding: 20px 15px;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+form textarea{
+    resize: none;
+    height: 200px;
+}
+
+form .btn-enviar{
+    margin-top: 30px;
+    text-align: center;
+}
+
+form .btn-enviar input{
+    width: 150px;
+    background-color: #1d2f3d;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* footer */
+
+footer{
+    padding: 10px 4%;
+    box-shadow: 0 0 30px 10px #ffffff0e;
+}
+
+footer .flex{
+    justify-content: space-between;
+
+}
+
+footer .line-footer{
+    padding: 20px 0;
+}
+
+.borda{
+    border-top: 2px solid #5c6f7d;
+}
+
+footer .line-footer p i{
+    color: #5c6f7d;
+    font-size: 18px;
+}
+
+.test{
+    display: none;
+}
+
+
+@media screen and (max-width: 1023px) {
+    /* menu mobile */
+    .btn-abrir-menu{
+        display: block;
+    }
+
+    /* header */
+    .menu-desktop, .btn-contato{
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 1280px) {
+    section.tecnologias{
+        padding: 70px 2%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+
+    /* geral */
+
+    .topo-do-site .flex{
+        flex-direction: column-reverse;
+    }
+
+    .flex{
+        flex-direction: column;
+    }
+
+    h2.titulo{
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+
+    header .logo img{
+        width: 60px;
+    }
+
+    .menu-desktop{
+        font-size: 15px;
+    }
+
+    .btn-contato button{
+        color: #fff;
+        padding: 10px 15px;
+        font-size: 15px;
+    }
+
+
+    /* topo do site */
+
+
+    section.topo-do-site{
+        padding: 10px 8%;
+    }
+
+    section.topo-do-site .flex{
+        gap: 45px;
+    }
+
+
+    .topo-do-site .txt-topo h1{
+        font-size: 30px;
+        line-height: 30px;
+
+    }
+
+
+    /* Especialidades */
+
+    section.especialidades{
+        padding: 30px 8%;
+    }
+
+    /* tecnologias */
+
+    section.tecnologias{
+        padding: 30px 8%;
+    }
+
+
+    .tecnologias .tec-box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    section.portifolio .flex{
+        gap: 60px;
+    }
+
+    /* sobre */
+    section.sobre .flex{
+        flex-direction: column-reverse;
+    }
+
+    section.sobre{
+        padding: 80px 8%;
+    }
+
+    .sobre .txt-sobre h2{
+        font-size: 30px;
+        line-height: 30px;
+        text-align: center;
+
+    }
+
+    .btn-social {
+        text-align: center;
+    }
+
+    .img-sobre img{
+        width: 250px;
+    }
+
+    /* Projetos */
+
+    section.portifolio{
+        padding: 80px 4%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .img-port{
+        width: 100%px;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    .portifolio #titulo-desc{
+        font-size: 30px;
+        margin-top: 70px;
+    }
+
+    /* footer */
+
+    footer .flex{
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    footer .line-footer{
+        text-align: center;
+    }
+
+    footer .logo-footer img{
+        width: 70px;
+    }
+
+    footer .line-footer p i{
+        font-size: 15px;
+    }
+
+}

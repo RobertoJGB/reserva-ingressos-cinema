@@ -16,11 +16,6 @@ h1 {
     justify-content: center;
 }
 
-.navbar .menu-icon img {
-    width: 24px;
-    cursor: pointer;
-}
-
 .navbar .logo {
     display: flex;
     font-weight: bold;
@@ -39,10 +34,16 @@ h1 {
 
 
 .navbar .menu-icon {
-    left: 10px;
-    position: absolute;
-    align-items: center;
-    gap: 10px;
+    display: flex; /* Garante que os itens internos sigam o flexbox */
+    align-items: center; /* Centraliza o ícone verticalmente */
+    justify-content: center; /* Centraliza o ícone horizontalmente */
+    cursor: pointer;
+}
+
+.navbar .menu-icon img {
+    width: 32px; /* Aumenta o ícone do menu */
+    height: 32px; /* Garante proporção */
+    cursor: pointer;
 }
 
 .navbar .icons span {
@@ -52,6 +53,13 @@ h1 {
 .navbar .icons img {
     width: 20px;
     cursor: pointer;
+}
+.navbar img {
+    transition: transform 0.2s ease-in-out;
+}
+
+.navbar img:hover {
+    transform: scale(1.1);
 }
 
 .rounded-image {
@@ -64,7 +72,6 @@ h1 {
 
 .menu-icon {
     position: fixed;
-    top: 20px;
     left: 20px;
     cursor: pointer;
     z-index: 10;
@@ -168,4 +175,27 @@ h1 {
 
 .carousel-button:hover::after {
     width: 100%; /* Linha aparece ao passar o mouse */
+}
+
+.d-flex {
+    display: flex;
+    flex-wrap: nowrap; /* Impede quebra de linha */
+    gap: 1rem; /* Espaçamento entre os cards */
+}
+
+.overflow-auto {
+    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+    padding-bottom: 1rem; /* Espaço extra para a barra de rolagem */
+}
+
+.card {
+    flex: 0 0 auto; /* Mantém os cards fixos na largura definida */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

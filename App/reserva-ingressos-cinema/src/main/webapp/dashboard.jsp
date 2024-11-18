@@ -14,13 +14,12 @@
 <!-- Navbar -->
 <div class="navbar">
     <div class="menu-icon" onclick="toggleMenu()">
-        <img src="img/list.png" alt="Menu Icon">
+        <img src="img/li.png" alt="Menu Icon">
     </div>
     <div class="logo">PrimeTicket</div>
     <div class="icons">
-        <span>Pesquisar</span>
-        <img src="img/pesq.png" alt="Pesquisar Icon">
-
+        <img src="img/pesqui.png" alt="Pesquisar Icon">
+        <span>Pesquisar</span> &nbsp;
         <c:choose>
             <c:when test="${not empty sessionScope.loggeduser}">
 
@@ -30,8 +29,7 @@
                 <a href="login.jsp" style="text-decoration: none; color: inherit;">
                     <img src="img/user.png" alt="Login Icon">
                     <span>Entre ou Cadastre-se</span>
-                </a>
-
+                </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </c:otherwise>
         </c:choose>
 
@@ -51,7 +49,7 @@
                 Ola, ${sessionScope.loggeduser}
                 <button class="menu-button">Minha Conta</button>
                 <button class="menu-button">Meus Ingressos</button>
-                <button class="menu-button">Saiba mais sobre PrimeTicket</button>
+                <button class="menu-button" onclick="window.location.href='SaibaMais.jsp'">Saiba mais sobre PrimeTicket</button>
                 <form action="/logout" method="get">
                     <button type="submit" class="menu-button">Sair</button>
                 </form>
@@ -91,28 +89,25 @@
 <!-- Em Cartaz -->
 <div class="container mt-5">
     <h1>Em Cartaz</h1>
-    <div class="row">
+    <div class="d-flex overflow-auto">
         <c:forEach var="movies" items="${movies}">
             <c:if test="${movies.emcart == 'emCartaz'}">
-                <div class="col-md-3 mb-4">
-                    <!-- Card do Filme -->
-                    <div class="card">
-                        <img src="${movies.image}" alt="poster" class="card-img-top"
-                             style="height: 300px; object-fit: cover;">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">${movies.nomeFilme}</h5>
-                            <a href="#" class="btn btn-primary">Comprar Ingresso</a>
-                            <c:if test="${sessionScope.loggeduser != null}">
-                            <!-- Formulário de Delete -->
-                            <form action="/delete-movie" method="post" class="mt-2">
-                                <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                            <!-- Link para Update -->
-                            <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
-                            &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
-                               class="text-primary mt-2">Update</a>
-                        </div>
+                <div class="card me-3" style="width: 18rem;">
+                    <img src="${movies.image}" alt="poster" class="card-img-top"
+                         style="height: 300px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">${movies.nomeFilme}</h5>
+                        <a href="#" class="btn btn-primary">Comprar Ingresso</a>
+                        <c:if test="${sessionScope.loggeduser != null}">
+                        <!-- Formulário de Delete -->
+                        <form action="/delete-movie" method="post" class="mt-2">
+                            <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <!-- Link para Update -->
+                        <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
+                        &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
+                           class="text-primary mt-2">Update</a>
                         </c:if>
                     </div>
                 </div>
@@ -124,28 +119,25 @@
 <!-- Em Breve -->
 <div class="container mt-5">
     <h1>Em Breve</h1>
-    <div class="row">
+    <div class="d-flex overflow-auto">
         <c:forEach var="movies" items="${movies}">
             <c:if test="${movies.emcart == 'emBreve'}">
-                <div class="col-md-3 mb-4">
-                    <!-- Card do Filme -->
-                    <div class="card">
-                        <img src="${movies.image}" alt="poster" class="card-img-top"
-                             style="height: 300px; object-fit: cover;">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">${movies.nomeFilme}</h5>
-                            <a href="#" class="btn btn-primary">Comprar Ingresso</a>
-                            <c:if test="${sessionScope.loggeduser != null}">
-                            <!-- Formulário de Delete -->
-                            <form action="/delete-movie" method="post" class="mt-2">
-                                <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                            <!-- Link para Update -->
-                            <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
-                            &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
-                               class="text-primary mt-2">Update</a>
-                        </div>
+                <div class="card me-3" style="width: 18rem;">
+                    <img src="${movies.image}" alt="poster" class="card-img-top"
+                         style="height: 300px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">${movies.nomeFilme}</h5>
+                        <a href="#" class="btn btn-primary">Comprar Ingresso</a>
+                        <c:if test="${sessionScope.loggeduser != null}">
+                        <!-- Formulário de Delete -->
+                        <form action="/delete-movie" method="post" class="mt-2">
+                            <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <!-- Link para Update -->
+                        <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
+                        &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
+                           class="text-primary mt-2">Update</a>
                         </c:if>
                     </div>
                 </div>
