@@ -8,7 +8,19 @@
     font-family: 'Poppins', sans-serif;
     list-style-type: none;
     border: 0;
+}
+
+main{
     color: #fff;
+}
+
+main .topo-do-site .interface .flex .txt-topo img {
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 body{
@@ -22,7 +34,6 @@ body{
     gap: 10px; /* Espaço entre as imagens */
     margin-top: 20px; /* Espaço acima das imagens */
 }
-
 .img-topo img {
     width: 200px;   /* Tamanho fixo das imagens */
     height: 200px;  /* Tamanho fixo das imagens */
@@ -195,7 +206,10 @@ section.topo-do-site .flex{
 }
 
 .topo-do-site .txt-topo p{
+   font-size: 20px;
    margin: 40px 0;
+   text-align: center;
+
 }
 
 @keyframes flutuar{
