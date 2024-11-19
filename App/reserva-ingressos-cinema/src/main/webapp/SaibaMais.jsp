@@ -18,7 +18,7 @@
     <div class="menu-icon" onclick="toggleMenu()">
         <img src="img/li.png" alt="Menu Icon">
     </div>
-    <div class="logo">PrimeTicket</div>
+    <a href="/find-all-movies" class="logo" style="text-decoration: none; color: inherit;">PrimeTicket</a>
     <div class="icons">
         <img src="img/pesqui.png" alt="Pesquisar Icon">
         <span>Pesquisar</span> &nbsp;

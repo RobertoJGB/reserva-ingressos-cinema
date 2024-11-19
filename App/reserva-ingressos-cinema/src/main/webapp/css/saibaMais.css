@@ -239,7 +239,7 @@ section.especialidades .flex{
 }
 
 .especialidades .esp-box:hover{
-    scale: (1.05);
+    scale: 1.05;
     box-shadow: 0 0 15px #ffffff56;
 }
 
@@ -280,7 +280,7 @@ section.tecnologias .flex{
 }
 
 .tecnologias .tec-box:hover{
-    scale: (1.05);
+    scale: 1.05;
     box-shadow: 0 0 15px #ffffff56;
 }
 
@@ -392,7 +392,7 @@ section.portifolio .flex{
 }
 
 .portifolio .prod-box:hover{
-    scale: (1.05);
+    scale: 1.05;
     box-shadow: 0 0 15px #ffffff56;
 }
 
@@ -616,7 +616,7 @@ footer .line-footer p i{
     }
 
     .img-port{
-        width: 100%px;
+        width: 100px;
         max-width: 360px;
         margin: 0 auto;
     }

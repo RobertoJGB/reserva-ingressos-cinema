@@ -16,7 +16,7 @@
     <div class="menu-icon" onclick="toggleMenu()">
         <img src="img/li.png" alt="Menu Icon">
     </div>
-    <div class="logo">PrimeTicket</div>
+    <a href="/find-all-movies" class="logo" style="text-decoration: none; color: inherit;">PrimeTicket</a>
     <div class="icons">
         <img src="img/pesqui.png" alt="Pesquisar Icon">
         <span>Pesquisar</span> &nbsp;
@@ -26,7 +26,7 @@
                 <img src="img/user.png" alt="Login Icon">
             </c:when>
             <c:otherwise>
-                <a href="login.jsp" style="text-decoration: none; color: inherit;">
+                <a href="/login" style="text-decoration: none; color: inherit;">
                     <img src="img/user.png" alt="Login Icon">
                     <span>Entre ou Cadastre-se</span>
                 </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -55,7 +55,7 @@
                 </form>
             </c:when>
             <c:otherwise>
-                Que tal <a href="login.jsp" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
+                Que tal <a href="/login" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
                 conta?</a>
             </c:otherwise>
         </c:choose>
@@ -97,7 +97,8 @@
                          style="height: 300px; object-fit: cover;">
                     <div class="card-body text-center">
                         <h5 class="card-title">${movies.nomeFilme}</h5>
-                        <a href="#" class="btn btn-primary">Comprar Ingresso</a>
+                        <a href="sinopse.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
+                        &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}" class="btn btn-primary">Comprar Ingresso</a>
                         <c:if test="${sessionScope.loggeduser != null}">
                         <!-- Formulário de Delete -->
                         <form action="/delete-movie" method="post" class="mt-2">

@@ -36,7 +36,7 @@ public class CreateUserServlet extends HttpServlet {
                 if (achadoEmail.equals(email)) {
                     // Caso o usuario já exista, redireciona para login.jsp com mensagem de erro
                     req.setAttribute("errorMessage", "Usuário já existe. Por favor, faça login.");
-                    RequestDispatcher dispatcher = req.getRequestDispatcher("/login.jsp");
+                    RequestDispatcher dispatcher = req.getRequestDispatcher("/login");
                     dispatcher.forward(req, resp);
                     return;
                 }
@@ -47,7 +47,7 @@ public class CreateUserServlet extends HttpServlet {
 
         } catch (Exception e) {
             req.setAttribute("errorMessage", "Erro ao criar usuário: " + e.getMessage());
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/login.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/login");
             dispatcher.forward(req, resp);
             return;
 
@@ -61,7 +61,7 @@ public class CreateUserServlet extends HttpServlet {
         }
 
         // Redireciona para a página inicial após a criação bem-sucedida
-        resp.sendRedirect("/index.jsp");
+        resp.sendRedirect("/login");
     }
 }
 

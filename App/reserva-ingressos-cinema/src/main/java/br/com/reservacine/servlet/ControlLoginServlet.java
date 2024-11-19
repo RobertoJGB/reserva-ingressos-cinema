@@ -25,7 +25,7 @@ public class ControlLoginServlet extends HttpServlet {
             if (resultSet != null) {
                 String nome = resultSet.getString("name");
                 req.getSession().setAttribute("loggeduser", nome);
-                resp.sendRedirect("dashboard.jsp");
+                resp.sendRedirect("/find-all-movies");
             } else {
                 req.setAttribute("errorMessage", "E-mail ou senha incorretos.");
                 req.getRequestDispatcher("login.jsp").forward(req, resp);
@@ -33,7 +33,7 @@ public class ControlLoginServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             req.setAttribute("errorMessage", "Erro no processamento do login.");
-            req.getRequestDispatcher("login.jsp").forward(req, resp);
+            req.getRequestDispatcher("/login").forward(req, resp);
         }
     }
 }
