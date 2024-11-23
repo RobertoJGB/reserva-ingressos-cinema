@@ -159,21 +159,6 @@
         menu.classList.toggle("active");
     }
 </script>
-<footer>
-            <div class="interface">
-                <div class="line-footer">
-                    <div class="flex">
-                        <div class="btn-social">
-                            <p>Linkedin:</p>
-                            <a href="https://www.linkedin.com/in/victor-noleto-596897253/" target="_blank"><button><i class="bi bi-linkedin"></i></button></a>
-                            <a href="https://www.linkedin.com/in/leonardo-meirelles-volpe-8b3913311/" target="_blank"><button><i class="bi bi-linkedin"></i></button></a>
-                            <a href="https://www.linkedin.com/in/lucas-alves-05459126b/" target="_blank"><button><i class="bi bi-linkedin"></i></button></a>
-                            <a href="https://www.linkedin.com/in/roberto-junior-gama-bispo-miranda-69bb91291/" target="_blank"><button><i class="bi bi-linkedin"></i></button></a><p>GitHub:</p>
-                            <a href="https://github.com/RobertoJGB/reserva-ingressos-cinema" target="_blank"><button><i class="bi bi-github"></i></button></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-</footer>
+
 </body>
 </html>

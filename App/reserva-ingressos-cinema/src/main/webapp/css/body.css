@@ -205,3 +205,31 @@ h1 {
     flex-direction: column;
     align-items: center;
 }
+
+.form-control {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 8px;
+}
+
+
+.form-control:focus {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #fff;
+    box-shadow: none;
+}
+
+button {
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+

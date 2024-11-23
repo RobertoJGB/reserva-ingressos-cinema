@@ -112,7 +112,7 @@ public class UsersDao {
         }
     }
 
-    public ResultSet searchUsers(String email, String senha) {
+    public Users searchUsers(String email, String senha) {
 
         String SQL = "SELECT * FROM USERS WHERE email = ? AND senha = ?";
 
@@ -124,8 +124,15 @@ public class UsersDao {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
+                Users user = new Users(resultSet.getString("IDUSER"),
+                                        resultSet.getString("NAME"),
+                                        resultSet.getString("dtNasc"),
+                        resultSet.getString("cpf"),
+                        resultSet.getString("email"),
+                        resultSet.getString("senha"));
+
                 System.out.println("Sucesso ao consultar os dados na tabela");
-                return resultSet;
+                return user;
             } else {
                 connection.close();
                 return null;

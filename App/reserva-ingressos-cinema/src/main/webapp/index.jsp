@@ -87,6 +87,7 @@
         <div class="collapse" id="user">
             <div class="card-body">
                 <form action="/create-user" method="post">
+                <input type="hidden" id="id" name="id">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome:</label>
                         <input type="text" name="name" id="name" class="form-control">

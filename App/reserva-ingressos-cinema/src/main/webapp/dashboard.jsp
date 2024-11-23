@@ -21,7 +21,7 @@
         <img src="img/pesqui.png" alt="Pesquisar Icon">
         <span>Pesquisar</span> &nbsp;
         <c:choose>
-            <c:when test="${not empty sessionScope.loggeduser}">
+            <c:when test="${not empty sessionScope.user}">
 
                 <img src="img/user.png" alt="Login Icon">
             </c:when>
@@ -45,17 +45,19 @@
     <div class="menu-content">
         <!-- Controle de diferenciação de logado ou não -->
         <c:choose>
-            <c:when test="${not empty sessionScope.loggeduser}">
-                Ola, ${sessionScope.loggeduser}
-                <button class="menu-button">Minha Conta</button>
-                <button class="menu-button">Meus Ingressos</button>
+            <c:when test="${not empty sessionScope.user}">
+                Ola, ${sessionScope.user.nome}
+
+                 <a href="minhaConta.jsp" class="text-primary mt-2">Minha Conta</a>
+
+
                 <button class="menu-button" onclick="window.location.href='SaibaMais.jsp'">Saiba mais sobre PrimeTicket</button>
                 <form action="/logout" method="get">
                     <button type="submit" class="menu-button">Sair</button>
                 </form>
             </c:when>
             <c:otherwise>
-                Que tal <a href="/login" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
+                Que tal <a href="/login.jsp" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
                 conta?</a>
             </c:otherwise>
         </c:choose>
@@ -99,7 +101,7 @@
                         <h5 class="card-title">${movies.nomeFilme}</h5>
                         <a href="sinopse.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
                         &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}" class="btn btn-primary">Comprar Ingresso</a>
-                        <c:if test="${sessionScope.loggeduser != null}">
+                        <c:if test="${sessionScope.user != null}">
                         <!-- Formulário de Delete -->
                         <form action="/delete-movie" method="post" class="mt-2">
                             <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
@@ -129,7 +131,7 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">${movies.nomeFilme}</h5>
                         <a href="#" class="btn btn-primary">Comprar Ingresso</a>
-                        <c:if test="${sessionScope.loggeduser != null}">
+                        <c:if test="${sessionScope.user != null}">
                         <!-- Formulário de Delete -->
                         <form action="/delete-movie" method="post" class="mt-2">
                             <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
