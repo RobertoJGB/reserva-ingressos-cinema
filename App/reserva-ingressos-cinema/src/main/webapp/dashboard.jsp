@@ -22,11 +22,13 @@
         <span>Pesquisar</span> &nbsp;
         <c:choose>
             <c:when test="${not empty sessionScope.user}">
-
+            <a href="minhaConta.jsp">
                 <img src="img/user.png" alt="Login Icon">
+            </a>
+
             </c:when>
             <c:otherwise>
-                <a href="/login" style="text-decoration: none; color: inherit;">
+                <a href="/login.jsp" style="text-decoration: none; color: inherit;">
                     <img src="img/user.png" alt="Login Icon">
                     <span>Entre ou Cadastre-se</span>
                 </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -47,11 +49,8 @@
         <c:choose>
             <c:when test="${not empty sessionScope.user}">
                 Ola, ${sessionScope.user.nome}
-
-                 <a href="minhaConta.jsp" class="text-primary mt-2">Minha Conta</a>
-
-
-                <button class="menu-button" onclick="window.location.href='SaibaMais.jsp'">Saiba mais sobre PrimeTicket</button>
+                 <button class="menu-button" onclick="window.location.href='minhaConta.jsp'">Minha Conta</button>
+                 <button class="menu-button" onclick="window.location.href='SaibaMais.jsp'">Saiba mais sobre PrimeTicket</button>
                 <form action="/logout" method="get">
                     <button type="submit" class="menu-button">Sair</button>
                 </form>

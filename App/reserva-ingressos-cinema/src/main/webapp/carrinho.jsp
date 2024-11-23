@@ -24,7 +24,9 @@
         <span>Pesquisar</span> &nbsp;
         <c:choose>
             <c:when test="${not empty sessionScope.loggeduser}">
-                <img src="img/user.png" alt="Login Icon">
+                <a href="minhaConta.jsp">
+                    <img src="img/user.png" alt="Login Icon">
+                </a>
             </c:when>
             <c:otherwise>
                 <a href="login.jsp" style="text-decoration: none; color: inherit;">

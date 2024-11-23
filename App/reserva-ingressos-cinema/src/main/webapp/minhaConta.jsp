@@ -22,11 +22,12 @@
         <span>Pesquisar</span> &nbsp;
         <c:choose>
             <c:when test="${not empty sessionScope.loggeduser}">
-
+            <a href="minhaConta.jsp">
                 <img src="img/user.png" alt="Login Icon">
+            </a>
             </c:when>
             <c:otherwise>
-                <a href="/login" style="text-decoration: none; color: inherit;">
+                <a href="/login.jsp" style="text-decoration: none; color: inherit;">
                     <img src="img/user.png" alt="Login Icon">
                     <span>Entre ou Cadastre-se</span>
                 </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -62,8 +63,8 @@
     </div>
 </div>
 <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
-        <div class="text-center mb-4">
-            <h2 class="text-white">DADOS PESSOAIS</h2>
+        <div><br>
+            <h1>DADOS PESSOAIS</h1>
         </div>
         <form action="/create-user" method="post" class="bg-dark p-4 rounded shadow text-white" style="width: 100%; max-width: 400px;">
             <div class="mb-3">
@@ -88,9 +89,9 @@
             </div>
             <div class="d-grid">
                 <button type="submit" class="btn btn-light">Alterar dados</button>
+                <a href="/find-all-movies" class="btn btn-warning mt-4">Voltar para tela inicial</a>
             </div>
         </form>
-        <a href="/find-all-movies" class="btn btn-warning mt-4">Voltar para tela inicial</a>
     </div>
 
 
