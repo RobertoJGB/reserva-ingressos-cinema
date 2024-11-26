@@ -129,7 +129,6 @@
                          style="height: 300px; object-fit: cover;">
                     <div class="card-body text-center">
                         <h5 class="card-title">${movies.nomeFilme}</h5>
-                        <a href="#" class="btn btn-primary">Comprar Ingresso</a>
                         <c:if test="${sessionScope.user != null}">
                         <!-- Formulário de Delete -->
                         <form action="/delete-movie" method="post" class="mt-2">

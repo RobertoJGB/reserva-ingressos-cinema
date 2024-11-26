@@ -20,6 +20,9 @@ public class Sessions {
         this.fkIdFilme = fkIdFilme;
     }
 
+    public Sessions(String idSession, String hora, String nomeFilme, String lugar, boolean disponibilidade) {
+    }
+
 
     public String getIdSession() {
         return idSession;

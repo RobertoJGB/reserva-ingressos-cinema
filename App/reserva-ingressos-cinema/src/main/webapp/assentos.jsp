@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="css/body.css">
     <style>
         body {
-            background-color: black;
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
@@ -47,7 +46,6 @@
             background-image: url('img/Tela.png');
             background-size: cover;
             margin: 20px auto;
-            border-radius: 10px;
         }
         .legend {
             display: flex;
@@ -340,9 +338,6 @@
             <div class="seat occupied" data-row="a" data-seat="22"></div>
         </div>
     </div>
-
-
-
         <div class="legend">
             <div class="legend-item">
                 <img src="img/PoltronaLivre.png" alt="Disponível">
@@ -357,8 +352,8 @@
                 <span>Selecionada</span>
             </div>
         </div>
-
-
+            <button type="button" class="btn btn-outline-success" onclick="proceedToNextStep()">Continuar</button>
+        <br><br>
     <div class="screen"></div>
 
     <script>
@@ -366,6 +361,9 @@
         var menu = document.getElementById("sideMenu");
         menu.classList.toggle("active");
       }
+      function proceedToNextStep() {
+              window.location.href = 'carrinho.jsp';
+          }
     </script>
 </body>
 </html>
