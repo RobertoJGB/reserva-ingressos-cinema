@@ -1,10 +1,9 @@
 package br.com.reservacine.dao;
 
-import br.com.reservacine.model.Movies;
 import br.com.reservacine.config.ConnectionPoolConfig;
+import br.com.reservacine.model.Movies;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ public class MoviesDao {
         } catch (Exception e) {
 
             System.out.println("fail in database connection: " + e.getMessage());
-            System.out.println("ERRO "+ movie.getNomeFilme()+" "+movie.getGenero()+" "+movie.getSinopse());
+            System.out.println("ERRO " + movie.getNomeFilme() + " " + movie.getGenero() + " " + movie.getSinopse());
 
         }
     }
@@ -72,7 +71,7 @@ public class MoviesDao {
                 String emcartaz = resultSet.getString("EMCARTAZ");
                 String image = resultSet.getString("IMAGE");
 
-                Movies movies = new Movies(idmovie, name, genero, sinopse, classind, duracao, emcartaz,image);
+                Movies movies = new Movies(idmovie, name, genero, sinopse, classind, duracao, emcartaz, image);
                 System.out.print(allMovies);
                 allMovies.add(movies);
 

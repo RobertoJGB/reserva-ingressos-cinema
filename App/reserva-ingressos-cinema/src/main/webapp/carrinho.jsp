@@ -64,19 +64,18 @@
 </div>
 <main>
     <section class="topo-do-site" id="inicio">
-                <div class="interface">
-                    <div class="flex">
-                        <div class="txt-topo">
-                            <h2 class="titulo">CONFIRMACAO DE <span>RESERVA</span></h2><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <img src="img/chec.png" alt="teste">
-                            <p>Obrigado por realizar a reserva conosco!<br>Va ao caixa do cinema e apresente o codigo: ID</p>
-                        </div>
-                    </div>
+        <div class="interface">
+            <div class="flex">
+                <div class="txt-topo">
+                    <h2 class="titulo">CONFIRMACAO DE <span>RESERVA</span></h2><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="img/chec.png" alt="teste">
+                    <p>Obrigado por realizar a reserva conosco!<br>Va ao caixa do cinema e apresente o codigo: ID</p>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 </main>
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

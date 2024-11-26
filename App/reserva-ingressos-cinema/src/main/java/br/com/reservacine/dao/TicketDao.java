@@ -4,7 +4,6 @@ import br.com.reservacine.config.ConnectionPoolConfig;
 import br.com.reservacine.model.Ticket;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package br.com.reservacine.dao;
 
-import br.com.reservacine.model.LugarSessao;
 import br.com.reservacine.config.ConnectionPoolConfig;
+import br.com.reservacine.model.LugarSessao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

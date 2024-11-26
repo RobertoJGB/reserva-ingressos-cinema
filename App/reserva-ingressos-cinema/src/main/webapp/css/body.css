@@ -60,6 +60,7 @@ h1 {
     width: 26px;
     cursor: pointer;
 }
+
 .navbar img {
     transition: transform 0.2s ease-in-out;
 }

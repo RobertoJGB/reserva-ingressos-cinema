@@ -9,7 +9,7 @@ public class Movies {
     private final String classInd;
     private final String duracao;
     private final String emcart;
-    private String image;
+    private final String image;
 
 
     public Movies(String nomeFilme, String genero, String sinopse, String classInd, String duracao, String emcart, String image) {

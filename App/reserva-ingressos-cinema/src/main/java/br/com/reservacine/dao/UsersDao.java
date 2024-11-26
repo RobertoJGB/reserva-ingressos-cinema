@@ -125,8 +125,8 @@ public class UsersDao {
 
             if (resultSet.next()) {
                 Users user = new Users(resultSet.getString("IDUSER"),
-                                        resultSet.getString("NAME"),
-                                        resultSet.getString("dtNasc"),
+                        resultSet.getString("NAME"),
+                        resultSet.getString("dtNasc"),
                         resultSet.getString("cpf"),
                         resultSet.getString("email"),
                         resultSet.getString("senha"));

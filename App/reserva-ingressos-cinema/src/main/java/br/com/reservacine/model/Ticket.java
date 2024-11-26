@@ -3,9 +3,9 @@ package br.com.reservacine.model;
 public class Ticket {
 
     private String idTicket;
-    private String fkIdUser;
-    private String fkIdFilme;
-    private String fkIdsession;
+    private final String fkIdUser;
+    private final String fkIdFilme;
+    private final String fkIdsession;
 
     public Ticket(String fkIdUser, String fkIdFilme, String fkIdsession) {
         this.fkIdUser = fkIdUser;

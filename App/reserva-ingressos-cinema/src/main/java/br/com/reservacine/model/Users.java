@@ -3,11 +3,11 @@ package br.com.reservacine.model;
 public class Users {
 
     private String idUser;
-    private String nome;
-    private String dtNasc;
-    private String cpf;
-    private String email;
-    private String senha;
+    private final String nome;
+    private final String dtNasc;
+    private final String cpf;
+    private final String email;
+    private final String senha;
 
     public Users(String nome, String dtNasc, String cpf, String email, String senha) {
         this.nome = nome;

@@ -22,9 +22,9 @@
         <span>Pesquisar</span> &nbsp;
         <c:choose>
             <c:when test="${not empty sessionScope.user}">
-            <a href="minhaConta.jsp">
-                <img src="img/user.png" alt="Login Icon">
-            </a>
+                <a href="minhaConta.jsp">
+                    <img src="img/user.png" alt="Login Icon">
+                </a>
 
             </c:when>
             <c:otherwise>
@@ -49,8 +49,10 @@
         <c:choose>
             <c:when test="${not empty sessionScope.user}">
                 Ola, ${sessionScope.user.nome}
-                 <button class="menu-button" onclick="window.location.href='minhaConta.jsp'">Minha Conta</button>
-                 <button class="menu-button" onclick="window.location.href='SaibaMais.jsp'">Saiba mais sobre PrimeTicket</button>
+                <button class="menu-button" onclick="window.location.href='minhaConta.jsp'">Minha Conta</button>
+                <button class="menu-button" onclick="window.location.href='SaibaMais.jsp'">Saiba mais sobre
+                    PrimeTicket
+                </button>
                 <form action="/logout" method="get">
                     <button type="submit" class="menu-button">Sair</button>
                 </form>
@@ -99,17 +101,18 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">${movies.nomeFilme}</h5>
                         <a href="/find-session?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
-                        &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}" class="btn btn-primary">Comprar Ingresso</a>
-                        <c:if test="${sessionScope.user != null}">
-                        <!-- Formulário de Delete -->
-                        <form action="/delete-movie" method="post" class="mt-2">
-                            <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                        <!-- Link para Update -->
-                        <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
                         &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
-                           class="text-primary mt-2">Update</a>
+                           class="btn btn-primary">Comprar Ingresso</a>
+                        <c:if test="${sessionScope.user != null}">
+                            <!-- Formulário de Delete -->
+                            <form action="/delete-movie" method="post" class="mt-2">
+                                <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            <!-- Link para Update -->
+                            <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
+&classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
+                               class="btn btn-outline-primary mt-2" style="font-weight: bold; border-radius: 8px;">Update</a>
                         </c:if>
                     </div>
                 </div>
@@ -130,15 +133,16 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">${movies.nomeFilme}</h5>
                         <c:if test="${sessionScope.user != null}">
-                        <!-- Formulário de Delete -->
-                        <form action="/delete-movie" method="post" class="mt-2">
-                            <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                        <!-- Link para Update -->
-                        <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
-                        &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
-                           class="text-primary mt-2">Update</a>
+                            <!-- Formulário de Delete -->
+                            <form action="/delete-movie" method="post" class="mt-2">
+                                <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            <!-- Link para Update -->
+                            <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
+&classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
+                               class="btn btn-outline-primary mt-2" style="font-weight: bold; border-radius: 8px;">Update</a>
+
                         </c:if>
                     </div>
                 </div>
@@ -147,10 +151,6 @@
     </div>
 </div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
 
 <script>
     function toggleMenu() {

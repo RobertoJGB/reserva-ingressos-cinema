@@ -34,11 +34,12 @@ public class AuthenticationFilter implements Filter {
     }
 
     @Override
-    public void destroy() { }
+    public void destroy() {
+    }
 
     private boolean isUserLoggedOn(HttpServletRequest httpServletRequest) {
 
-        return  httpServletRequest.getSession().getAttribute("loggedUser") == null;
+        return httpServletRequest.getSession().getAttribute("loggedUser") == null;
 
     }
 

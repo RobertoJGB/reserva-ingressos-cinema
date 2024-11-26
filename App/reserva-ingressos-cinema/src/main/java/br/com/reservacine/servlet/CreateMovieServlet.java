@@ -47,15 +47,13 @@ public class CreateMovieServlet extends HttpServlet {
         String movieImagePath = parameters.get("image");
 
 
-
-
         MoviesDao moviesDao = new MoviesDao();
 
         if (idMovie.isBlank()) {
             Movies movies = new Movies(NOMEFILME, GENERO, SINOPSE, CLASSIND, DURACAO, emcart, movieImagePath);
             moviesDao.createMovie(movies);
         } else {
-            Movies movies = new Movies(idMovie, NOMEFILME, GENERO, SINOPSE, CLASSIND, DURACAO, emcart,movieImagePath);
+            Movies movies = new Movies(idMovie, NOMEFILME, GENERO, SINOPSE, CLASSIND, DURACAO, emcart, movieImagePath);
             moviesDao.updateMovie(movies);
         }
 
