@@ -77,10 +77,28 @@
       <p>Duracao: ${param.duracao} minutos</p>
       <p>Sinopse:</p>
       <p>${param.sinopse}</p>
-      <a href="comprar-ingresso.jsp?id=${param.id}" class="btn btn-primary">Comprar Ingresso</a>
+      <a href="assentos.jsp?id=${param.idMovie}" class="btn btn-primary">Comprar Ingresso</a>
     </div>
   </div>
 </div>
+
+
+
+<div class="container mt-4">
+  <h3>Horarios Disponiveis</h3>
+  <div class="row">
+    <c:forEach var="sessao" items="${sessaoList}">
+      <div class="col-md-3">
+        <div class="session-box border rounded text-center p-3">
+          <p><strong>Data:</strong> ${sessao.data}</p>
+          <p><strong>Hora:</strong> ${sessao.horario}</p>
+          <a href="assentos.jsp?id=${param.idMovie}&sessaoId=${sessao.id}" class="btn btn-outline-primary">Selecionar</a>
+        </div>
+      </div>
+    </c:forEach>
+  </div>
+</div>
+
 
 
 <main>

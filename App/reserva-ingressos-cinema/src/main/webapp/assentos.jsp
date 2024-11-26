@@ -94,15 +94,15 @@
     <div class="icons">
         <img src="img/pesqui.png" alt="Pesquisar Icon">
         <span>Pesquisar</span> &nbsp;
+        <img src="img/user.png" alt="Login Icon">
         <c:choose>
             <c:when test="${not empty sessionScope.loggeduser}">
             <a href="minhaConta.jsp">
-                <img src="img/user.png" alt="Login Icon">
+
             </a>
             </c:when>
             <c:otherwise>
                 <a href="/login.jsp" style="text-decoration: none; color: inherit;">
-                    <img src="img/user.png" alt="Login Icon">
                     <span>Entre ou Cadastre-se</span>
                 </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </c:otherwise>
@@ -341,6 +341,8 @@
         </div>
     </div>
 
+
+
         <div class="legend">
             <div class="legend-item">
                 <img src="img/PoltronaLivre.png" alt="Disponível">
@@ -358,5 +360,12 @@
 
 
     <div class="screen"></div>
+
+    <script>
+      function toggleMenu() {
+        var menu = document.getElementById("sideMenu");
+        menu.classList.toggle("active");
+      }
+    </script>
 </body>
 </html>

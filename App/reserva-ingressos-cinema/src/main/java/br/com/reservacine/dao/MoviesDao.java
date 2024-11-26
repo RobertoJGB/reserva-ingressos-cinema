@@ -93,6 +93,42 @@ public class MoviesDao {
         return Collections.emptyList();
     }
 
+    public List<Movies> findMovieById(String id) {
+        String SQL = "SELECT * FROM MOVIES WHERE IDMOVIE = ?";
+        List<Movies> allMovies = new ArrayList<>();
+
+        try (
+                Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(SQL)
+        ) {
+            preparedStatement.setString(1, id);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String idMovie = resultSet.getString("IDMOVIE");
+                    String name = resultSet.getString("NAME");
+                    String genero = resultSet.getString("GENERO");
+                    String sinopse = resultSet.getString("SINOPSE");
+                    String classInd = resultSet.getString("CLASSIND");
+                    String duracao = resultSet.getString("DURACAO");
+                    String emCartaz = resultSet.getString("EMCARTAZ");
+                    String image = resultSet.getString("IMAGE");
+
+
+                    Movies movies = new Movies(idMovie, name, genero, sinopse, classInd, duracao, emCartaz, image);
+                    allMovies.add(movies);
+                }
+            }
+
+            System.out.println("Sucesso ao consultar os dados na tabela.");
+        } catch (Exception e) {
+            System.out.println("Falha ao consultar os filmes: " + e.getMessage());
+        }
+
+        return allMovies;
+    }
+
+
     public void deleteMovieById(String movieId) {
 
         String SQL = "DELETE FROM MOVIES WHERE IDMOVIE = ?";

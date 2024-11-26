@@ -70,50 +70,44 @@ public class SessionsDao {
         }
     }
 
-    public List<Sessions> findAllSessions() {
-
+    public List<Sessions> findAllSessionsByMovie(String fkMovie) {
         String SQL = "SELECT s.IDSESSION, s.HORARIO, m.NAME AS nomeFilme, sa.LUGAR AS lugar, sa.DISPONIVEL AS disponibilidade " +
                 "FROM SESSIONS s " +
                 "JOIN MOVIES m ON s.FKMOVIE = m.IDMOVIE " +
-                "JOIN SALA sa ON s.FKSALA = sa.IDSALA";
+                "JOIN SALA sa ON s.FKSALA = sa.IDSALA " +
+                "WHERE s.FKMOVIE = ?";
 
-        try {
+        List<Sessions> allSessions = new ArrayList<>();
 
-            Connection connection = ConnectionPoolConfig.getConnection();
+        try (
+                Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(SQL)
+        ) {
+            // Configura o parâmetro do WHERE
+            preparedStatement.setString(1, fkMovie);
 
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String idSession = resultSet.getString("IDSESSION");
+                    String hora = resultSet.getString("HORARIO");
+                    String nomeFilme = resultSet.getString("nomeFilme");
+                    String lugar = resultSet.getString("lugar");
+                    boolean disponibilidade = resultSet.getBoolean("disponibilidade");
 
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            List<Sessions> allSessions = new ArrayList<>();
-
-            while (resultSet.next()) {
-                String idSession = resultSet.getString("IDSESSION");
-                String hora = resultSet.getString("HORARIO");
-                String nomeFilme = resultSet.getString("nomeFilme");
-                String sala = resultSet.getString("sala");
-
-
-                Sessions session = new Sessions(idSession, hora, nomeFilme, sala);
-
-                allSessions.add(session);
-
+                    // Cria o objeto Sessions e o adiciona à lista
+                    Sessions session = new Sessions(idSession, hora, nomeFilme, lugar, disponibilidade);
+                    allSessions.add(session);
+                }
             }
 
-            System.out.println("Sucesso ao consultar os dados na tabela");
-
-            connection.close();
-
-            return allSessions;
-
+            System.out.println("Sucesso ao consultar as sessões para o filme com FKMOVIE = " + fkMovie);
         } catch (Exception e) {
-
-            System.out.println("Falha ao consultar os Sessões " + e.getMessage());
-
+            System.out.println("Falha ao consultar as sessões: " + e.getMessage());
         }
 
-        return Collections.emptyList();
+        return allSessions;
     }
+
 
     public void deleteSessionById(String sessionId) {
 
