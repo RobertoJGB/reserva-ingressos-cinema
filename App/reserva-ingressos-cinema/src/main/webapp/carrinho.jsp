@@ -18,23 +18,24 @@
     <div class="menu-icon" onclick="toggleMenu()">
         <img src="img/li.png" alt="Menu Icon">
     </div>
-    <div class="logo">PrimeTicket</div>
+    <a href="/find-all-movies" class="logo" style="text-decoration: none; color: inherit;">PrimeTicket</a>
+
     <div class="icons">
         <img src="img/pesqui.png" alt="Pesquisar Icon">
         <span>Pesquisar</span> &nbsp;
         <c:choose>
-        <c:when test="${not empty sessionScope.user}">
-            <a href="minhaConta.jsp">
-                <img src="img/user.png" alt="Login Icon">
-            </a>
-        </c:when>
-        <c:otherwise>
-            <a href="login.jsp" style="text-decoration: none; color: inherit;">
-                <img src="img/user.png" alt="Login Icon">
-                <span>Entre ou Cadastre-se</span>
-            </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </c:otherwise>
-    </c:choose>
+            <c:when test="${not empty sessionScope.user}">
+                <a href="minhaConta.jsp">
+                    <img src="img/user.png" alt="Login Icon">
+                </a>
+            </c:when>
+            <c:otherwise>
+                <a href="login.jsp" style="text-decoration: none; color: inherit;">
+                    <img src="img/user.png" alt="Login Icon">
+                    <span>Entre ou Cadastre-se</span>
+                </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 

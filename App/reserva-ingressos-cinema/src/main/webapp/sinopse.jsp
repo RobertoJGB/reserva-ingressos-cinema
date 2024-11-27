@@ -9,6 +9,7 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/body.css">
     <link rel="stylesheet" href="css/sinopse.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
 
 </head>
@@ -72,38 +73,38 @@
             <img src="${param.image}" alt="${param.nomeFilme}" class="img-fluid rounded">
         </div>
         <div class="col-md-8">
-            <h2>${param.nomeFilme}</h2>
-            <p>Genero: ${param.genero}</p>
-            <p>Classificaaoo Indicativa: ${param.classInd}</p>
-            <p>Duracao: ${param.duracao} minutos</p>
-            <p>Sinopse:</p>
-            <p>${param.sinopse}</p>
-            <a href="assentos.jsp?id=${param.idMovie}" class="btn btn-primary">Comprar Ingresso</a>
+            <h2 style="font-size: 2em;">${param.nomeFilme}</h2>
+            <p style="font-size: 1.2em;">Genero: ${param.genero}</p>
+            <p style="font-size: 1.2em;">Classificacao Indicativa: ${param.classInd}</p>
+            <p style="font-size: 1.2em;">Duracao: ${param.duracao} minutos</p>
+            <p style="font-size: 1.2em;">Sinopse:</p>
+            <p style="font-size: 1.2em;">${param.sinopse}</p>
         </div>
+
     </div>
 </div>
 
 
-<div class="container mt-4">
-    <h3 class ="hora">Horarios Disponiveis</h3>
-    <div class="row">
+<div class="container mt-5">
+    <h3 class="hora text-center" style="font-family: 'Arial', sans-serif; color: #fff;">Horarios Disponiveis</h3>
+    <div class="row justify-content-center">
         <c:forEach var="session" items="${session}">
-            <div class="col-md-3">
-                <div class="session-box border rounded text-center p-3">
-                    <p><strong>Sala:</strong> ${session.sala}</p>
-                    <p><strong>Hora:</strong> ${session.horario}</p>
-                    <a href="assentos.jsp?id=${param.idMovie}&sessaoId=${sessao.id}" class="btn btn-outline-primary">Selecionar</a>
+            <div class="col-md-4 mb-4">
+                <div class="session-box border rounded text-center p-4" style="box-shadow: 0 2px 5px rgba(0,0,0,.1);">
+                    <p style="font-size: 18px;"><i class="fas fa-door-open"></i> Sala: ${session.sala}</p>
+                    <p style="font-size: 18px;"><i class="fas fa-clock"></i> Horario: ${session.horario}</p>
+                    <a href="assentos.jsp?id=${param.idMovie}&sessaoId=${sessao.id}" class="btn btn-primary" style="background-color:#0056b3; border:none;">Selecionar</a>
                 </div>
             </div>
         </c:forEach>
     </div>
 </div>
 
-
-<main>
-
-
-</main>
+<script type="text/javascript">
+function selectSession(idMovie, sessionId) {
+    // Lógica de redirecionamento ou exibição de modal pode ser implementada aqui
+}
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

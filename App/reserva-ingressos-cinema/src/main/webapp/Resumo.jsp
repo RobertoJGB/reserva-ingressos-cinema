@@ -125,14 +125,22 @@
     <div class="card mx-auto mt-3" style="width: 400px; background-color: black; border: none;">
 
         <div class="card-body">
-            <p class="card-text text-white text-start">
-                <strong>DEADPOOL & WOLVERINE</strong><br>
-                Assento - E8<br>
-                20 SETEMBRO 2024<br>
-                22H<br>
-                ASTROGILDO<br>
-                123456789-00
-            </p>
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="${param.image}" alt="${param.nomeFilme}" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-8">
+                        <h2 style="font-size: 2em;">${param.nomeFilme}</h2>
+                        <p></p>
+                        <p style="font-size: 1.2em;">Genero: ${param.genero}</p>
+                        <p style="font-size: 1.2em;">Classificacao Indicativa: ${param.classInd}</p>
+                        <p style="font-size: 1.2em;">Duracao: ${param.duracao} minutos</p>
+                        <p style="font-size: 1.2em;">Sinopse:</p>
+                        <p style="font-size: 1.2em;">${param.sinopse}</p>
+                    </div>
+                </div>
+            </div>
             <button class="btn btn-primary w-100" onclick="window.location.href='carrinho.jsp'">Finalizar Reserva</button>
         </div>
     </div>
