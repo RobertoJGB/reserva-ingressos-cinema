@@ -58,7 +58,7 @@
                 </form>
             </c:when>
             <c:otherwise>
-                Que tal <a href="/login.jsp" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
+                Que tal <a href="/loginC" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
                 conta?</a>
             </c:otherwise>
         </c:choose>

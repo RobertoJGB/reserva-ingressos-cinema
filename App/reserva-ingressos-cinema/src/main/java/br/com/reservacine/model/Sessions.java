@@ -3,25 +3,23 @@ package br.com.reservacine.model;
 public class Sessions {
     private String idSession;
     private String horario;
-    private String fkSala;
+    private String sala;
     private String fkIdFilme;
 
 
-    public Sessions(String horario, String fkSala, String fkIdFilme) {
+    public Sessions(String horario, String sala, String fkIdFilme) {
         this.horario = horario;
-        this.fkSala = fkSala;
+        this.sala = sala;
+        this.fkIdFilme = fkIdFilme;
+    }
+    public Sessions(String id,String horario, String sala, String fkIdFilme) {
+        this.idSession = id;
+        this.horario = horario;
+        this.sala = sala;
         this.fkIdFilme = fkIdFilme;
     }
 
-    public Sessions(String idSession, String horario, String fkSala, String fkIdFilme) {
-        this.idSession = idSession;
-        this.horario = horario;
-        this.fkSala = fkSala;
-        this.fkIdFilme = fkIdFilme;
-    }
 
-    public Sessions(String idSession, String hora, String nomeFilme, String lugar, boolean disponibilidade) {
-    }
 
 
     public String getIdSession() {
@@ -32,8 +30,8 @@ public class Sessions {
         return horario;
     }
 
-    public String getFkSala() {
-        return fkSala;
+    public String getSala() {
+        return sala;
     }
 
     public String getFkIdFilme() {

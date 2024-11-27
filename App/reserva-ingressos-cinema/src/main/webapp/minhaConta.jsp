@@ -21,13 +21,13 @@
         <img src="img/pesqui.png" alt="Pesquisar Icon">
         <span>Pesquisar</span> &nbsp;
         <c:choose>
-            <c:when test="${not empty sessionScope.loggeduser}">
+            <c:when test="${not empty sessionScope.user}">
                 <a href="minhaConta.jsp">
                     <img src="img/user.png" alt="Login Icon">
                 </a>
             </c:when>
             <c:otherwise>
-                <a href="/login.jsp" style="text-decoration: none; color: inherit;">
+                <a href="/loginC" style="text-decoration: none; color: inherit;">
                     <img src="img/user.png" alt="Login Icon">
                     <span>Entre ou Cadastre-se</span>
                 </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -46,10 +46,9 @@
     <div class="menu-content">
         <!-- Controle de diferenciação de logado ou não -->
         <c:choose>
-            <c:when test="${not empty sessionScope.loggeduser}">
-                Ola, ${sessionScope.loggeduser}
-                <button class="menu-button">Minha Conta</button>
-                <button class="menu-button">Meus Ingressos</button>
+            <c:when test="${not empty sessionScope.user}">
+                Ola, ${sessionScope.user.nome}
+                <button class="menu-button" onclick="window.location.href='minhaConta.jsp'">Minha Conta</button>
                 <button class="menu-button" onclick="window.location.href='SaibaMais.jsp'">Saiba mais sobre
                     PrimeTicket
                 </button>
@@ -58,7 +57,7 @@
                 </form>
             </c:when>
             <c:otherwise>
-                Que tal <a href="/login.jsp" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
+                Que tal <a href="/loginC" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
                 conta?</a>
             </c:otherwise>
         </c:choose>
@@ -68,8 +67,12 @@
     <div><br>
         <h1>DADOS PESSOAIS</h1>
     </div>
-    <form action="/create-user" method="post" class="bg-dark p-4 rounded shadow text-white"
+    <form action="/update-user" method="post" class="bg-dark p-4 rounded shadow text-white"
           style="width: 100%; max-width: 400px;">
+
+        <input type="hidden" id="id" name="id" value="${user.idUser}">
+
+
         <div class="mb-3">
             <label for="name" class="form-label">Nome completo</label>
             <input type="text" name="name" id="name" class="form-control" value="${user.nome}">
@@ -87,7 +90,7 @@
             <input type="password" name="senha" id="senha" class="form-control" value="${user.senha}">
         </div>
         <div class="mb-3">
-            <label for="birthdate" class="form-label">Data de Nascimento</label>
+            <label for="dtNasc" class="form-label">Data de Nascimento</label>
             <input type="text" name="dtNasc" id="dtNasc" class="form-control" value="${user.dtNasc}">
         </div>
         <div class="d-grid">

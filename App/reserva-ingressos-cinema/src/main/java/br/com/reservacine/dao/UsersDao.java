@@ -85,7 +85,7 @@ public class UsersDao {
         return Collections.emptyList();
     }
 
-    public ResultSet searchUser(String email) {
+    public ResultSet searchUsers(String email) {
 
         String SQL = "SELECT * FROM USERS WHERE email = ?";
 
@@ -102,6 +102,50 @@ public class UsersDao {
                 return resultSet;
             } else {
 
+                connection.close();
+                return null;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Falha ao consultar os Usuarios: " + e.getMessage());
+            return null;
+        }
+    }
+
+
+
+    public Users searchUser(String email) {
+
+        String SQL = "SELECT * FROM USERS WHERE email = ?";
+
+        try {
+
+            Connection connection = ConnectionPoolConfig.getConnection();
+
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+
+            if (resultSet.next()) {
+                System.out.println("Sucesso ao consultar os dados na tabela");
+
+                Users user = new Users(
+                        resultSet.getString("idUser"),
+                        resultSet.getString("name"),
+                        resultSet.getString("dtNasc"),
+                        resultSet.getString("cpf"),
+                        resultSet.getString("email"),
+                        resultSet.getString("senha")
+
+                );
+
+                resultSet.close();
+
+                return user;
+            } else {
+                System.out.println("Nenhum usuário encontrado.");
                 connection.close();
                 return null;
             }
@@ -168,9 +212,9 @@ public class UsersDao {
 
     }
 
-    public void updateUser(Users user) {
+    public boolean updateUser(Users user) {
 
-        String SQL = "UPDATE USERS SET NAME = ?, dtNasc = ?, cpf = ?, usuario = ?, senha = ? WHERE IDUSER = ?";
+        String SQL = "UPDATE USERS SET NAME = ?, dtNasc = ?, cpf = ?, email = ?, senha = ? WHERE IDUSER = ?";
 
         try {
 
@@ -190,10 +234,13 @@ public class UsersDao {
 
             connection.close();
 
+            return true;
+
         } catch (Exception e) {
 
             System.out.println("fail in update User");
             System.out.println("Error: " + e.getMessage());
+            return false;
 
         }
 

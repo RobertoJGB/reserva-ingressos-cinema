@@ -73,7 +73,7 @@
                 </form>
             </c:when>
             <c:otherwise>
-                Que tal <a href="/login.jsp" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
+                Que tal <a href="/loginC" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
                 conta?</a>
             </c:otherwise>
         </c:choose>
@@ -109,7 +109,7 @@
             </c:when>
             <c:otherwise>
                 <div>
-                    <a href="/login.jsp" style="text-decoration: none; color: inherit;">
+                    <a href="/loginC" style="text-decoration: none; color: inherit;">
                         <img src="img/user.png" alt="Login Icon">
                         <span>Entre ou Cadastre-se</span>
                     </a>

@@ -278,7 +278,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="fkfilme" class="form-label">ID do Filme:</label>
-                    <input type="text" name="fkfilme" id="fkfilme" class="form-control">
+                    <input type="text" name="fkfilme" id="fkfilme" class="form-control" value="${param.id}">
                 </div>
                 <button class="btn btn-primary w-100" type="submit">Registrar</button>
             </form>

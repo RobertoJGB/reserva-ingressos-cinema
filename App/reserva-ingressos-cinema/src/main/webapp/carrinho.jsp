@@ -23,18 +23,18 @@
         <img src="img/pesqui.png" alt="Pesquisar Icon">
         <span>Pesquisar</span> &nbsp;
         <c:choose>
-            <c:when test="${not empty sessionScope.loggeduser}">
-                <a href="minhaConta.jsp">
-                    <img src="img/user.png" alt="Login Icon">
-                </a>
-            </c:when>
-            <c:otherwise>
-                <a href="login.jsp" style="text-decoration: none; color: inherit;">
-                    <img src="img/user.png" alt="Login Icon">
-                    <span>Entre ou Cadastre-se</span>
-                </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </c:otherwise>
-        </c:choose>
+        <c:when test="${not empty sessionScope.user}">
+            <a href="minhaConta.jsp">
+                <img src="img/user.png" alt="Login Icon">
+            </a>
+        </c:when>
+        <c:otherwise>
+            <a href="login.jsp" style="text-decoration: none; color: inherit;">
+                <img src="img/user.png" alt="Login Icon">
+                <span>Entre ou Cadastre-se</span>
+            </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </c:otherwise>
+    </c:choose>
     </div>
 </div>
 
@@ -46,8 +46,8 @@
     <div class="menu-content">
         <!-- Controle de diferenciação de logado ou não -->
         <c:choose>
-            <c:when test="${not empty sessionScope.loggeduser}">
-                Ola, ${sessionScope.loggeduser}
+            <c:when test="${not empty sessionScope.user}">
+                Ola, ${sessionScope.user.nome}
                 <button class="menu-button">Minha Conta</button>
                 <button class="menu-button">Meus Ingressos</button>
                 <button class="menu-button">Saiba mais sobre PrimeTicket</button>
@@ -56,7 +56,7 @@
                 </form>
             </c:when>
             <c:otherwise>
-                Que tal <a href="login.jsp" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
+                Que tal <a href="/loginC" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
                 conta?</a>
             </c:otherwise>
         </c:choose>

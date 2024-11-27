@@ -29,14 +29,14 @@ public class CreateUserServlet extends HttpServlet {
         ResultSet rs = null;
         try {
             // Verifica se o usuário já existe
-            rs = usersDao.searchUser(user.getEmail());
+            rs = usersDao.searchUsers(user.getEmail());
 
             if (rs != null) {
                 String achadoEmail = rs.getString("email");
                 if (achadoEmail.equals(email)) {
                     // Caso o usuario já exista, redireciona para login.jsp com mensagem de erro
                     req.setAttribute("errorMessage", "Usuário já existe. Por favor, faça login.");
-                    RequestDispatcher dispatcher = req.getRequestDispatcher("/login");
+                    RequestDispatcher dispatcher = req.getRequestDispatcher("/loginC");
                     dispatcher.forward(req, resp);
                     return;
                 }
@@ -47,7 +47,7 @@ public class CreateUserServlet extends HttpServlet {
 
         } catch (Exception e) {
             req.setAttribute("errorMessage", "Erro ao criar usuário: " + e.getMessage());
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/login");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/loginC");
             dispatcher.forward(req, resp);
             return;
 
@@ -61,7 +61,7 @@ public class CreateUserServlet extends HttpServlet {
         }
 
         // Redireciona para a página inicial após a criação bem-sucedida
-        resp.sendRedirect("/login");
+        resp.sendRedirect("/loginC");
     }
 }
 

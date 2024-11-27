@@ -26,7 +26,7 @@ public class SessionsDao {
 
             // Configurando os parâmetros do PreparedStatement
             preparedStatement.setString(1, session.getHorario());
-            preparedStatement.setString(2, session.getFkSala());
+            preparedStatement.setString(2, session.getSala());
             preparedStatement.setString(3, session.getFkIdFilme());  // Corrigido: índice 3, não 5
             preparedStatement.executeUpdate();  // Usar executeUpdate para a inserção
 
@@ -70,11 +70,7 @@ public class SessionsDao {
     }
 
     public List<Sessions> findAllSessionsByMovie(String fkMovie) {
-        String SQL = "SELECT s.IDSESSION, s.HORARIO, m.NAME AS nomeFilme, sa.LUGAR AS lugar, sa.DISPONIVEL AS disponibilidade " +
-                "FROM SESSIONS s " +
-                "JOIN MOVIES m ON s.FKMOVIE = m.IDMOVIE " +
-                "JOIN SALA sa ON s.FKSALA = sa.IDSALA " +
-                "WHERE s.FKMOVIE = ?";
+        String SQL = "SELECT * FROM SESSIONS WHERE FKMOVIE = ?";
 
         List<Sessions> allSessions = new ArrayList<>();
 
@@ -82,24 +78,25 @@ public class SessionsDao {
                 Connection connection = ConnectionPoolConfig.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(SQL)
         ) {
-            // Configura o parâmetro do WHERE
+
             preparedStatement.setString(1, fkMovie);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     String idSession = resultSet.getString("IDSESSION");
                     String hora = resultSet.getString("HORARIO");
-                    String nomeFilme = resultSet.getString("nomeFilme");
-                    String lugar = resultSet.getString("lugar");
-                    boolean disponibilidade = resultSet.getBoolean("disponibilidade");
+                    String sala = resultSet.getString("SALA");
+                    String fk = resultSet.getString("fkMovie");
 
-                    // Cria o objeto Sessions e o adiciona à lista
-                    Sessions session = new Sessions(idSession, hora, nomeFilme, lugar, disponibilidade);
+
+
+                    Sessions session = new Sessions(idSession, hora, sala,fk);
                     allSessions.add(session);
                 }
             }
 
             System.out.println("Sucesso ao consultar as sessões para o filme com FKMOVIE = " + fkMovie);
+
         } catch (Exception e) {
             System.out.println("Falha ao consultar as sessões: " + e.getMessage());
         }
@@ -143,7 +140,7 @@ public class SessionsDao {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
             preparedStatement.setString(1, session.getHorario());
-            preparedStatement.setString(2, session.getFkSala());
+            preparedStatement.setString(2, session.getSala());
             preparedStatement.setString(3, session.getFkIdFilme());
             preparedStatement.setString(4, session.getIdSession());
 

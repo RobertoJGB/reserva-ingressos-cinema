@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <head>
     <title>Escolha seus assentos</title>
+
     <link rel="stylesheet" href="css/body.css">
     <style>
         body {
@@ -74,19 +77,7 @@
             font-weight: bold;
         }
     </style>
-    <script>
-        function selectSeat(seat) {
-            if (!seat.classList.contains('occupied')) {
-                seat.classList.toggle('selected');
-                if (seat.classList.contains('selected')) {
-                    seat.style.backgroundImage = "url('img/PoltronaEscolhida.png')";
-                } else {
-                    seat.style.backgroundImage = "url('img/PoltronaLivre.png')";
-                }
-                alert('Fileira: ' + seat.dataset.row + ', Assento: ' + seat.dataset.seat);
-            }
-        }
-    </script>
+
 </head>
 <body>
 <div class="navbar">
@@ -94,23 +85,23 @@
         <img src="img/li.png" alt="Menu Icon">
     </div>
     <a href="/find-all-movies" class="logo" style="text-decoration: none; color: inherit;">PrimeTicket</a>
+
     <div class="icons">
         <img src="img/pesqui.png" alt="Pesquisar Icon">
         <span>Pesquisar</span> &nbsp;
-        <img src="img/user.png" alt="Login Icon">
         <c:choose>
-            <c:when test="${not empty sessionScope.loggeduser}">
+            <c:when test="${not empty sessionScope.user}">
                 <a href="minhaConta.jsp">
-
+                    <img src="img/user.png" alt="Login Icon">
                 </a>
             </c:when>
             <c:otherwise>
-                <a href="/login.jsp" style="text-decoration: none; color: inherit;">
+                <a href="login.jsp" style="text-decoration: none; color: inherit;">
+                    <img src="img/user.png" alt="Login Icon">
                     <span>Entre ou Cadastre-se</span>
                 </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </c:otherwise>
         </c:choose>
-
     </div>
 </div>
 
@@ -123,10 +114,9 @@
     <div class="menu-content">
         <!-- Controle de diferenciação de logado ou não -->
         <c:choose>
-            <c:when test="${not empty sessionScope.loggeduser}">
-                Ola, ${sessionScope.loggeduser}
-                <button class="menu-button">Minha Conta</button>
-                <button class="menu-button">Meus Ingressos</button>
+            <c:when test="${not empty sessionScope.user}">
+                Ola, ${sessionScope.user.nome}
+                <button class="menu-button" onclick="window.location.href='minhaConta.jsp'">Minha Conta</button>
                 <button class="menu-button" onclick="window.location.href='SaibaMais.jsp'">Saiba mais sobre
                     PrimeTicket
                 </button>
@@ -135,12 +125,13 @@
                 </form>
             </c:when>
             <c:otherwise>
-                Que tal <a href="/login.jsp" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
+                Que tal <a href="/loginC" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
                 conta?</a>
             </c:otherwise>
         </c:choose>
     </div>
 </div>
+
 <h1>Escolha seus assentos</h1>
 <div class="cinema">
     <div class="row" data-row="h">
@@ -363,6 +354,7 @@
 <br><br>
 <div class="screen"></div>
 
+
 <script>
     function toggleMenu() {
         var menu = document.getElementById("sideMenu");
@@ -371,6 +363,18 @@
 
     function proceedToNextStep() {
         window.location.href = 'carrinho.jsp';
+    }
+
+    function selectSeat(seat) {
+        if (!seat.classList.contains('occupied')) {
+            seat.classList.toggle('selected');
+            if (seat.classList.contains('selected')) {
+                seat.style.backgroundImage = "url('img/PoltronaEscolhida.png')";
+            } else {
+                seat.style.backgroundImage = "url('img/PoltronaLivre.png')";
+            }
+            alert('Fileira: ' + seat.dataset.row + ', Assento: ' + seat.dataset.seat);
+        }
     }
 </script>
 </body>

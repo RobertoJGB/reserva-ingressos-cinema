@@ -25,7 +25,7 @@
         <img src="img/pesqui.png" alt="Pesquisar Icon">
         <span>Pesquisar</span> &nbsp;
         <c:choose>
-            <c:when test="${not empty sessionScope.loggeduser}">
+            <c:when test="${not empty sessionScope.user}">
                 <a href="minhaConta.jsp">
                     <img src="img/user.png" alt="Login Icon">
                 </a>
@@ -48,10 +48,9 @@
     <div class="menu-content">
         <!-- Controle de diferenciação de logado ou não -->
         <c:choose>
-            <c:when test="${not empty sessionScope.loggeduser}">
-                Ola, ${sessionScope.loggeduser}
-                <button class="menu-button">Minha Conta</button>
-                <button class="menu-button">Meus Ingressos</button>
+            <c:when test="${not empty sessionScope.user}">
+                Ola, ${sessionScope.user.nome}
+                <button class="menu-button" onclick="window.location.href='minhaConta.jsp'">Minha Conta</button>
                 <button class="menu-button" onclick="window.location.href='SaibaMais.jsp'">Saiba mais sobre
                     PrimeTicket
                 </button>
@@ -60,7 +59,7 @@
                 </form>
             </c:when>
             <c:otherwise>
-                Que tal <a href="login.jsp" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
+                Que tal <a href="/loginC" style="text-decoration: none; color: inherit; font-weight: bold;">criar uma
                 conta?</a>
             </c:otherwise>
         </c:choose>
@@ -88,11 +87,11 @@
 <div class="container mt-4">
     <h3>Horarios Disponiveis</h3>
     <div class="row">
-        <c:forEach var="sessao" items="${sessaoList}">
+        <c:forEach var="session" items="${session}">
             <div class="col-md-3">
                 <div class="session-box border rounded text-center p-3">
-                    <p><strong>Data:</strong> ${sessao.data}</p>
-                    <p><strong>Hora:</strong> ${sessao.horario}</p>
+                    <p><strong>Sala:</strong> ${session.sala}</p>
+                    <p><strong>Hora:</strong> ${session.horario}</p>
                     <a href="assentos.jsp?id=${param.idMovie}&sessaoId=${sessao.id}" class="btn btn-outline-primary">Selecionar</a>
                 </div>
             </div>
