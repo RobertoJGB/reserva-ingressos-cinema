@@ -93,7 +93,18 @@
                 <div class="session-box border rounded text-center p-4" style="box-shadow: 0 2px 5px rgba(0,0,0,.1);">
                     <p style="font-size: 18px;"><i class="fas fa-door-open"></i> Sala: ${session.sala}</p>
                     <p style="font-size: 18px;"><i class="fas fa-clock"></i> Horario: ${session.horario}</p>
-                    <a href="assentos.jsp?id=${param.idMovie}&sessaoId=${sessao.id}" class="btn btn-primary" style="background-color:#0056b3; border:none;">Selecionar</a>
+                    <a href="assentos.jsp?id=${param.idMovie}&sessaoId=${session.idSession}" class="btn btn-primary" style="background-color:#0056b3; border:none;">Selecionar</a>
+
+                    <c:if test="${sessionScope.user != null}">
+                        <!-- Formulário de Delete -->
+                        <form action="/delete-session" method="post" class="mt-2">
+                            <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <!-- Link para Update -->
+                        <a href="index.jsp?sessaoId=${session.idSession}&id=${param.id}&sala=${session.sala}&horario=${session.horario}"
+                           class="btn btn-outline-primary mt-2" style="font-weight: bold; border-radius: 8px;">Update</a>
+                    </c:if>
                 </div>
             </div>
         </c:forEach>

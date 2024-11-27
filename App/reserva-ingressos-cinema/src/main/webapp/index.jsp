@@ -268,13 +268,15 @@
         <!-- Session Form -->
         <div class="tab-pane fade" id="pills-session" role="tabpanel">
             <form action="/create-session" method="post">
+                <input type="hidden" id="ids" name="id" value="${param.sessaoId}">
+
                 <div class="mb-3">
                     <label for="horario" class="form-label">Horario da Sessao:</label>
-                    <input type="time" name="horario" id="horario" class="form-control">
+                    <input type="text" name="horario" id="horario" class="form-control" value="${param.horario}">
                 </div>
                 <div class="mb-3">
                     <label for="sala" class="form-label">Sala:</label>
-                    <input type="text" name="sala" id="sala" class="form-control">
+                    <input type="text" name="sala" id="sala" class="form-control" value="${param.sala}">
                 </div>
                 <div class="mb-3">
                     <label for="fkfilme" class="form-label">ID do Filme:</label>
