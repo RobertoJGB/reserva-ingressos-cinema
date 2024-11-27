@@ -271,22 +271,23 @@
     </div>
     <div class="seat-row" data-row="c">
         <div class="row-label">C</div>
-        <div class="seat" data-row="c" data-seat="1" onclick="selectSeat(this)"></div>
+
+        <div class="seat occupied" data-row="c" data-seat="1"></div>
         <div class="seat occupied" data-row="c" data-seat="2"></div>
-        <div class="seat" data-row="c" data-seat="3" onclick="selectSeat(this)"></div>
+        <div class="seat occupied" data-row="c" data-seat="3"></div>
         <div class="seat" data-row="c" data-seat="4" onclick="selectSeat(this)"></div>
         <div class="seat occupied" data-row="c" data-seat="5"></div>
         <div class="seat" data-row="c" data-seat="6" onclick="selectSeat(this)"></div>
         <div class="seat" data-row="c" data-seat="7" onclick="selectSeat(this)"></div>
         <div class="seat occupied" data-row="c" data-seat="8"></div>
         <div class="seat" data-row="c" data-seat="9" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="c" data-seat="10" onclick="selectSeat(this)"></div>
+        <div class="seat occupied" data-row="c" data-seat="10"></div>
         <div class="seat occupied" data-row="c" data-seat="11"></div>
         <div class="seat" data-row="c" data-seat="12" onclick="selectSeat(this)"></div>
         <div class="seat" data-row="c" data-seat="13" onclick="selectSeat(this)"></div>
         <div class="seat occupied" data-row="c" data-seat="14"></div>
-        <div class="seat" data-row="c" data-seat="15" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="c" data-seat="16" onclick="selectSeat(this)"></div>
+        <div class="seat occupied" data-row="c" data-seat="15"></div>
+        <div class="seat occupied" data-row="c" data-seat="16"></div>
         <div class="seat occupied" data-row="c" data-seat="17"></div>
         <div class="seat" data-row="c" data-seat="18" onclick="selectSeat(this)"></div>
         <div class="seat occupied" data-row="c" data-seat="19"></div>
@@ -296,36 +297,38 @@
     </div>
     <div class="seat-row" data-row="b">
         <div class="row-label">B</div>
-        <div class="seat occupied" data-row="b" data-seat="1"></div>
+
+        <div class="seat" data-row="b" data-seat="1" onclick="selectSeat(this)"></div>
         <div class="seat" data-row="b" data-seat="2" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="3" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="b" data-seat="4"></div>
-        <div class="seat" data-row="b" data-seat="5" onclick="selectSeat(this)"></div>
+        <div class="seat occupied" data-row="b" data-seat="3"></div>
+        <div class="seat" data-row="b" data-seat="4" onclick="selectSeat(this)"></div>
+        <div class="seat occupied" data-row="b" data-seat="5"></div>
         <div class="seat" data-row="b" data-seat="6" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="b" data-seat="7"></div>
+        <div class="seat" data-row="b" data-seat="7" onclick="selectSeat(this)"></div>
         <div class="seat" data-row="b" data-seat="8" onclick="selectSeat(this)"></div>
         <div class="seat" data-row="b" data-seat="9" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="b" data-seat="10"></div>
+        <div class="seat" data-row="b" data-seat="10" onclick="selectSeat(this)"></div>
         <div class="seat" data-row="b" data-seat="11" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="12" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="b" data-seat="13"></div>
-        <div class="seat" data-row="b" data-seat="14" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="15" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="b" data-seat="16"></div>
+        <div class="seat occupied" data-row="b" data-seat="12"></div>
+        <div class="seat" data-row="b" data-seat="13" onclick="selectSeat(this)"></div>
+        <div class="seat occupied" data-row="b" data-seat="14"></div>
+        <div class="seat occupied" data-row="b" data-seat="15"></div>
+        <div class="seat" data-row="b" data-seat="16" onclick="selectSeat(this)"></div>
         <div class="seat" data-row="b" data-seat="17" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="18" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="b" data-seat="19"></div>
+        <div class="seat occupied" data-row="b" data-seat="18"></div>
+        <div class="seat" data-row="b" data-seat="19" onclick="selectSeat(this)"></div>
         <div class="seat" data-row="b" data-seat="20" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="21" onclick="selectSeat(this)"></div>
+        <div class="seat occupied" data-row="b" data-seat="21"></div>
         <div class="seat" data-row="b" data-seat="22" onclick="selectSeat(this)"></div>
+
     </div>
     <div class="seat-row" data-row="a">
         <div class="row-label">A</div>
-        <div class="seat" data-row="a" data-seat="1" onclick="selectSeat(this)"></div>
+        <div class="seat occupied" data-row="a" data-seat="1"></div>
         <div class="seat occupied" data-row="a" data-seat="2"></div>
         <div class="seat" data-row="a" data-seat="3" onclick="selectSeat(this)"></div>
         <div class="seat" data-row="a" data-seat="4" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="a" data-seat="5"></div>
+        <div class="seat" data-row="a" data-seat="5" onclick="selectSeat(this)"></div>
         <div class="seat" data-row="a" data-seat="6" onclick="selectSeat(this)"></div>
         <div class="seat" data-row="a" data-seat="7" onclick="selectSeat(this)"></div>
         <div class="seat occupied" data-row="a" data-seat="8"></div>
@@ -371,7 +374,7 @@
     }
 
     function proceedToNextStep() {
-        window.location.href = 'Resumo.jsp';
+        window.location.href = 'carrinho.jsp';
     }
 
     function selectSeat(seat) {

@@ -11,6 +11,9 @@ body {
 h1 {
     color: #D9D9D9;
 }
+.hora {
+    color: #D9D9D9;
+}
 
 .navbar {
     display: flex;

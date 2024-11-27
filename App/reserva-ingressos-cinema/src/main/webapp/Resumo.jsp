@@ -133,7 +133,7 @@
                 ASTROGILDO<br>
                 123456789-00
             </p>
-            <button class="btn btn-primary w-100" onclick="finalizarReserva()">Finalizar Reserva</button>
+            <button class="btn btn-primary w-100" onclick="window.location.href='carrinho.jsp'">Finalizar Reserva</button>
         </div>
     </div>
 </div>

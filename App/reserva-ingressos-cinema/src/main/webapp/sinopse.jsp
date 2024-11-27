@@ -85,7 +85,7 @@
 
 
 <div class="container mt-4">
-    <h3>Horarios Disponiveis</h3>
+    <h3 class ="hora">Horarios Disponiveis</h3>
     <div class="row">
         <c:forEach var="session" items="${session}">
             <div class="col-md-3">
