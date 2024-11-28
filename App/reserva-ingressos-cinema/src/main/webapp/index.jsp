@@ -172,7 +172,8 @@
     <!-- Abas de navegação -->
     <ul class="nav nav-pills my-4 justify-content-center" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active me-4" id="pills-movie-tab" data-bs-toggle="pill" data-bs-target="#pills-movie"
+            <button class="nav-link active me-4" id="pills-movie-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-movie"
                     type="button" role="tab">
                 <i class="fas fa-video me-2"></i> Create Movie
             </button>

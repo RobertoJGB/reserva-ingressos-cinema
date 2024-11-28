@@ -2,10 +2,10 @@ package br.com.reservacine.model;
 
 public class Ticket {
 
-    private String idTicket;
     private final String fkIdUser;
     private final String fkIdFilme;
     private final String fkIdsession;
+    private String idTicket;
 
     public Ticket(String fkIdUser, String fkIdFilme, String fkIdsession) {
         this.fkIdUser = fkIdUser;

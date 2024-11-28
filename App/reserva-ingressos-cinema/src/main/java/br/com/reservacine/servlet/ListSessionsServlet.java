@@ -1,7 +1,6 @@
 package br.com.reservacine.servlet;
 
 import br.com.reservacine.dao.SessionsDao;
-import br.com.reservacine.model.Movies;
 import br.com.reservacine.model.Sessions;
 
 import javax.servlet.ServletException;

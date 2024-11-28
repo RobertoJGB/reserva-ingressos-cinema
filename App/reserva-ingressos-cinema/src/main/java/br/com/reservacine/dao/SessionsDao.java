@@ -89,8 +89,7 @@ public class SessionsDao {
                     String fk = resultSet.getString("fkMovie");
 
 
-
-                    Sessions session = new Sessions(idSession, hora, sala,fk);
+                    Sessions session = new Sessions(idSession, hora, sala, fk);
                     allSessions.add(session);
                 }
             }

@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -28,7 +27,7 @@ public class UptadeUserServlet extends HttpServlet {
         Users user = new Users(id, nome, dtNasc, cpf, email, senha);
         uD.updateUser(user);
         req.setAttribute("successMessage", "Alteração bem sucedida");
-        resp.sendRedirect("/find-acount?email="+ user.getEmail());
+        resp.sendRedirect("/find-acount?email=" + user.getEmail());
 
 
     }
