@@ -95,10 +95,6 @@
 
     <!-- Ícones de Pesquisar e Conta -->
     <div class="icons">
-        <div>
-            <img src="img/pesqui.png" alt="Pesquisar Icon" onclick="window.location.href='/pesquisar.jsp'">
-            <span>Pesquisar</span>
-        </div>
         <c:choose>
             <c:when test="${not empty sessionScope.user}">
                 <div>

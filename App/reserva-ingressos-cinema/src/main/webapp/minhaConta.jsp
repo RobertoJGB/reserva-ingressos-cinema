@@ -18,8 +18,6 @@
     </div>
     <a href="/find-all-movies" class="logo" style="text-decoration: none; color: inherit;">PrimeTicket</a>
     <div class="icons">
-        <img src="img/pesqui.png" alt="Pesquisar Icon">
-        <span>Pesquisar</span> &nbsp;
         <c:choose>
             <c:when test="${not empty sessionScope.user}">
                 <a href="minhaConta.jsp">
