@@ -96,6 +96,7 @@
         <div class="d-grid">
             <button type="submit" class="btn btn-light">Alterar dados</button>
             <a href="/find-all-movies" class="btn btn-warning mt-4">Voltar para tela inicial</a>
+            <a href="/delete-user?id=${user.idUser}" class="btn btn-warning mt-4">Excluir Conta</a>
         </div>
     </form>
 </div>

@@ -16,13 +16,25 @@ public class ListMovieServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        MoviesDao dao = new MoviesDao();
+        List<Movies> allMovies = dao.findAllMovies();
+        Movies destaque = null;
 
-        MoviesDao moviesDao = new MoviesDao();
-        List<Movies> allMovies = moviesDao.findAllMovies();
 
+        for (Movies movie : allMovies) {
+            if ("emDestaq".equals(movie.getEmcart())) {
+                destaque = movie;
+                break;
+            }
+        }
+
+
+        if (destaque != null) {
+            allMovies.remove(destaque);
+            allMovies.add(0, destaque);
+        }
 
         req.setAttribute("movies", allMovies);
-
         req.getRequestDispatcher("/dashboard.jsp").forward(req, resp);
     }
 }

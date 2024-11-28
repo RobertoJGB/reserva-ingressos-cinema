@@ -97,7 +97,7 @@
 
                     <c:if test="${sessionScope.user != null}">
                         <!-- Formulário de Delete -->
-                        <form action="/delete-session" method="post" class="mt-2">
+                        <form action="/delete-session?id=${session.idSession}&fkmovie=${movies.idMovie}" method="post" class="mt-2">
                             <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>

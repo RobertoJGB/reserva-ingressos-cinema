@@ -22,13 +22,13 @@
     <div class="form-container cadastrar">
         <form action="/create-user" method="post">
             <h1>Criar conta</h1>
-            <input type="text" name="name" id="name" placeholder="Nome" value="${param.nome}" class="form-control">
-            <input type="text" name="email" id="email" placeholder="Email" value="${param.email}" class="form-control">
+            <input type="text" name="name" id="name" placeholder="Nome" value="${param.nome}" class="form-control" required>
+            <input type="email" name="email" id="email" placeholder="Email" value="${param.email}" class="form-control" required>
             <input type="text" name="dtNasc" id="dtNasc" placeholder="Data de nascimento" value="${param.dtNasc}"
-                   class="form-control">
-            <input type="text" name="cpf" id="cpf" placeholder="CPF" value="${param.cpf}" class="form-control">
+                   class="form-control" required>
+            <input type="text" name="cpf" id="cpf" placeholder="CPF" value="${param.cpf}" class="form-control" required>
             <input type="text" name="senha" id="senhaCadastro" placeholder="Senha" value="${param.senha}"
-                   class="form-control">
+                   class="form-control" required>
             <button class="btn btn-primary" type="submit">Cadastrar</button>
         </form>
     </div>
@@ -36,8 +36,8 @@
     <div class="form-container login">
         <form action="/login" method="post">
             <h1>Logar</h1>
-            <input type="text" name="loginEmail" id="loginEmail" placeholder="Email" class="form-control">
-            <input type="password" name="loginSenha" id="loginSenha" placeholder="Senha" class="form-control">
+            <input type="text" name="loginEmail" id="loginEmail" placeholder="Email" class="form-control" required>
+            <input type="password" name="loginSenha" id="loginSenha" placeholder="Senha" class="form-control" required>
             <button class="btn btn-primary" type="submit">Entrar</button>
         </form>
     </div>

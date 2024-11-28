@@ -2,6 +2,7 @@
 <html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
@@ -69,24 +70,35 @@
 <div class="container mt-5">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item">
-                <img src="img/coringa.png" class="d-block w-100 rounded-image custom-carousel-image"
-                     alt="Imagem Star Wars">
-            </div>
-            <div class="carousel-item active">
-                <img src="img/sonic.png" class="d-block w-100 rounded-image custom-carousel-image" alt="Imagem Sonic">
-            </div>
-            <div class="carousel-item">
-                <img src="img/StarWars.jpg" class="d-block w-100 rounded-image custom-carousel-image"
-                     alt="Imagem Star Wars">
-            </div>
+            <c:forEach var="movie" items="${movies}" varStatus="status">
+                <c:if test="${movie.emcart == 'emDestaq'}">
+                    <!-- Verifica se é o primeiro item e atribui a classe 'active' -->
+                    <div class="carousel-item ${status.first ? 'active' : ''}">
+                        <!-- Envolvendo a imagem do carrossel com um link -->
+                        <a href="/find-session?id=${movie.idMovie}&nomeFilme=${movie.nomeFilme}&genero=${movie.genero}
+                            &sinopse=${movie.sinopse}&classInd=${movie.classInd}&duracao=${movie.duracao}&image=${movie.image}">
+                            <img src="${movie.image}" class="d-block w-100 rounded-image custom-carousel-image"
+                                 alt="Imagem de ${movie.nomeFilme}">
+                        </a>
+                    </div>
+                </c:if>
+            </c:forEach>
         </div>
-    </div>
-    <div class="button-container">
-        <span class="carousel-button">Saiba mais</span>
-        <span class="carousel-button">Comprar ingresso</span>
+
+        <!-- Botões de navegação -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </div>
+
+    
+
 
 
 <!-- Em Cartaz -->
@@ -158,6 +170,6 @@
         menu.classList.toggle("active");
     }
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

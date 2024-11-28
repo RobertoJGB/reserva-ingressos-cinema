@@ -25,9 +25,15 @@ public class UptadeUserServlet extends HttpServlet {
 
         UsersDao uD = new UsersDao();
         Users user = new Users(id, nome, dtNasc, cpf, email, senha);
-        uD.updateUser(user);
-        req.setAttribute("successMessage", "Alteração bem sucedida");
-        resp.sendRedirect("/find-acount?email=" + user.getEmail());
+        if(id != null){
+            uD.updateUser(user);
+            req.setAttribute("successMessage", "Alteração bem sucedida");
+            resp.sendRedirect("/find-acount?email=" + user.getEmail());
+        }else{
+            req.setAttribute("errorMessage", "Erro na alteração");
+            resp.sendRedirect("/find-acount?email=" + user.getEmail());
+        }
+
 
 
     }

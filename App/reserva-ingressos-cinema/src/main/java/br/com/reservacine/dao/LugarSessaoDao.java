@@ -73,13 +73,13 @@ public class LugarSessaoDao {
         }
     }
 
-    public void deleteLugar(int idLugarSessao) {
-        String SQL = "DELETE FROM lugar_sessao WHERE id_lugar_sessao = ?";
+    public void deleteLugar(String fkSessao) {
+        String SQL = "DELETE FROM lugar_sessao WHERE fk_sessao = ?";
 
         try {
             Connection connection = ConnectionPoolConfig.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setInt(1, idLugarSessao); // Passando o ID do lugar
+            preparedStatement.setString(1, fkSessao); // Passando o ID do lugar
             preparedStatement.executeUpdate();
 
             System.out.println("Lugar excluído com sucesso.");

@@ -48,7 +48,7 @@ public class SessionsDao {
     }
 
     private void createSeatsDirectly(Connection connection, int sessionId) {
-        String[] fileiras = {"A", "B", "C", "D", "E"};
+        String[] fileiras = {"A", "B", "C", "D", "E", "F", "G", "H"};
         String sql = "INSERT INTO lugar_sessao (fk_sessao, lugar, disponivel) VALUES (?, ?, ?)";
 
         try {
@@ -106,9 +106,12 @@ public class SessionsDao {
 
     public void deleteSessionById(String sessionId) {
 
-        String SQL = "DELETE FROM MOVIES WHERE IDSESSION = ?";
+        String SQL = "DELETE FROM SESSIONS WHERE IDSESSION = ?";
 
         try {
+
+            LugarSessaoDao ld = new LugarSessaoDao();
+            ld.deleteLugar(sessionId);
 
             Connection connection = ConnectionPoolConfig.getConnection();
 

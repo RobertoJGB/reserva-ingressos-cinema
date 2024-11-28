@@ -17,9 +17,9 @@
 }
 
 .col-md-4 img {
-    width: 400px; /* Largura maior para pôster */
-    height: 600px; /* Altura proporcional */
-    object-fit: cover; /* Preenche o espaço sem distorcer a imagem */
-    border-radius: 10px; /* Opcional: bordas arredondadas */
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Destaque com sombra */
+    width: 400px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }

@@ -9,16 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/update-session")
+@WebServlet("/delete-session")
 public class DeleteSessionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String movieId = req.getParameter("idMovie");
+        String idSession = req.getParameter("id");
+        String id = req.getParameter("fkmovie");
         SessionsDao sd = new SessionsDao();
 
-        sd.deleteSessionById(movieId);
-        resp.sendRedirect("/find-session?id=" + movieId);
+        sd.deleteSessionById(idSession);
+        resp.sendRedirect("/find-all-movies");
 
     }
 }
