@@ -83,8 +83,8 @@
     <h2 class="titulo">Desenvolvedores</h2>
     <div class="img-topo">
         <img src="img/Leo.jpg" alt="teste"> &nbsp;
-        <img src="img/Bahia.jpg" alt="teste"> &nbsp;
-        <img src="img/Roberto.jpg" alt="teste"> &nbsp;
+        <img src="img/Lucas.jpg" alt="teste"> &nbsp;
+        <img src="img/roberto.jpg" alt="teste"> &nbsp;
         <img src="img/noleto.jpg" alt="teste"> &nbsp;
     </div>
     <section class="especialidades" id="especialidades">
