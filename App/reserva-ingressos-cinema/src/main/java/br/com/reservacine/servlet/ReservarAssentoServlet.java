@@ -17,16 +17,15 @@ public class ReservarAssentoServlet extends HttpServlet {
         LugarSessaoDao ld = new LugarSessaoDao();
 
         String lugarEsc = req.getParameter("assento");
+        String idUser = req.getParameter("idUser");
+        String idMovie = req.getParameter("idMovie");
+        String idSession = req.getParameter("idSession");
 
         if (lugarEsc != null && !lugarEsc.isEmpty()) {
-
             String[] seats = lugarEsc.split(",");
 
-
             for (String seat : seats) {
-
-                int idLugarSessao = ld.mapearIdLugar(seat);
-
+                int idLugarSessao = ld.mapearIdLugarPorSessao(seat,idSession);
 
                 if (idLugarSessao != -1) {
                     ld.reservarLugar(idLugarSessao);
@@ -34,14 +33,22 @@ public class ReservarAssentoServlet extends HttpServlet {
                     System.out.println("Lugar não encontrado: " + seat);
                 }
             }
-        }else{
-            System.out.println("ERROOODAODOAD");
+
+            req.setAttribute("lugarEsc", lugarEsc);
+            req.setAttribute("idUser", idUser);
+            req.setAttribute("idMovie", idMovie);
+            req.setAttribute("idSession", idSession);
+
+
+
+
+        } else {
+            System.out.println("Nenhum assento foi selecionado.");
         }
 
+        req.getRequestDispatcher("/create-ticket").forward(req, resp);
 
 
-
-        resp.sendRedirect("confirmacao.jsp");
     }
 }
 

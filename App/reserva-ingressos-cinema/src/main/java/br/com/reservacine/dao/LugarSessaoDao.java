@@ -59,31 +59,51 @@ public class LugarSessaoDao {
     }
 
     // Método para mapear o nome do lugar para o id_lugar_sessao
-    public int mapearIdLugar(String lugar) {
-        // SQL para buscar o id_lugar_sessao correspondente ao lugar
-        String SQL = "SELECT id_lugar_sessao FROM lugar_sessao WHERE lugar = ? AND disponivel = true LIMIT 1"; // Somente lugares disponíveis
+    public int mapearIdLugarPorSessao(String lugar, String fkSessao) {
+        String SQL = "SELECT id_lugar_sessao FROM lugar_sessao WHERE lugar = ? AND fk_sessao = ? AND disponivel = true LIMIT 1";
 
         try (
                 Connection connection = ConnectionPoolConfig.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SQL)) {
-
-            // Definir o lugar como parâmetro da consulta
-            preparedStatement.setString(1, lugar);
+                PreparedStatement preparedStatement = connection.prepareStatement(SQL)
+        ) {
+            preparedStatement.setString(1, lugar); // Nome do lugar (ex: A1)
+            preparedStatement.setString(2, fkSessao); // ID da sessão
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    System.out.println(resultSet.getString("id_lugar_sessao"));
                     return resultSet.getInt("id_lugar_sessao");
                 }
             }
-
         } catch (Exception e) {
-            System.out.println("Erro ao mapear o lugar: " + e.getMessage());
+            System.out.println("Erro ao mapear o lugar para a sessão: " + e.getMessage());
         }
 
-        // Se o lugar não for encontrado, retorna -1
-        return -1;
+        return -1; // Retorna -1 se o lugar não for encontrado
     }
+
+    public int mapearIdLugarPorSessaoTicket(String lugar, String fkSessao) {
+        String SQL = "SELECT id_lugar_sessao FROM lugar_sessao WHERE lugar = ? AND fk_sessao = ? AND disponivel = false LIMIT 1";
+
+        try (
+                Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(SQL)
+        ) {
+            preparedStatement.setString(1, lugar); // Nome do lugar (ex: A1)
+            preparedStatement.setString(2, fkSessao); // ID da sessão
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt("id_lugar_sessao");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao mapear o lugar para a sessão: " + e.getMessage());
+        }
+
+        return -1; // Retorna -1 se o lugar não for encontrado
+    }
+
+
 
 
     public void restaurarLugar(int idLugarSessao) {

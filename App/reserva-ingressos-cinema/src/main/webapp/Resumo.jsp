@@ -161,16 +161,15 @@
                         </ul>
                     </div>
                         <div style="text-align: center; margin-top: 15px;">
-                        <form action="/save-seat" method="post" style="display: inline;">
-                            <!-- Campo escondido para enviar os assentos selecionados -->
-                            <input type="hidden" id="assento" name="assento" value="${lugarEsc}">
+                            <form action="/save-seat" method="post">
+                                <input type="hidden" name="assento" id="assento" value="${lugarEsc}">
+                                <input type="hidden" name="idUser" id="iduser" value="${sessionScope.user.idUser}">
+                                <input type="hidden" name="idMovie" id="idmovie" value="${movie[0].idMovie}">
+                                <input type="hidden" name="idSession" id="idsession" value="${session[0].idSession}">
+                                <button type="submit" class="btn btn-primary">Finalizar Reserva</button>
+                            </form>
 
-                            <!-- Botão com redirecionamento -->
-                            <button type="submit" style="background-color: #e50914; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                                Finalizar Reserva
-                            </button>
-                        </form>
-                    </div>
+                        </div>
 
 
                 </div>
