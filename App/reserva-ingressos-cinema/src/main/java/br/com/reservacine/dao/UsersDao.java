@@ -113,7 +113,6 @@ public class UsersDao {
     }
 
 
-
     public Users searchUser(String email) {
 
         String SQL = "SELECT * FROM USERS WHERE email = ?";

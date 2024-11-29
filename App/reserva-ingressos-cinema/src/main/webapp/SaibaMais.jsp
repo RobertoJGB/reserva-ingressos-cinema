@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <head>
+    <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <meta charset="UTF-8">
     <title>Saiba Mais</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -68,11 +69,11 @@
                 <div class="txt-topo">
                     <h2 class="titulo">PLATAFORMA DE CINEMA <span>RESERVA DE INGRESSOS</span></h2>
                     <p>
-                        Bem-vindo a pagina de informacoes do nosso projeto integrador! Aqui, voce vai conhecer os
-                        detalhes por tras da criacao da nossa plataforma de cinema, uma solucao full-stack pensada para
-                        proporcionar uma experiencia completa e otimizada aos usuarios na hora de reservar ingressos
+                        Bem-vindo a pagina de informações do nosso projeto integrador! Aqui, voce vai conhecer os
+                        detalhes por trás da criação da nossa plataforma de cinema, uma solução full-stack pensada para
+                        proporcionar uma experiência completa e otimizada aos usuários na hora de reservar ingressos
                         para o cinema. Nosso projeto foi desenvolvido com tecnologias modernas, como Java, HTML e Banco
-                        de Dados, para garantir que a plataforma seja robusta, eficiente e facil de usar.
+                        de Dados, para garantir que a plataforma seja robusta, eficiente e fácil de usar.
                     </p>
                 </div>
             </div>
@@ -93,24 +94,24 @@
                 <div class="esp-box">
                     <i class="bi bi-code-square"></i>
                     <h3>Java</h3>
-                    <p>O coracao do nosso sistema e construido em Java, uma das linguagens mais poderosas e confiaveis
+                    <p>O coração do nosso sistema e construido em Java, uma das linguagens mais poderosas e confiáveis
                         para o desenvolvimento de sistemas robustos. Usamos Java para criar as classes que controlam
-                        toda a logica de funcionamento da plataforma.</p>
+                        toda a lógica de funcionamento da plataforma.</p>
                 </div>
                 <div class="esp-box">
                     <i class="bi bi-bug"></i>
                     <h3>HTML</h3>
-                    <p>No front-end, usamos HTML para criar a estrutura da plataforma, garantindo navegacao intuitiva.
-                        Estruturamos a pagina principal para busca de filmes, escolha de horarios e sessoes. A exibicao
-                        dos filmes, descricoes, horarios e disponibilidade de assentos e feita de forma clara e
-                        objetiva, dando ao usuario uma visao completa de sua escolha.</p>
+                    <p>No front-end, usamos HTML para criar a estrutura da plataforma, garantindo navegação intuitiva.
+                        Estruturamos a página principal para busca de filmes, escolha de horários e sessões. A exibição
+                        dos filmes, descrições, horários e disponibilidade de assentos e feita de forma clara e
+                        objetiva, dando ao usuário uma visão completa de sua escolha.</p>
                 </div>
                 <div class="esp-box">
                     <i class="bi bi-window-sidebar"></i>
                     <h3>Banco de Dados</h3>
-                    <p>Para organizar e acessar facilmente as informacoes, usamos um banco de dados relacional, onde
-                        armazenamos dados sobre filmes, sessoes e assentos disponiveis. Registramos as reservas e
-                        preferencias dos usuarios, garantindo seguranca nas transacoes e mantendo o historico de
+                    <p>Para organizar e acessar facilmente as informações, usamos um banco de dados relacional, onde
+                        armazenamos dados sobre filmes, sessões e assentos disponíveis. Registramos as reservas e
+                        preferencias dos usuários, garantindo segurança nas transações e mantendo o histórico de
                         compras.</p>
                 </div>
             </div>

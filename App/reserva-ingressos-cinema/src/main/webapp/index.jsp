@@ -2,6 +2,7 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
+    <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prime Ticket - Sistema de Gerenciamento</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -208,7 +209,7 @@
                     <input type="text" name="nomeFilme" id="nomeFilme" value="${param.nomeFilme}" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="genero" class="form-label">Genero:</label>
+                    <label for="genero" class="form-label">Gênero:</label>
                     <input type="text" name="genero" id="genero" value="${param.genero}" class="form-control">
                 </div>
                 <div class="mb-3">
@@ -216,11 +217,11 @@
                     <textarea name="sinopse" id="sinopse" class="form-control">${param.sinopse}</textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="classind" class="form-label">Classificacao:</label>
+                    <label for="classind" class="form-label">Classificação:</label>
                     <input type="text" name="classind" id="classind" value="${param.classInd}" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="duracao" class="form-label">Duracao:</label>
+                    <label for="duracao" class="form-label">Duração:</label>
                     <input type="text" name="duracao" id="duracao" value="${param.duracao}" class="form-control">
                 </div>
                 <div class="mb-3">
@@ -272,7 +273,7 @@
                 <input type="hidden" id="ids" name="id" value="${param.sessaoId}">
 
                 <div class="mb-3">
-                    <label for="horario" class="form-label">Horario da Sessao:</label>
+                    <label for="horario" class="form-label">Horário da Sessão:</label>
                     <input type="text" name="horario" id="horario" class="form-control" value="${param.horario}">
                 </div>
                 <div class="mb-3">
@@ -291,7 +292,7 @@
         <div class="tab-pane fade" id="pills-ticket" role="tabpanel">
             <form action="/create-ticket" method="post">
                 <div class="mb-3">
-                    <label for="fkiduser" class="form-label">ID do Usuario:</label>
+                    <label for="fkiduser" class="form-label">ID do Usuário:</label>
                     <input type="text" name="fkiduser" id="fkiduser" class="form-control">
                 </div>
                 <div class="mb-3">
@@ -299,7 +300,7 @@
                     <input type="text" name="fknomefilme" id="fknomefilme" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="fksession" class="form-label">ID da Sessao:</label>
+                    <label for="fksession" class="form-label">ID da Sessão:</label>
                     <input type="text" name="fksession" id="fksession" class="form-control">
                 </div>
                 <button class="btn btn-primary w-100" type="submit">Registrar</button>

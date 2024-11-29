@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <head>
+    <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <meta charset="UTF-8">
     <title>Carrinho</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -66,10 +67,10 @@
         <div class="interface">
             <div class="flex">
                 <div class="txt-topo">
-                    <h2 class="titulo">CONFIRMACAO DE <span>RESERVA</span></h2><br>
+                    <h2 class="titulo">CONFIRMAÇÃO DE <span>RESERVA</span></h2><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <img src="img/chec.png" alt="teste">
-                    <p>Obrigado por realizar a reserva conosco!<br>Va ao caixa do cinema e apresente o codigo: ID</p>
+                    <p>Obrigado por realizar a reserva conosco!<br>Va ao caixa do cinema e apresente o código: ID</p>
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <head>
+    <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <meta charset="UTF-8">
     <title>Saiba Mais</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -72,9 +73,9 @@
         </div>
         <div class="col-md-8">
             <h2 style="font-size: 2em;">${param.nomeFilme}</h2>
-            <p style="font-size: 1.2em;">Genero: ${param.genero}</p>
-            <p style="font-size: 1.2em;">Classificacao Indicativa: ${param.classInd}</p>
-            <p style="font-size: 1.2em;">Duracao: ${param.duracao} minutos</p>
+            <p style="font-size: 1.2em;">Gênero: ${param.genero}</p>
+            <p style="font-size: 1.2em;">Classificação Indicativa: ${param.classInd}</p>
+            <p style="font-size: 1.2em;">Duração ${param.duracao} minutos</p>
             <p style="font-size: 1.2em;">Sinopse:</p>
             <p style="font-size: 1.2em;">${param.sinopse}</p>
         </div>

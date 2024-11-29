@@ -12,14 +12,13 @@ public class Sessions {
         this.sala = sala;
         this.fkIdFilme = fkIdFilme;
     }
-    public Sessions(String id,String horario, String sala, String fkIdFilme) {
+
+    public Sessions(String id, String horario, String sala, String fkIdFilme) {
         this.idSession = id;
         this.horario = horario;
         this.sala = sala;
         this.fkIdFilme = fkIdFilme;
     }
-
-
 
 
     public String getIdSession() {

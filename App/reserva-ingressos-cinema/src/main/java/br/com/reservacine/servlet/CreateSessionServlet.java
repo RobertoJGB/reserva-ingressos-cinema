@@ -28,7 +28,6 @@ public class CreateSessionServlet extends HttpServlet {
         SessionsDao sd = new SessionsDao();
 
 
-
         sd.createSession(s);
 
 

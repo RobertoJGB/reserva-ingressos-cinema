@@ -19,11 +19,9 @@ public class DeleteUserServlet extends HttpServlet {
 
         UsersDao uD = new UsersDao();
 
-            uD.deleteUserById(id);
-            req.setAttribute("successMessage", "Exclusão bem sucedida");
-            resp.sendRedirect("/logout");
-
-
+        uD.deleteUserById(id);
+        req.setAttribute("successMessage", "Exclusão bem sucedida");
+        resp.sendRedirect("/logout");
 
 
     }
