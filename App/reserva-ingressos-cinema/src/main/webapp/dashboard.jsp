@@ -10,6 +10,81 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/body.css">
 </head>
+<style>
+    /* Estilo para o card do filme */
+    .movie-card {
+        border: none;
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: #121212;
+    }
+
+    .movie-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Imagem com efeito dinâmico */
+    .image-container img {
+        border-radius: 20px;
+        transition: transform 0.4s ease-in-out, filter 0.4s ease-in-out;
+    }
+
+    .movie-card:hover img {
+        transform: scale(1.1);
+        filter: brightness(80%);
+    }
+
+    /* Camada de sobreposição escura */
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+        text-align: center;
+    }
+
+    /* Título do filme */
+    .overlay h4 {
+        font-size: 1.8rem;
+        color: #fff;
+        font-weight: bold;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        margin-bottom: 15px;
+    }
+
+    /* Botão elegante */
+    .btn-action {
+        display: inline-block;
+        background-color: #e50914;
+        color: white;
+        font-weight: bold;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
+    }
+
+    .btn-action:hover {
+        background-color: #ff0a16;
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(255, 10, 22, 0.6);
+    }
+
+    /* Texto com sombra */
+    .text-shadow {
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    }
+</style>
+
+
 <body>
 
 <!-- Navbar -->
@@ -98,22 +173,28 @@
     
 
 
-
-<!-- Em Cartaz -->
 <div class="container mt-5">
-    <h1>Em Cartaz</h1>
+    <h1 class="display-4 mb-4 text-light">Filmes em Cartaz</h1>
     <div class="d-flex overflow-auto">
         <c:forEach var="movies" items="${movies}">
             <c:if test="${movies.emcart == 'emCartaz'}">
-                <div class="card me-3" style="width: 18rem;">
-                    <img src="${movies.image}" alt="poster" class="card-img-top"
-                         style="height: 300px; object-fit: cover;">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">${movies.nomeFilme}</h5>
-                        <a href="/find-session?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
-                        &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
-                           class="btn btn-primary">Comprar Ingresso</a>
-                        <c:if test="${sessionScope.user != null}">
+                <div class="movie-card me-4" style="width: 250px; position: relative; border-radius: 15px; overflow: hidden;">
+
+                    <!-- Camada da imagem com efeitos de iluminação -->
+                    <div class="image-container position-relative">
+                        <img src="${movies.image}" alt="Poster" class="w-100 h-100"
+                             style="height: 350px; object-fit: cover; filter: brightness(70%); transition: all 0.4s ease;">
+                        <div class="overlay d-flex flex-column justify-content-end p-2">
+                            <h5 class="text-white text-shadow mb-2">${movies.nomeFilme}</h5>
+                            <a href="/find-session?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
+                            &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
+                            class="btn btn-action">Assistir Agora</a>
+                        </div>
+                    </div>
+
+                    <!-- Ações adicionais para admin (Delete e Update) -->
+                    <c:if test="${sessionScope.user != null}">
+                        <div class="p-2 text-center">
                             <!-- Formulário de Delete -->
                             <form action="/delete-movie" method="post" class="mt-2">
                                 <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
@@ -121,28 +202,39 @@
                             </form>
                             <!-- Link para Update -->
                             <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
-&classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
+                                &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
                                class="btn btn-outline-primary mt-2" style="font-weight: bold; border-radius: 8px;">Update</a>
-                        </c:if>
-                    </div>
+                        </div>
+                    </c:if>
                 </div>
             </c:if>
         </c:forEach>
     </div>
 </div>
 
-<!-- Em Breve -->
+
+
+
 <div class="container mt-5">
-    <h1>Em Breve</h1>
+    <h1 class="display-4 mb-4 text-light">Em Breve</h1>
     <div class="d-flex overflow-auto">
         <c:forEach var="movies" items="${movies}">
             <c:if test="${movies.emcart == 'emBreve'}">
-                <div class="card me-3" style="width: 18rem;">
-                    <img src="${movies.image}" alt="poster" class="card-img-top"
-                         style="height: 300px; object-fit: cover;">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">${movies.nomeFilme}</h5>
-                        <c:if test="${sessionScope.user != null}">
+                <div class="movie-card me-4" style="width: 250px; position: relative; border-radius: 15px; overflow: hidden;">
+
+                    <!-- Camada da imagem com efeitos de iluminação -->
+                    <div class="image-container position-relative">
+                        <img src="${movies.image}" alt="Poster" class="w-100 h-100"
+                             style="height: 350px; object-fit: cover; filter: brightness(70%); transition: all 0.4s ease;">
+                        <div class="overlay d-flex flex-column justify-content-end p-2">
+                            <h5 class="text-white text-shadow mb-2">${movies.nomeFilme}</h5>
+                            <button class="btn btn-secondary" disabled style="opacity: 0.8;">Em Breve</button>
+                        </div>
+                    </div>
+
+                    <!-- Ações adicionais para admin (Delete e Update) -->
+                    <c:if test="${sessionScope.user != null}">
+                        <div class="p-2 text-center">
                             <!-- Formulário de Delete -->
                             <form action="/delete-movie" method="post" class="mt-2">
                                 <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
@@ -150,17 +242,15 @@
                             </form>
                             <!-- Link para Update -->
                             <a href="index.jsp?id=${movies.idMovie}&nomeFilme=${movies.nomeFilme}&genero=${movies.genero}&sinopse=${movies.sinopse}
-&classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
+                                &classInd=${movies.classInd}&duracao=${movies.duracao}&image=${movies.image}"
                                class="btn btn-outline-primary mt-2" style="font-weight: bold; border-radius: 8px;">Update</a>
-
-                        </c:if>
-                    </div>
+                        </div>
+                    </c:if>
                 </div>
             </c:if>
         </c:forEach>
     </div>
 </div>
-
 
 <script>
     function toggleMenu() {
