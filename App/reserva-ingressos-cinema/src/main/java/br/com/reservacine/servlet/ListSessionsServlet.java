@@ -20,7 +20,7 @@ public class ListSessionsServlet extends HttpServlet {
 
         SessionsDao sd = new SessionsDao();
         List<Sessions> allSessions = sd.findAllSessionsByMovie(id);
-
+        req.setAttribute("id", id);
         req.setAttribute("session", allSessions);
 
         req.getRequestDispatcher("/sinopse.jsp").forward(req, resp);

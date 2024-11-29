@@ -2,32 +2,32 @@ package br.com.reservacine.model;
 
 public class LugarSessao {
 
-    private int idLugarSessao;
-    private int fkSessao;
+    private String idLugarSessao;
+    private String fkSessao;
     private String lugar;
     private boolean disponivel;
 
 
-    public LugarSessao(int idLugarSessao, int fkSessao, String lugar, boolean disponivel) {
+    public LugarSessao(String idLugarSessao, String fkSessao, String lugar, boolean disponivel) {
         this.idLugarSessao = idLugarSessao;
         this.fkSessao = fkSessao;
         this.lugar = lugar;
         this.disponivel = disponivel;
     }
 
-    public int getIdLugarSessao() {
+    public String getIdLugarSessao() {
         return idLugarSessao;
     }
 
-    public void setIdLugarSessao(int idLugarSessao) {
+    public void setIdLugarSessao(String idLugarSessao) {
         this.idLugarSessao = idLugarSessao;
     }
 
-    public int getFkSessao() {
+    public String getFkSessao() {
         return fkSessao;
     }
 
-    public void setFkSessao(int fkSessao) {
+    public void setFkSessao(String fkSessao) {
         this.fkSessao = fkSessao;
     }
 

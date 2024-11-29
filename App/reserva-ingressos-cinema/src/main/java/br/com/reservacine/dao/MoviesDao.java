@@ -96,10 +96,10 @@ public class MoviesDao {
         String SQL = "SELECT * FROM MOVIES WHERE IDMOVIE = ?";
         List<Movies> allMovies = new ArrayList<>();
 
-        try (
+        try {
                 Connection connection = ConnectionPoolConfig.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(SQL)
-        ) {
+                PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
             preparedStatement.setString(1, id);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -121,7 +121,9 @@ public class MoviesDao {
 
             System.out.println("Sucesso ao consultar os dados na tabela.");
         } catch (Exception e) {
+
             System.out.println("Falha ao consultar os filmes: " + e.getMessage());
+            System.out.println(id);
         }
 
         return allMovies;

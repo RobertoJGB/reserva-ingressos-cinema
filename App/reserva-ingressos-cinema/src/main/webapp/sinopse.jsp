@@ -97,7 +97,7 @@
                         <i class="fas fa-clock me-2" style="color: #ffd700;"></i>
                         Horario: <span style="margin-left: 5px;">${session.horario}</span>
                     </p>
-                    <a href="assentos.jsp?id=${param.idMovie}&sessaoId=${session.idSession}"
+                    <a href="/find-assentos?id=${param.id}&sessaoId=${session.idSession}"
                        class="btn btn-primary btn-block"
                        style="background: #1a73e8; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; padding: 10px 20px; transition: background 0.3s;">
                         Selecionar

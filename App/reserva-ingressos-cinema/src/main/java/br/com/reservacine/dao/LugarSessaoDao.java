@@ -11,7 +11,7 @@ import java.util.List;
 
 public class LugarSessaoDao {
     // Listar o lugares, pesquisando a sessão, não há insert , pois deve acontecer de forma automatatica ao inserir sessão
-    public List<LugarSessao> getLugaresPorSessao(int sessionId) {
+    public List<LugarSessao> getLugaresPorSessao(String sessionId) {
         List<LugarSessao> lugares = new ArrayList<>();
         String SQL = "SELECT id_lugar_sessao, fk_sessao, lugar, disponivel "
                 + "FROM lugar_sessao WHERE fk_sessao = ?";
@@ -19,11 +19,11 @@ public class LugarSessaoDao {
         try {
             Connection connection = ConnectionPoolConfig.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setInt(1, sessionId);
+            preparedStatement.setString(1, sessionId);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                int idLugarSessao = resultSet.getInt("id_lugar_sessao");
+                String idLugarSessao = resultSet.getString("id_lugar_sessao");
                 String lugar = resultSet.getString("lugar");
                 boolean disponivel = resultSet.getBoolean("disponivel");
 
@@ -39,6 +39,7 @@ public class LugarSessaoDao {
         return lugares;
     }
 
+
     public void reservarLugar(int idLugarSessao) {
         String SQL = "UPDATE lugar_sessao SET disponivel = ? WHERE id_lugar_sessao = ?";
 
@@ -52,9 +53,38 @@ public class LugarSessaoDao {
             System.out.println("Lugar reservado com sucesso.");
             connection.close();
         } catch (Exception e) {
+            System.out.println("Erro ao realizar reserva do lugar: " + idLugarSessao);
             System.out.println("Erro ao reservar o lugar: " + e.getMessage());
         }
     }
+
+    // Método para mapear o nome do lugar para o id_lugar_sessao
+    public int mapearIdLugar(String lugar) {
+        // SQL para buscar o id_lugar_sessao correspondente ao lugar
+        String SQL = "SELECT id_lugar_sessao FROM lugar_sessao WHERE lugar = ? AND disponivel = true LIMIT 1"; // Somente lugares disponíveis
+
+        try (
+                Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL)) {
+
+            // Definir o lugar como parâmetro da consulta
+            preparedStatement.setString(1, lugar);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    System.out.println(resultSet.getString("id_lugar_sessao"));
+                    return resultSet.getInt("id_lugar_sessao");
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro ao mapear o lugar: " + e.getMessage());
+        }
+
+        // Se o lugar não for encontrado, retorna -1
+        return -1;
+    }
+
 
     public void restaurarLugar(int idLugarSessao) {
         String SQL = "UPDATE lugar_sessao SET disponivel = ? WHERE id_lugar_sessao = ?";

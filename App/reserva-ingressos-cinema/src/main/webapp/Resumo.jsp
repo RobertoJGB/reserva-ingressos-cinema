@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <head>
-    <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <meta charset="UTF-8">
     <title>Resumo da Reserva</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -119,29 +118,48 @@
 <!-- Conteúdo Principal -->
 <div class="container mt-5 text-center text-white">
     <h1>Resumo da Reserva</h1>
-    <div class="card mx-auto mt-3" style="width: 400px; background-color: black; border: none;">
-
-        <div class="card-body">
-            <div class="container mt-4">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="${param.image}" alt="${param.nomeFilme}" class="img-fluid rounded">
-                    </div>
-                    <div class="col-md-8">
-                        <h2 style="font-size: 2em;">${param.nomeFilme}</h2>
-                        <p></p>
-                        <p style="font-size: 1.2em;">Gênero: ${param.genero}</p>
-                        <p style="font-size: 1.2em;">Classificação Indicativa: ${param.classInd}</p>
-                        <p style="font-size: 1.2em;">Duração: ${param.duracao} minutos</p>
-                        <p style="font-size: 1.2em;">Sinopse:</p>
-                        <p style="font-size: 1.2em;">${param.sinopse}</p>
-                    </div>
+    <div class="card-body p-4">
+        <!-- Informações do Filme -->
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="${movie[0].image}" alt="${movie[0].nomeFilme}" class="img-fluid rounded" style="border-radius: 10px;">
+                </div>
+                <div class="col-md-8 text-start">
+                    <h2 style="font-size: 2em; font-family: 'Poppins', sans-serif;">${movie[0].nomeFilme}</h2>
+                    <p style="font-size: 1.2em; margin-bottom: 8px;">Genero: <span style="font-weight: 600;">${movie[0].genero}</span></p>
+                    <p style="font-size: 1.2em; margin-bottom: 8px;">Classificacao Indicativa: <span style="font-weight: 600;">${movie[0].classInd}</span></p>
+                    <p style="font-size: 1.2em; margin-bottom: 8px;">Duracao: <span style="font-weight: 600;">${movie[0].duracao} minutos</span></p>
+                    <p style="font-size: 1.2em; margin-bottom: 8px;">Sinopse:</p>
+                    <p style="font-size: 1.1em; font-weight: 300;">${movie[0].sinopse}</p>
+                    <p style="font-size: 1.2em; margin-bottom: 8px;">Sala: <span style="font-weight: 600;">${session[0].sala}</span></p>
+                    <p style="font-size: 1.2em;">Horario: <span style="font-weight: 600;">${session[0].horario}</span></p>
                 </div>
             </div>
-            <button class="btn btn-primary w-100" onclick="window.location.href='carrinho.jsp'">Finalizar Reserva</button>
         </div>
+        <!-- Assentos Selecionados -->
+        <h3 class="mt-4">Assentos Selecionados:</h3>
+        <ul class="list-group">
+            <c:forEach var="assento" items="${lugarEsc}">
+                <li class="list-group-item" style="background-color: black; color: white;">${assento}</li>
+            </c:forEach>
+        </ul>
+
+        <!-- Botão Finalizar -->
+        <form action="/save-seat" method="post">
+            <!-- Campo escondido para enviar os assentos selecionados -->
+            <input type="hidden" id="assento" name="assento" value="${lugarEsc}">
+
+            <button type="submit" class="btn btn-outline-success w-50 mt-4"
+                    style="border-radius: 10px; font-size: 1em; padding: 8px 16px; font-weight: 600; transition: background 0.3s;">
+                Finalizar Reserva
+            </button>
+        </form>
+
     </div>
+
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -151,6 +169,6 @@
         menu.classList.toggle("active");
     }
 </script>
-</script>
+
 </body>
 </html>

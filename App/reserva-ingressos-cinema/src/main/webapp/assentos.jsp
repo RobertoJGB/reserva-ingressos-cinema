@@ -5,6 +5,7 @@
 <head>
     <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <title>Escolha seus assentos</title>
+
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
               <link rel="stylesheet" href="css/body.css">
@@ -12,33 +13,48 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 20px; /* Ajusta a distância do topo */
+            margin-bottom: 40px; /* Cria mais espaço entre o título e os assentos */
         }
 
         .cinema {
-            display: inline-block;
-            margin-top: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px; /* Aumenta o espaçamento entre fileiras */
+            margin: 0 auto;
         }
 
         .seat-row {
-            color: #fff;
             display: flex;
             justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            gap: 15px; /* Aumenta o espaçamento entre assentos na mesma fileira */
         }
-        span{
-            color: #fff;
-        }
-        .esc{
-            margin-top: 35px
+
+        .row-label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-right: 10px;
+            align-self: center;
         }
 
         .seat {
-            width: 30px;
-            height: 30px;
-            margin: 10px;
+            width: 40px; /* Aumenta a largura do ícone */
+            height: 40px; /* Aumenta a altura do ícone */
+            margin: 5px;
             background-image: url('img/PoltronaLivre.png');
             background-size: cover;
             cursor: pointer;
-            transition: background-image 0.3s;
+            transition: transform 0.3s, background-image 0.3s;
         }
 
         .seat.occupied {
@@ -51,40 +67,46 @@
         }
 
         .seat:hover:not(.occupied) {
+            transform: scale(1.1);
             background-image: url('img/PoltronaEscolhida.png');
         }
 
         .screen {
-            width: 68%;
+            width: 80%;
             height: 50px;
             background-image: url('img/Tela.png');
             background-size: cover;
-            margin: 20px auto;
+            margin: 40px auto 0 auto;
+            border-radius: 10px;
         }
 
         .legend {
             display: flex;
             justify-content: center;
             margin: 20px 0;
+            gap: 30px; /* Espaço entre as legendas */
         }
 
         .legend-item {
             display: flex;
             align-items: center;
-            margin: 0 10px;
         }
 
         .legend-item img {
-            width: 30px;
-            height: 30px;
+            width: 40px; /* Ajusta o tamanho da legenda para combinar com os assentos */
+            height: 40px;
             margin-right: 5px;
         }
 
-        .row-label {
-            margin-top: 15px;
-            margin-right: 10px;
-            font-weight: bold;
+        button {
+            margin: 20px 0;
         }
+
+        .seat.unavailable {
+            background-image: url('img/PoltronaOcupada.png');
+            cursor: not-allowed;
+        }
+
     </style>
 
 </head>
@@ -142,212 +164,136 @@
 <h1 class="esc">Escolha seus assentos</h1>
 
 <div class="cinema">
-    <div class="seat-row" data-row="h">
+    <div class="seat-row" data-row="H">
         <div class="row-label">H</div>
-        <div class="seat" data-row="h" data-seat="1" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="h" data-seat="2"></div>
-        <div class="seat" data-row="h" data-seat="3" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="h" data-seat="4" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="h" data-seat="5"></div>
-        <div class="seat" data-row="h" data-seat="6" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="h" data-seat="7" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="h" data-seat="8"></div>
-        <div class="seat" data-row="h" data-seat="9" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="h" data-seat="10" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="h" data-seat="11"></div>
-        <div class="seat" data-row="h" data-seat="12" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="h" data-seat="13" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="h" data-seat="2"></div>
-        <div class="seat" data-row="h" data-seat="14" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="h" data-seat="15" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="h" data-seat="16"></div>
-        <div class="seat" data-row="h" data-seat="17" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="h" data-seat="18" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="h" data-seat="19"></div>
-        <div class="seat" data-row="h" data-seat="20" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="h" data-seat="21" onclick="selectSeat(this)"></div>
-    </div>
-    <div class="seat-row" data-row="g">
-        <div class="row-label">G</div>
-        <div class="seat" data-row="g" data-seat="1" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="2" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="3" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="4" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="5" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="6" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="7" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="8" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="9" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="10" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="11" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="12" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="13" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="14" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="15" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="16" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="17" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="18" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="19" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="20" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="21" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="g" data-seat="22" onclick="selectSeat(this)"></div>
-        <!-- Continue para todos os assentos na fileira g -->
-    </div>
-    <div class="seat-row" data-row="f">
-        <div class="row-label">F</div>
-        <div class="seat" data-row="f" data-seat="1" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="2" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="3" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="4" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="5" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="6" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="7" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="8" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="9" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="10" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="11" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="12" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="13" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="14" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="15" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="16" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="17" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="18" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="19" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="20" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="21" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="f" data-seat="22" onclick="selectSeat(this)"></div>
-    </div>
-    <div class="seat-row" data-row="e">
-        <div class="row-label">E</div>
-        <div class="seat" data-row="e" data-seat="1" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="2" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="3" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="4" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="5" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="6" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="7" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="8" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="9" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="10" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="11" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="12" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="13" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="14" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="15" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="16" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="17" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="18" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="19" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="20" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="21" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="e" data-seat="22" onclick="selectSeat(this)"></div>
-    </div>
-    <div class="seat-row" data-row="d">
-        <div class="row-label">D</div>
-        <div class="seat" data-row="d" data-seat="1" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="d" data-seat="2" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="d" data-seat="3" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="d" data-seat="4" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="d" data-seat="5" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="d" data-seat="6"></div>
-        <div class="seat occupied" data-row="d" data-seat="7"></div>
-        <div class="seat occupied" data-row="d" data-seat="8"></div>
-        <div class="seat occupied" data-row="d" data-seat="9"></div>
-        <div class="seat" data-row="d" data-seat="10" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="d" data-seat="11" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="d" data-seat="12" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="d" data-seat="13" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="d" data-seat="2"></div>
-        <div class="seat" data-row="d" data-seat="14" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="d" data-seat="15" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="d" data-seat="16"></div>
-        <div class="seat" data-row="d" data-seat="17" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="d" data-seat="18" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="d" data-seat="19"></div>
-        <div class="seat" data-row="d" data-seat="20" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="d" data-seat="21" onclick="selectSeat(this)"></div>
-    </div>
-    <div class="seat-row" data-row="c">
-        <div class="row-label">C</div>
-        <div class="seat" data-row="c" data-seat="1" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="c" data-seat="2"></div>
-        <div class="seat" data-row="c" data-seat="3" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="c" data-seat="4" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="c" data-seat="5"></div>
-        <div class="seat" data-row="c" data-seat="6" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="c" data-seat="7" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="c" data-seat="8"></div>
-        <div class="seat" data-row="c" data-seat="9" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="c" data-seat="10" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="c" data-seat="11"></div>
-        <div class="seat" data-row="c" data-seat="12" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="c" data-seat="13" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="c" data-seat="14"></div>
-        <div class="seat" data-row="c" data-seat="15" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="c" data-seat="16" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="c" data-seat="17"></div>
-        <div class="seat" data-row="c" data-seat="18" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="c" data-seat="19"></div>
-        <div class="seat" data-row="c" data-seat="20" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="c" data-seat="21" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="c" data-seat="22"></div>
-    </div>
-    <div class="seat-row" data-row="b">
-        <div class="row-label">B</div>
-        <div class="seat occupied" data-row="b" data-seat="1"></div>
-        <div class="seat" data-row="b" data-seat="2" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="3" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="b" data-seat="4"></div>
-        <div class="seat" data-row="b" data-seat="5" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="6" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="b" data-seat="7"></div>
-        <div class="seat" data-row="b" data-seat="8" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="9" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="b" data-seat="10"></div>
-        <div class="seat" data-row="b" data-seat="11" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="12" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="b" data-seat="13"></div>
-        <div class="seat" data-row="b" data-seat="14" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="15" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="b" data-seat="16"></div>
-        <div class="seat" data-row="b" data-seat="17" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="18" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="b" data-seat="19"></div>
-        <div class="seat" data-row="b" data-seat="20" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="21" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="b" data-seat="22" onclick="selectSeat(this)"></div>
-    </div>
-    <div class="seat-row" data-row="a">
-        <div class="row-label">A</div>
-        <div class="seat" data-row="a" data-seat="1" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="a" data-seat="2"></div>
-        <div class="seat" data-row="a" data-seat="3" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="a" data-seat="4" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="a" data-seat="5"></div>
-        <div class="seat" data-row="a" data-seat="6" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="a" data-seat="7" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="a" data-seat="8"></div>
-        <div class="seat" data-row="a" data-seat="9" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="a" data-seat="10" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="a" data-seat="11"></div>
-        <div class="seat" data-row="a" data-seat="12" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="a" data-seat="13" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="a" data-seat="14"></div>
-        <div class="seat" data-row="a" data-seat="15" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="a" data-seat="16" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="a" data-seat="17"></div>
-        <div class="seat" data-row="a" data-seat="18" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="a" data-seat="19"></div>
-        <div class="seat" data-row="a" data-seat="20" onclick="selectSeat(this)"></div>
-        <div class="seat" data-row="a" data-seat="21" onclick="selectSeat(this)"></div>
-        <div class="seat occupied" data-row="a" data-seat="22"></div>
+        <c:forEach var="assento" items="${assentos}">
+            <c:if test="${assento.lugar.startsWith('H')}">
+                <div class="seat ${assento.disponivel ? '' : 'unavailable'}"
+                     data-row="${assento.lugar}"
+                     data-available="${assento.disponivel ? 'true' : 'false'}"
+                     onclick="selectSeat(this)">
+                </div>
+            </c:if>
+        </c:forEach>
     </div>
 </div>
+
+
+
+
+<div class="cinema">
+    <div class="seat-row" data-row="G">
+        <div class="row-label">G</div>
+        <c:forEach var="assento" items="${assentos}">
+            <c:if test="${assento.lugar.startsWith('G')}">
+                <div class="seat ${assento.disponivel ? '' : 'unavailable'}"
+                     data-row="${assento.lugar}"
+                     data-available="${assento.disponivel ? 'true' : 'false'}"
+                     onclick="selectSeat(this)">
+                </div>
+            </c:if>
+        </c:forEach>
+    </div>
+</div>
+
+
+<div class="cinema">
+    <div class="seat-row" data-row="F">
+        <div class="row-label">F</div>
+        <c:forEach var="assento" items="${assentos}">
+            <c:if test="${assento.lugar.startsWith('F')}">
+                <div class="seat ${assento.disponivel ? '' : 'unavailable'}"
+                     data-row="${assento.lugar}"
+                     data-available="${assento.disponivel ? 'true' : 'false'}"
+                     onclick="selectSeat(this)">
+                </div>
+            </c:if>
+        </c:forEach>
+    </div>
+</div>
+
+
+<div class="cinema">
+    <div class="seat-row" data-row="E">
+        <div class="row-label">E</div>
+        <c:forEach var="assento" items="${assentos}">
+            <c:if test="${assento.lugar.startsWith('E')}">
+                <div class="seat ${assento.disponivel ? '' : 'unavailable'}"
+                     data-row="${assento.lugar}"
+                     data-available="${assento.disponivel ? 'true' : 'false'}"
+                     onclick="selectSeat(this)">
+                </div>
+            </c:if>
+        </c:forEach>
+    </div>
+</div>
+
+<div class="cinema">
+    <div class="seat-row" data-row="D">
+        <div class="row-label">D</div>
+        <c:forEach var="assento" items="${assentos}">
+            <c:if test="${assento.lugar.startsWith('D')}">
+                <div class="seat ${assento.disponivel ? '' : 'unavailable'}"
+                     data-row="${assento.lugar}"
+                     data-available="${assento.disponivel ? 'true' : 'false'}"
+                     onclick="selectSeat(this)">
+                </div>
+            </c:if>
+        </c:forEach>
+    </div>
+</div>
+
+<div class="cinema">
+    <div class="seat-row" data-row="C">
+        <div class="row-label">C</div>
+        <c:forEach var="assento" items="${assentos}">
+            <c:if test="${assento.lugar.startsWith('C')}">
+                <div class="seat ${assento.disponivel ? '' : 'unavailable'}"
+                     data-row="${assento.lugar}"
+                     data-available="${assento.disponivel ? 'true' : 'false'}"
+                     onclick="selectSeat(this)">
+                </div>
+            </c:if>
+        </c:forEach>
+    </div>
+</div>
+
+
+<div class="cinema">
+    <div class="seat-row" data-row="B">
+        <div class="row-label">B</div>
+        <c:forEach var="assento" items="${assentos}">
+            <c:if test="${assento.lugar.startsWith('B')}">
+                <div class="seat ${assento.disponivel ? '' : 'unavailable'}"
+                     data-row="${assento.lugar}"
+                     data-available="${assento.disponivel ? 'true' : 'false'}"
+                     onclick="selectSeat(this)">
+                </div>
+            </c:if>
+        </c:forEach>
+    </div>
+</div>
+
+
+<div class="cinema">
+    <div class="seat-row" data-row="A">
+        <div class="row-label">A</div>
+        <c:forEach var="assento" items="${assentos}">
+            <c:if test="${assento.lugar.startsWith('A')}">
+                <div class="seat ${assento.disponivel ? '' : 'unavailable'}"
+                     data-row="${assento.lugar}"
+                     data-available="${assento.disponivel ? 'true' : 'false'}"
+                     onclick="selectSeat(this)">
+                </div>
+            </c:if>
+        </c:forEach>
+    </div>
+</div>
+
 <div class="legend">
     <div class="legend-item">
         <img src="img/PoltronaLivre.png" alt="Disponível">
-        <span>Disponivel</span>
+        <span>Disponível</span>
     </div>
     <div class="legend-item">
         <img src="img/PoltronaOcupada.png" alt="Ocupado">
@@ -358,31 +304,46 @@
         <span>Selecionada</span>
     </div>
 </div>
-<button type="button" class="btn btn-outline-success" onclick="proceedToNextStep()">Continuar</button>
-<br><br>
+
+
+<form action="/all-resumo" method="post">
+    <input type="hidden" name="selectedSeats" id="selectedSeats">
+    <input type="hidden" name="idMovie" value="${param.id}">
+    <input type="hidden" name="sessaoId" value="${param.sessaoId}">
+    <button type="submit" class="btn btn-outline-success">Continuar</button>
+</form>
+
 <div class="screen"></div>
 
-
 <script>
-    function toggleMenu() {
-        var menu = document.getElementById("sideMenu");
-        menu.classList.toggle("active");
-    }
-
-    function proceedToNextStep() {
-        window.location.href = 'Resumo.jsp';
-    }
+    let selectedSeats = [];
 
     function selectSeat(seat) {
-        if (!seat.classList.contains('occupied')) {
+        const isAvailable = seat.dataset.available === 'true';  // Verifique se o assento está disponível
+
+        if (isAvailable && !seat.classList.contains('occupied')) {
             seat.classList.toggle('selected');
+            const seatId = seat.dataset.row;
+
+            // Atualiza a lista de assentos selecionados
             if (seat.classList.contains('selected')) {
-                seat.style.backgroundImage = "url('img/PoltronaEscolhida.png')";
+                selectedSeats.push(seatId);
             } else {
-                seat.style.backgroundImage = "url('img/PoltronaLivre.png')";
+                selectedSeats = selectedSeats.filter(id => id !== seatId);
             }
-            alert('Fileira: ' + seat.dataset.row + ', Assento: ' + seat.dataset.seat);
+
+            // Atualiza o campo oculto no formulário com os assentos selecionados
+            document.getElementById('selectedSeats').value = selectedSeats.join(',');
         }
+    }
+
+
+
+    // Função para salvar os assentos selecionados
+    function saveSelectedSeats() {
+        // Aqui você já coletou os assentos no campo oculto, então você pode enviar o formulário normalmente
+        // Se quiser fazer mais validações ou ajustes, pode adicioná-los aqui.
+        return true;
     }
 </script>
 </body>

@@ -103,6 +103,40 @@ public class SessionsDao {
         return allSessions;
     }
 
+    public List<Sessions> findOneSessionsByMovie(String idsession) {
+        String SQL = "SELECT * FROM SESSIONS WHERE idSession = ?";
+
+        List<Sessions> allSessions = new ArrayList<>();
+
+        try (
+                Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(SQL)
+        ) {
+
+            preparedStatement.setString(1, idsession);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String idSession = resultSet.getString("IDSESSION");
+                    String hora = resultSet.getString("HORARIO");
+                    String sala = resultSet.getString("SALA");
+                    String fk = resultSet.getString("fkMovie");
+
+
+                    Sessions session = new Sessions(idSession, hora, sala, fk);
+                    allSessions.add(session);
+                }
+            }
+
+            System.out.println("Sucesso ao consultar as sessões para o filme com FKMOVIE = " + idsession);
+
+        } catch (Exception e) {
+            System.out.println("Falha ao consultar as sessões: " + e.getMessage());
+        }
+
+        return allSessions;
+    }
+
 
     public void deleteSessionById(String sessionId) {
 
