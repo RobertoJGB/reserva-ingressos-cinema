@@ -25,7 +25,7 @@ public class ReservarAssentoServlet extends HttpServlet {
             String[] seats = lugarEsc.split(",");
 
             for (String seat : seats) {
-                int idLugarSessao = ld.mapearIdLugarPorSessao(seat,idSession);
+                int idLugarSessao = ld.mapearIdLugarPorSessao(seat, idSession);
 
                 if (idLugarSessao != -1) {
                     ld.reservarLugar(idLugarSessao);
@@ -34,21 +34,16 @@ public class ReservarAssentoServlet extends HttpServlet {
                 }
             }
 
-            req.setAttribute("lugarEsc", lugarEsc);
-            req.setAttribute("idUser", idUser);
-            req.setAttribute("idMovie", idMovie);
-            req.setAttribute("idSession", idSession);
-
-
-
-
+            // Armazenando lugarEsc na sessão
+            req.getSession().setAttribute("lugarEsc", lugarEsc); // Modificado para salvar na sessão
+            req.getSession().setAttribute("idUser", idUser);     // Armazenando os outros parâmetros, se necessário
+            req.getSession().setAttribute("idMovie", idMovie);
+            req.getSession().setAttribute("idSession", idSession);
         } else {
             System.out.println("Nenhum assento foi selecionado.");
         }
 
+        // Redireciona para a próxima servlet para criar o ticket
         req.getRequestDispatcher("/create-ticket").forward(req, resp);
-
-
     }
 }
-

@@ -141,6 +141,7 @@
         <p>Obrigado por reservar com a gente!</p>
         <p>Sua reserva foi realizada com sucesso. Apresente os códigos abaixo no caixa do cinema para concluir o
             processo.</p>
+        <p>Seus Ingressos: </p>
 
 
         <ul>

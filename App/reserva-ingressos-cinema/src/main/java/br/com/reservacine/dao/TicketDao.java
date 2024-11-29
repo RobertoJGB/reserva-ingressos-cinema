@@ -41,44 +41,45 @@ public class TicketDao {
         }
     }
 
-    public List<Ticket> findAllTickets(String iduse) {
-
-        String SQL = "SELECT * FROM TICKET WHERE IDUSER = ?";
+    public List<Ticket> findAllTicketsUser(String idUser) {
+        // Consulta SQL simples para pegar os IDs dos tickets
+        String SQL = "SELECT * "
+                + "FROM TICKETS "
+                + "WHERE AND FKIDUSER = ?";
 
         try {
-
             Connection connection = ConnectionPoolConfig.getConnection();
-
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            // Definindo os parâmetros no PreparedStatement
+
+            preparedStatement.setString(1, idUser);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             List<Ticket> tickets = new ArrayList<>();
 
             while (resultSet.next()) {
-                String idticket = resultSet.getString("idticket");
-                String lugarEsc = resultSet.getString("lugaresc");
+                String idTicket = resultSet.getString("IDTICKET");
+                String fkNomeFilme = resultSet.getString("FKNOMEFILME");
+                String fkSessao = resultSet.getString("FKSESSAO");
+                String fkIdLugar = resultSet.getString("FKIDLUOGAR");
 
-                //Ticket ticket = new Ticket(idticket,lugarEsc);
-
-                //tickets.add(ticket);
-
+                // Criando o ticket com os dados encontrados
+                Ticket ticket = new Ticket(idTicket, idUser, fkNomeFilme, fkIdLugar,fkSessao );
+                tickets.add(ticket);
             }
 
-            System.out.println("success in select * ticket");
+            System.out.println("Tickets encontrados com sucesso.");
 
             connection.close();
 
             return tickets;
 
         } catch (Exception e) {
-
-            System.out.println("fail in database connection");
-
+            System.out.println("Falha na conexão com o banco de dados: " + e.getMessage());
             return Collections.emptyList();
-
         }
-
     }
 
     public List<Ticket> findAllTicketsSession(String session, String idUser) {

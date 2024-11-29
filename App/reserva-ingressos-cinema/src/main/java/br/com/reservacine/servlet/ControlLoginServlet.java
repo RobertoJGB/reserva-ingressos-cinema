@@ -30,12 +30,12 @@ public class ControlLoginServlet extends HttpServlet {
                 resp.sendRedirect("/find-all-movies");
             } else {
                 req.setAttribute("errorMessage", "E-mail ou senha incorretos.");
-                req.getRequestDispatcher("/loginC").forward(req, resp);
+                req.getRequestDispatcher("/login.jsp").forward(req, resp);
             }
         } catch (Exception e) {
             e.printStackTrace();
             req.setAttribute("errorMessage", "Erro no processamento do login.");
-            req.getRequestDispatcher("/loginC").forward(req, resp);
+            req.getRequestDispatcher("/login.jsp").forward(req, resp);
         }
     }
 }
