@@ -82,32 +82,50 @@
     </div>
 </div>
 
-
 <div class="container mt-5">
-    <h3 class="hora text-center" style="font-family: 'Arial', sans-serif; color: #fff;">Horarios Disponiveis</h3>
+    <h3 class="hora text-center mb-4" style="font-family: 'Poppins', sans-serif; color: #fff; font-weight: bold;">Horarios Disponiveis</h3>
     <div class="row justify-content-center">
         <c:forEach var="session" items="${session}">
             <div class="col-md-4 mb-4">
-                <div class="session-box border rounded text-center p-4" style="box-shadow: 0 2px 5px rgba(0,0,0,.1);">
-                    <p style="font-size: 18px;"><i class="fas fa-door-open"></i> Sala: ${session.sala}</p>
-                    <p style="font-size: 18px;"><i class="fas fa-clock"></i> Horario: ${session.horario}</p>
-                    <a href="assentos.jsp?id=${param.idMovie}&sessaoId=${session.idSession}" class="btn btn-primary" style="background-color:#0056b3; border:none;">Selecionar</a>
+                <div class="session-card text-center p-4" style="border-radius: 12px; background: linear-gradient(145deg, #1a1a2e, #16213e); color: #fff; box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.6);">
+                    <p style="font-size: 18px; margin: 0; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-door-open me-2" style="color: #ffd700;"></i>
+                        Sala: <span style="margin-left: 5px;">${session.sala}</span>
+                    </p>
+                    <p style="font-size: 18px; margin: 10px 0; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-clock me-2" style="color: #ffd700;"></i>
+                        Horario: <span style="margin-left: 5px;">${session.horario}</span>
+                    </p>
+                    <a href="assentos.jsp?id=${param.idMovie}&sessaoId=${session.idSession}"
+                       class="btn btn-primary btn-block"
+                       style="background: #1a73e8; border: none; border-radius: 8px; font-size: 16px; font-weight: 500; padding: 10px 20px; transition: background 0.3s;">
+                        Selecionar
+                    </a>
 
                     <c:if test="${sessionScope.user != null}">
                         <!-- Formulário de Delete -->
-                        <form action="/delete-session?id=${session.idSession}&fkmovie=${movies.idMovie}" method="post" class="mt-2">
+                        <form action="/delete-session?id=${session.idSession}&fkmovie=${movies.idMovie}"
+                              method="post" class="mt-3" style="text-align: center;">
                             <input type="hidden" id="idMovie" name="idMovie" value="${movies.idMovie}">
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit"
+                                    class="btn btn-danger"
+                                    style="border-radius: 8px; padding: 8px 20px; font-weight: bold;">
+                                Deletar
+                            </button>
                         </form>
                         <!-- Link para Update -->
                         <a href="index.jsp?sessaoId=${session.idSession}&id=${param.id}&sala=${session.sala}&horario=${session.horario}"
-                           class="btn btn-outline-primary mt-2" style="font-weight: bold; border-radius: 8px;">Update</a>
+                           class="btn btn-outline-primary mt-2"
+                           style="font-weight: bold; border: 2px solid #1a73e8; border-radius: 8px; padding: 8px 20px; color: #1a73e8;">
+                            Atualizar
+                        </a>
                     </c:if>
                 </div>
             </div>
         </c:forEach>
     </div>
 </div>
+
 
 <script type="text/javascript">
 function selectSession(idMovie, sessionId) {
