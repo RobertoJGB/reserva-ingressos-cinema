@@ -181,7 +181,7 @@
         <p>Obrigado por reservar com a gente!</p>
         <p>Sua reserva foi realizada com sucesso. Apresente o código abaixo no caixa do cinema para concluir o processo.</p>
         <p class="reservation-code">CÓDIGO DE RESERVA: </p>
-        <a href="/" class="btn">Voltar ao Início</a>
+        <a href="/find-all-movies" class="btn">Voltar ao Início</a>
     </div>
 </div>
 

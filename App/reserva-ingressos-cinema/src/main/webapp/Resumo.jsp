@@ -125,39 +125,60 @@
                 <div class="col-md-4">
                     <img src="${movie[0].image}" alt="${movie[0].nomeFilme}" class="img-fluid rounded" style="border-radius: 10px;">
                 </div>
-                <div class="col-md-8 text-start">
-                    <h2 style="font-size: 2em; font-family: 'Poppins', sans-serif;">${movie[0].nomeFilme}</h2>
-                    <p style="font-size: 1.2em; margin-bottom: 8px;">Genero: <span style="font-weight: 600;">${movie[0].genero}</span></p>
-                    <p style="font-size: 1.2em; margin-bottom: 8px;">Classificacao Indicativa: <span style="font-weight: 600;">${movie[0].classInd}</span></p>
-                    <p style="font-size: 1.2em; margin-bottom: 8px;">Duracao: <span style="font-weight: 600;">${movie[0].duracao} minutos</span></p>
-                    <p style="font-size: 1.2em; margin-bottom: 8px;">Sinopse:</p>
-                    <p style="font-size: 1.1em; font-weight: 300;">${movie[0].sinopse}</p>
-                    <p style="font-size: 1.2em; margin-bottom: 8px;">Sala: <span style="font-weight: 600;">${session[0].sala}</span></p>
-                    <p style="font-size: 1.2em;">Horario: <span style="font-weight: 600;">${session[0].horario}</span></p>
+                <div class="col-md-8 text-start" style="background-color: #1c1c1e; color: #f0f0f0; padding: 15px 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); max-width: 600px; margin: auto;">
+                    <h2 style="font-size: 2em; font-family: 'Poppins', sans-serif; font-weight: 700; color: #e50914; margin-bottom: 10px; text-align: center;">
+                        ${movie[0].nomeFilme}
+                    </h2>
+                    <p style="font-size: 1em; margin-bottom: 10px;">
+                        <strong>Genero:</strong> <span style="font-weight: 500;">${movie[0].genero}</span>
+                    </p>
+                    <p style="font-size: 1em; margin-bottom: 10px;">
+                        <strong>Classificacao Indicativa:</strong> <span style="font-weight: 500;">${movie[0].classInd}</span>
+                    </p>
+                    <p style="font-size: 1em; margin-bottom: 10px;">
+                        <strong>Duracao:</strong> <span style="font-weight: 500;">${movie[0].duracao} minutos</span>
+                    </p>
+                    <p style="font-size: 1em; margin-bottom: 10px;"><strong>Sinopse:</strong></p>
+                    <p style="font-size: 0.9em; font-weight: 300; line-height: 1.5; margin-bottom: 15px; text-align: justify;">
+                        ${movie[0].sinopse}
+                    </p>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <p style="font-size: 1em;">
+                            <strong>Sala:</strong> <span style="font-weight: 600;">${session[0].sala}</span>
+                        </p>
+                        <p style="font-size: 1em;">
+                            <strong>Horario:</strong> <span style="font-weight: 600;">${session[0].horario}</span>
+                        </p>
+                    </div>
+                    <div class="selected-seats" style="margin-bottom: 20px;">
+                        <h2 style="font-size: 1.5em; font-weight: 600; margin-bottom: 10px; color: #e50914; text-align: center;">Assentos Selecionados</h2>
+                        <ul style="list-style: none; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+                            <c:forEach var="assento" items="${lugarEsc}">
+                                <li style="background-color: #333; color: #f5f5f5; padding: 8px 16px; border-radius: 8px; font-size: 1em; font-weight: 500;">
+                                    ${assento}
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                        <div style="text-align: center; margin-top: 15px;">
+                        <form action="/save-seat" method="post" style="display: inline;">
+                            <!-- Campo escondido para enviar os assentos selecionados -->
+                            <input type="hidden" id="assento" name="assento" value="${lugarEsc}">
+
+                            <!-- Botão com redirecionamento -->
+                            <button type="submit" style="background-color: #e50914; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                                Finalizar Reserva
+                            </button>
+                        </form>
+                    </div>
+
+
                 </div>
+
+
             </div>
         </div>
-        <!-- Assentos Selecionados -->
-        <h3 class="mt-4">Assentos Selecionados:</h3>
-        <ul class="list-group">
-            <c:forEach var="assento" items="${lugarEsc}">
-                <li class="list-group-item" style="background-color: black; color: white;">${assento}</li>
-            </c:forEach>
-        </ul>
-
-        <!-- Botão Finalizar -->
-        <form action="/save-seat" method="post">
-            <!-- Campo escondido para enviar os assentos selecionados -->
-            <input type="hidden" id="assento" name="assento" value="${lugarEsc}">
-
-            <button type="submit" class="btn btn-outline-success w-50 mt-4"
-                    style="border-radius: 10px; font-size: 1em; padding: 8px 16px; font-weight: 600; transition: background 0.3s;">
-                Finalizar Reserva
-            </button>
-        </form>
-
     </div>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -228,7 +228,6 @@
                         <img src="${movies.image}" alt="Poster" class="w-100 h-100"
                              style="height: 350px; object-fit: cover; filter: brightness(70%); transition: all 0.4s ease;">
                         <div class="overlay d-flex flex-column justify-content-end p-2">
-                            <h5 class="text-white text-shadow mb-2">${movies.nomeFilme}</h5>
                             <button class="btn btn-secondary" disabled style="opacity: 0.8;">Em Breve</button>
                         </div>
                     </div>
